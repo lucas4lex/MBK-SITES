@@ -4,16 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LiteCom — Corretora de Seguros</title>
+<title>LiteCom | Corretora de Seguros</title>
 
-<meta name="description" content="LiteCom Corretora de Seguros — Proteção para você, sua família e seu patrimônio.">
+<meta name="description"
+content="LiteCom Corretora de Seguros. Proteção para você, sua família, seu patrimônio e sua empresa.">
+
 <meta name="theme-color" content="#063b73">
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -22,49 +29,68 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#eef3f8;
-    color:#172536;
+    background:#f3f6f9;
+    color:#1d2d3d;
     line-height:1.6;
 }
 
-/* =========================
-   TOPO
-========================= */
+img{
+    max-width:100%;
+}
+
+a{
+    color:inherit;
+}
+
+.container{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
 
 .topbar{
-    background:#052d59;
-    color:#dcecff;
-    font-size:13px;
-    border-bottom:1px solid #164f86;
+    background:#031f3c;
+    color:#c9d9e8;
+    border-bottom:1px solid #16466f;
+    font-size:12px;
 }
 
-.topbar-inner{
-    max-width:1180px;
-    margin:auto;
-    padding:7px 20px;
+.topbar-content{
+    min-height:34px;
     display:flex;
-    justify-content:center;
+    justify-content:space-between;
     align-items:center;
+    gap:20px;
 }
 
-/* =========================
+.topbar a{
+    text-decoration:none;
+}
+
+.topbar a:hover{
+    color:white;
+}
+
+
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
-    background:#fff;
-    border-bottom:4px solid #0a5da8;
-    box-shadow:0 3px 12px rgba(0,0,0,.08);
     position:sticky;
     top:0;
-    z-index:100;
+    z-index:999;
+    background:#fff;
+    border-bottom:4px solid #0870be;
+    box-shadow:0 4px 18px rgba(0,0,0,.08);
 }
 
-.header-inner{
-    max-width:1180px;
-    margin:auto;
-    min-height:82px;
-    padding:12px 20px;
+.header-content{
+    min-height:84px;
     display:flex;
     align-items:center;
     justify-content:space-between;
@@ -74,158 +100,186 @@ header{
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:11px;
     text-decoration:none;
 }
 
-.logo-mark{
-    width:46px;
-    height:46px;
-    border-radius:7px;
-    background:linear-gradient(145deg,#0c75c9,#043a72);
-    color:white;
+.logo-icon{
+    width:48px;
+    height:48px;
+    border-radius:6px;
     display:flex;
-    align-items:center;
     justify-content:center;
-    font-size:23px;
+    align-items:center;
+
+    background:linear-gradient(
+        145deg,
+        #0c7acb,
+        #04376c
+    );
+
+    color:#fff;
     font-weight:bold;
-    box-shadow:inset 0 1px 2px rgba(255,255,255,.35);
+    font-size:24px;
+
+    box-shadow:
+        inset 0 1px 2px rgba(255,255,255,.35),
+        0 3px 8px rgba(0,40,80,.18);
 }
 
-.logo-text strong{
-    display:block;
+.logo-name{
     color:#063b73;
     font-size:25px;
+    font-weight:bold;
     letter-spacing:-1px;
 }
 
-.logo-text span{
-    color:#66788c;
-    font-size:11px;
-    text-transform:uppercase;
+.logo-sub{
+    display:block;
+    color:#758596;
+    font-size:10px;
     letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 nav{
     display:flex;
     align-items:center;
-    gap:4px;
+    gap:3px;
 }
 
 nav a{
-    color:#263b50;
     text-decoration:none;
+    color:#30475c;
     padding:9px 12px;
-    font-size:14px;
+    font-size:13px;
     border-radius:4px;
 }
 
 nav a:hover{
+    background:#edf5fb;
     color:#075da8;
-    background:#edf5fc;
 }
 
-.nav-button{
+.nav-cta{
+    color:#fff!important;
     background:#075da8!important;
-    color:white!important;
-    border:1px solid #03487f;
-    box-shadow:inset 0 1px rgba(255,255,255,.2);
+    border:1px solid #03477e;
+    box-shadow:inset 0 1px rgba(255,255,255,.25);
 }
 
-.menu{
+.menu-button{
     display:none;
-    background:none;
     border:0;
-    font-size:28px;
+    background:none;
     color:#063b73;
+    font-size:28px;
     cursor:pointer;
 }
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-    background:
-        linear-gradient(90deg,rgba(3,35,69,.96),rgba(3,65,112,.82)),
-        radial-gradient(circle at 80% 30%,#2388d0,#032d59);
-    color:white;
-    min-height:520px;
-    display:flex;
-    align-items:center;
+    min-height:570px;
     position:relative;
     overflow:hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(2,30,57,.98) 0%,
+            rgba(3,59,101,.94) 55%,
+            rgba(7,105,170,.76) 100%
+        );
+    
+    color:white;
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.08);
+    right:-220px;
+    top:-180px;
+    box-shadow:
+        0 0 0 50px rgba(255,255,255,.025),
+        0 0 0 100px rgba(255,255,255,.018);
 }
 
 .hero:after{
     content:"";
     position:absolute;
-    right:-150px;
-    top:-150px;
-    width:500px;
-    height:500px;
-    border:1px solid rgba(255,255,255,.12);
+    width:350px;
+    height:350px;
     border-radius:50%;
-    box-shadow:
-        0 0 0 40px rgba(255,255,255,.025),
-        0 0 0 80px rgba(255,255,255,.018);
-}
-
-.hero-inner{
-    width:1180px;
-    max-width:calc(100% - 40px);
-    margin:auto;
-    position:relative;
-    z-index:2;
+    background:rgba(70,177,235,.08);
+    right:80px;
+    bottom:-220px;
 }
 
 .hero-content{
-    max-width:700px;
+    position:relative;
+    z-index:2;
+    padding:105px 0 95px;
+    max-width:760px;
 }
 
-.eyebrow{
+.hero-label{
     display:inline-block;
+    padding:6px 12px;
+    margin-bottom:18px;
+
     border:1px solid rgba(255,255,255,.35);
     background:rgba(255,255,255,.08);
-    padding:5px 11px;
-    font-size:12px;
+
     text-transform:uppercase;
-    letter-spacing:1.5px;
-    margin-bottom:18px;
+    letter-spacing:2px;
+    font-size:10px;
 }
 
 .hero h1{
-    font-family:Georgia,"Times New Roman",serif;
-    font-size:clamp(38px,6vw,66px);
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:clamp(42px,6vw,68px);
     line-height:1.04;
-    margin-bottom:20px;
+    letter-spacing:-1px;
+    margin-bottom:23px;
 }
 
 .hero h1 span{
-    color:#69c4ff;
+    color:#6bc8ff;
 }
 
-.hero p{
+.hero-text{
+    color:#d9e9f7;
+    max-width:680px;
     font-size:18px;
-    color:#dbeafa;
-    max-width:620px;
     margin-bottom:30px;
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
     gap:12px;
     flex-wrap:wrap;
 }
 
 .btn{
-    display:inline-block;
-    text-decoration:none;
-    padding:12px 20px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:44px;
+    padding:11px 20px;
     border-radius:4px;
+    text-decoration:none;
+    font-size:13px;
     font-weight:bold;
-    font-size:14px;
     transition:.2s;
+    cursor:pointer;
 }
 
 .btn-primary{
@@ -236,251 +290,590 @@ nav a:hover{
 
 .btn-primary:hover{
     transform:translateY(-2px);
-    box-shadow:0 7px 20px rgba(0,0,0,.2);
+    box-shadow:0 8px 22px rgba(0,0,0,.22);
+}
+
+.btn-blue{
+    color:white;
+    background:#0870be;
+    border:1px solid #075b9b;
+}
+
+.btn-blue:hover{
+    background:#075b9b;
+    transform:translateY(-2px);
 }
 
 .btn-outline{
-    border:1px solid rgba(255,255,255,.6);
-    color:white;
+    color:#fff;
+    border:1px solid rgba(255,255,255,.5);
 }
 
 .btn-outline:hover{
     background:rgba(255,255,255,.1);
 }
 
-/* =========================
-   NÚMEROS
-========================= */
 
-.stats{
-    background:white;
-    border-bottom:1px solid #d4dfe9;
+/* =========================================================
+   MINI BLOCOS DO HERO
+========================================================= */
+
+.hero-bottom{
+    position:relative;
+    z-index:3;
+    margin-top:-65px;
 }
 
-.stats-inner{
-    max-width:1180px;
-    margin:auto;
+.hero-panels{
     display:grid;
     grid-template-columns:repeat(3,1fr);
+    background:#fff;
+    border:1px solid #d7e2eb;
+    box-shadow:0 10px 35px rgba(10,40,70,.13);
 }
 
-.stat{
-    padding:24px;
+.hero-panel{
+    padding:25px;
+    border-right:1px solid #dce5ed;
+}
+
+.hero-panel:last-child{
+    border-right:0;
+}
+
+.hero-panel strong{
+    display:block;
+    color:#073866;
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.hero-panel span{
+    color:#718294;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   NÚMEROS
+========================================================= */
+
+.numbers{
+    background:#fff;
+    border-bottom:1px solid #dbe4eb;
+    padding:45px 0;
+}
+
+.number-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
+
+.number{
     text-align:center;
-    border-right:1px solid #dce4ec;
+    padding:10px 20px;
+    border-right:1px solid #dfe6ec;
 }
 
-.stat:last-child{
+.number:last-child{
     border:0;
 }
 
-.stat strong{
+.number strong{
+    display:block;
     color:#075da8;
     font-family:Georgia,serif;
-    font-size:28px;
-    display:block;
+    font-size:32px;
 }
 
-.stat span{
-    color:#68798a;
-    font-size:13px;
+.number span{
+    color:#718294;
+    font-size:12px;
 }
 
-/* =========================
-   GERAL
-========================= */
+
+/* =========================================================
+   SEÇÃO PADRÃO
+========================================================= */
 
 .section{
-    padding:75px 20px;
+    padding:85px 0;
 }
 
-.container{
-    max-width:1180px;
-    margin:auto;
+.section-light{
+    background:#f5f8fb;
 }
 
-.section-heading{
+.section-white{
+    background:#fff;
+}
+
+.section-title{
+    max-width:730px;
+    margin:0 auto 48px;
     text-align:center;
-    max-width:720px;
-    margin:0 auto 45px;
 }
 
-.section-heading .small{
+.section-kicker{
     color:#0870be;
+    font-size:10px;
     text-transform:uppercase;
     letter-spacing:2px;
-    font-size:11px;
     font-weight:bold;
 }
 
-.section-heading h2{
+.section-title h2{
     color:#073866;
     font-family:Georgia,"Times New Roman",serif;
-    font-size:38px;
-    line-height:1.15;
-    margin:9px 0 13px;
+    font-size:40px;
+    line-height:1.12;
+    margin:9px 0 14px;
 }
 
-.section-heading p{
-    color:#65788b;
+.section-title p{
+    color:#6b7d8e;
+    font-size:15px;
 }
 
-/* =========================
+
+/* =========================================================
    SEGUROS
-========================= */
+========================================================= */
 
-.insurances{
-    background:#f6f9fc;
-}
-
-.cards{
+.insurance-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:18px;
 }
 
-.card{
-    background:white;
-    border:1px solid #d7e1ea;
+.insurance-card{
+    background:#fff;
+    border:1px solid #d6e1e9;
     border-radius:5px;
-    padding:25px;
-    position:relative;
-    box-shadow:0 3px 12px rgba(20,60,90,.05);
+    padding:27px;
     transition:.2s;
+    box-shadow:0 3px 12px rgba(20,60,90,.04);
 }
 
-.card:hover{
-    transform:translateY(-4px);
-    border-color:#9cc9e9;
-    box-shadow:0 12px 28px rgba(15,71,111,.12);
+.insurance-card:hover{
+    transform:translateY(-5px);
+    border-color:#9bc9e7;
+    box-shadow:0 14px 30px rgba(15,65,100,.12);
 }
 
-.card-icon{
-    width:48px;
-    height:48px;
+.insurance-icon{
+    width:52px;
+    height:52px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     background:#e9f4fc;
-    color:#075da8;
-    border:1px solid #c7e2f5;
+    border:1px solid #c8e2f3;
     border-radius:5px;
+    color:#075da8;
     font-size:23px;
-    margin-bottom:18px;
+    margin-bottom:19px;
 }
 
-.card h3{
-    color:#103d67;
+.insurance-card h3{
+    color:#103e66;
     font-size:18px;
     margin-bottom:8px;
 }
 
-.card p{
-    color:#68798a;
-    font-size:14px;
+.insurance-card p{
+    color:#6c7d8d;
+    font-size:13px;
+    margin-bottom:16px;
 }
 
-/* =========================
-   SOBRE
-========================= */
-
-.about{
-    background:white;
+.card-link{
+    color:#075da8;
+    text-decoration:none;
+    font-size:12px;
+    font-weight:bold;
 }
 
-.about-grid{
+.card-link:hover{
+    text-decoration:underline;
+}
+
+
+/* =========================================================
+   DIFERENCIAIS
+========================================================= */
+
+.feature-layout{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:70px;
+    align-items:center;
+}
+
+.feature-intro h2{
+    color:#073866;
+    font-family:Georgia,serif;
+    font-size:41px;
+    line-height:1.1;
+    margin:10px 0 18px;
+}
+
+.feature-intro p{
+    color:#65788a;
+    font-size:15px;
+    margin-bottom:22px;
+}
+
+.feature-list{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:60px;
+    gap:14px;
+}
+
+.feature{
+    background:#f4f8fb;
+    border:1px solid #d8e3eb;
+    padding:22px;
+}
+
+.feature-number{
+    color:#0870be;
+    font-family:Georgia,serif;
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.feature h3{
+    color:#173f60;
+    font-size:15px;
+    margin-bottom:6px;
+}
+
+.feature p{
+    color:#728294;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   PROCESSO
+========================================================= */
+
+.process{
+    background:#063b73;
+    color:white;
+}
+
+.process .section-kicker{
+    color:#69c5ff;
+}
+
+.process .section-title h2{
+    color:white;
+}
+
+.process .section-title p{
+    color:#c6dcec;
+}
+
+.process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+}
+
+.process-card{
+    border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.055);
+    padding:26px;
+}
+
+.process-number{
+    width:38px;
+    height:38px;
+    border:1px solid rgba(255,255,255,.35);
+    display:flex;
+    justify-content:center;
     align-items:center;
+    margin-bottom:20px;
+    color:#72caff;
+    font-family:Georgia,serif;
+}
+
+.process-card h3{
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.process-card p{
+    color:#bdd3e5;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+.about-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:65px;
+    align-items:center;
+}
+
+.about-visual{
+    min-height:390px;
+    position:relative;
+    background:
+        linear-gradient(
+            145deg,
+            #073866,
+            #0870be
+        );
+    padding:35px;
+    display:flex;
+    align-items:flex-end;
+}
+
+.about-visual:before{
+    content:"LITECOM";
+    position:absolute;
+    top:30px;
+    left:35px;
+    color:rgba(255,255,255,.12);
+    font-size:60px;
+    font-weight:bold;
+    letter-spacing:4px;
 }
 
 .about-box{
-    background:#f1f6fa;
-    border:1px solid #d4e0e9;
-    border-left:5px solid #0870be;
-    padding:30px;
+    position:relative;
+    z-index:2;
+    width:100%;
+    background:white;
+    padding:25px;
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
 }
 
-.about-box h3{
-    font-family:Georgia,serif;
+.about-box strong{
     color:#073866;
-    font-size:25px;
-    margin-bottom:13px;
+    font-family:Georgia,serif;
+    font-size:24px;
 }
 
 .about-box p{
-    color:#637487;
-    font-size:15px;
+    color:#6c7c8c;
+    font-size:13px;
+    margin-top:7px;
 }
 
-.about-text h2{
-    font-family:Georgia,serif;
+.about-content h2{
     color:#073866;
-    font-size:40px;
-    line-height:1.1;
-    margin-bottom:20px;
+    font-family:Georgia,serif;
+    font-size:42px;
+    line-height:1.08;
+    margin:10px 0 20px;
 }
 
-.about-text p{
-    color:#5f7183;
+.about-content p{
+    color:#647688;
+    font-size:14px;
     margin-bottom:15px;
 }
 
-.checks{
+.check-list{
     list-style:none;
-    margin-top:22px;
+    margin-top:25px;
 }
 
-.checks li{
-    margin:10px 0;
-    color:#344d64;
-    font-size:14px;
+.check-list li{
+    color:#36516a;
+    font-size:13px;
+    padding:9px 0;
+    border-bottom:1px solid #e1e7ec;
 }
 
-.checks li:before{
+.check-list li:before{
     content:"✓";
     color:#0870be;
     font-weight:bold;
-    margin-right:9px;
+    margin-right:10px;
 }
 
-/* =========================
-   CTA
-========================= */
 
-.cta{
+/* =========================================================
+   COTAÇÃO
+========================================================= */
+
+.quote-section{
+    background:#eef4f8;
+}
+
+.quote-box{
+    background:#fff;
+    border:1px solid #d4e0e8;
+    box-shadow:0 8px 28px rgba(15,55,85,.08);
+    display:grid;
+    grid-template-columns:1.3fr .7fr;
+}
+
+.quote-main{
+    padding:45px;
+}
+
+.quote-main h2{
+    color:#073866;
+    font-family:Georgia,serif;
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.quote-main p{
+    color:#687b8c;
+    font-size:14px;
+    max-width:620px;
+    margin-bottom:24px;
+}
+
+.quote-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.quote-side{
     background:#063b73;
     color:white;
-    padding:60px 20px;
+    padding:45px 30px;
 }
 
-.cta-inner{
-    max-width:1000px;
+.quote-side h3{
+    font-family:Georgia,serif;
+    font-size:24px;
+    margin-bottom:12px;
+}
+
+.quote-side p{
+    color:#c6dceb;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   DEPOIMENTOS
+========================================================= */
+
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.testimonial{
+    background:#fff;
+    border:1px solid #d8e2e9;
+    padding:27px;
+}
+
+.stars{
+    color:#0870be;
+    letter-spacing:2px;
+    font-size:12px;
+    margin-bottom:15px;
+}
+
+.testimonial p{
+    color:#5f7283;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.testimonial strong{
+    color:#173e5d;
+    font-size:13px;
+}
+
+.testimonial span{
+    display:block;
+    color:#8795a2;
+    font-size:11px;
+}
+
+
+/* =========================================================
+   FAQ
+========================================================= */
+
+.faq{
+    max-width:850px;
     margin:auto;
+}
+
+details{
+    background:#fff;
+    border:1px solid #d7e1e8;
+    margin-bottom:10px;
+}
+
+summary{
+    cursor:pointer;
+    list-style:none;
+    padding:19px 22px;
+    color:#153d5d;
+    font-size:14px;
+    font-weight:bold;
+}
+
+summary::-webkit-details-marker{
+    display:none;
+}
+
+details p{
+    padding:0 22px 20px;
+    color:#718293;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   CTA FINAL
+========================================================= */
+
+.final-cta{
+    background:
+        linear-gradient(
+            90deg,
+            #052e57,
+            #0870be
+        );
+    color:white;
+    padding:65px 0;
+}
+
+.final-content{
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     gap:30px;
 }
 
-.cta h2{
+.final-content h2{
     font-family:Georgia,serif;
-    font-size:35px;
-    margin-bottom:7px;
+    font-size:38px;
+    line-height:1.1;
+    margin-bottom:8px;
 }
 
-.cta p{
-    color:#cfe2f3;
+.final-content p{
+    color:#d0e3f2;
+    font-size:14px;
 }
 
-/* =========================
+
+/* =========================================================
    CONTATO
-========================= */
-
-.contact{
-    background:#eef3f8;
-}
+========================================================= */
 
 .contact-grid{
     display:grid;
@@ -489,96 +882,126 @@ nav a:hover{
 }
 
 .contact-card{
-    background:white;
-    border:1px solid #d5e0e9;
-    padding:27px;
-    border-radius:5px;
+    background:#fff;
+    border:1px solid #d6e1e8;
+    padding:30px;
 }
 
 .contact-card h3{
     color:#073866;
+    font-family:Georgia,serif;
+    font-size:23px;
+    margin-bottom:20px;
+}
+
+.contact-item{
+    display:flex;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid #e4e9ed;
+}
+
+.contact-item:last-child{
+    border:0;
+}
+
+.contact-item-icon{
+    width:34px;
+    height:34px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#eaf4fb;
+    color:#075da8;
+}
+
+.contact-item strong{
+    color:#294b66;
+    display:block;
+    font-size:12px;
+}
+
+.contact-item span{
+    color:#718293;
+    font-size:12px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#021d38;
+    color:#9eb5c9;
+    padding:50px 0 20px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr;
+    gap:35px;
+}
+
+.footer-brand{
+    color:#fff;
+    font-family:Georgia,serif;
+    font-size:25px;
+}
+
+.footer-column h4{
+    color:white;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
     margin-bottom:15px;
 }
 
-.contact-line{
-    display:flex;
-    gap:12px;
-    margin:15px 0;
-    color:#607285;
-    font-size:14px;
-}
-
-.contact-line strong{
+.footer-column a{
     display:block;
-    color:#294b68;
+    color:#9eb5c9;
+    text-decoration:none;
+    font-size:12px;
+    margin:8px 0;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    background:#031f3c;
-    color:#a9bfd3;
-    padding:35px 20px 20px;
+.footer-column a:hover{
+    color:white;
 }
 
-.footer-inner{
-    max-width:1180px;
-    margin:auto;
+.footer-description{
+    max-width:340px;
+    font-size:12px;
+    margin-top:8px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    margin-top:40px;
+    padding-top:18px;
     display:flex;
     justify-content:space-between;
-    gap:30px;
+    gap:20px;
+    font-size:10px;
 }
 
-.footer-logo{
-    color:white;
-    font-family:Georgia,serif;
-    font-size:23px;
-}
 
-.footer-text{
-    font-size:12px;
-    max-width:430px;
-    margin-top:7px;
-}
-
-.footer-links{
-    display:flex;
-    gap:15px;
-    align-items:center;
-}
-
-.footer-links a{
-    color:#c8d8e7;
-    text-decoration:none;
-    font-size:13px;
-}
-
-.copyright{
-    max-width:1180px;
-    margin:25px auto 0;
-    padding-top:15px;
-    border-top:1px solid rgba(255,255,255,.1);
-    font-size:11px;
-}
-
-/* =========================
+/* =========================================================
    RESPONSIVO
-========================= */
+========================================================= */
 
-@media(max-width:850px){
+@media(max-width:950px){
 
     nav{
         display:none;
         position:absolute;
-        top:82px;
+        top:84px;
         left:0;
         right:0;
-        background:white;
-        border-bottom:1px solid #ccd9e4;
-        box-shadow:0 8px 15px rgba(0,0,0,.08);
         padding:10px;
+        background:white;
+        border-bottom:1px solid #d6e0e8;
+        box-shadow:0 8px 20px rgba(0,0,0,.1);
         flex-direction:column;
     }
 
@@ -591,121 +1014,216 @@ footer{
         text-align:center;
     }
 
-    .menu{
+    .menu-button{
         display:block;
     }
 
-    .cards{
+    .hero-panels{
+        grid-template-columns:1fr;
+    }
+
+    .hero-panel{
+        border-right:0;
+        border-bottom:1px solid #dce5ed;
+    }
+
+    .hero-panel:last-child{
+        border-bottom:0;
+    }
+
+    .number-grid{
         grid-template-columns:1fr 1fr;
     }
 
-    .about-grid{
+    .number{
+        border-bottom:1px solid #dfe6ec;
+    }
+
+    .insurance-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .feature-layout,
+    .about-layout,
+    .quote-box{
         grid-template-columns:1fr;
     }
 
-    .contact-grid{
-        grid-template-columns:1fr;
+    .process-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .cta-inner{
-        flex-direction:column;
-        align-items:flex-start;
+    .testimonials{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr;
     }
 }
 
-@media(max-width:600px){
+
+@media(max-width:650px){
+
+    .container{
+        width:min(100% - 30px, 1180px);
+    }
+
+    .topbar-content{
+        justify-content:center;
+        text-align:center;
+    }
+
+    .topbar-right{
+        display:none;
+    }
 
     .hero{
-        min-height:560px;
+        min-height:610px;
+    }
+
+    .hero-content{
+        padding:85px 0 90px;
     }
 
     .hero h1{
         font-size:42px;
     }
 
-    .hero p{
+    .hero-text{
         font-size:16px;
     }
 
-    .stats-inner{
+    .number-grid{
         grid-template-columns:1fr;
     }
 
-    .stat{
+    .number{
         border-right:0;
-        border-bottom:1px solid #dce4ec;
     }
 
-    .cards{
+    .insurance-grid,
+    .feature-list,
+    .process-grid,
+    .testimonials,
+    .contact-grid{
         grid-template-columns:1fr;
     }
 
     .section{
-        padding:55px 18px;
+        padding:65px 0;
     }
 
-    .section-heading h2{
-        font-size:31px;
-    }
-
-    .about-text h2{
+    .section-title h2{
         font-size:32px;
     }
 
-    .footer-inner{
-        flex-direction:column;
+    .feature-intro h2,
+    .about-content h2{
+        font-size:34px;
     }
 
-    .footer-links{
-        flex-wrap:wrap;
+    .quote-main,
+    .quote-side{
+        padding:30px 25px;
+    }
+
+    .final-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .final-content h2{
+        font-size:32px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      TOPO
-========================= -->
+===================================================== -->
 
 <div class="topbar">
-    <div class="topbar-inner">
+
+    <div class="container topbar-content">
+
         <span>
-            LiteCom Corretora de Seguros • Balneário Camboriú — SC
+            LiteCom Corretora de Seguros
+            • Balneário Camboriú — SC
         </span>
+
+        <div class="topbar-right">
+
+            <a href="tel:+554108005730939">
+                Atendimento
+            </a>
+
+            &nbsp; | &nbsp;
+
+            <a
+                href="https://wa.me/554108005730939"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp
+            </a>
+
+        </div>
+
     </div>
+
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-    <div class="header-inner">
+    <div class="container header-content">
 
         <a href="#inicio" class="logo">
 
-            <div class="logo-mark">
+            <div class="logo-icon">
                 L
             </div>
 
-            <div class="logo-text">
-                <strong>LiteCom</strong>
-                <span>Corretora de Seguros</span>
+            <div>
+                <div class="logo-name">
+                    LiteCom
+                </div>
+
+                <span class="logo-sub">
+                    Corretora de Seguros
+                </span>
             </div>
 
         </a>
 
+
         <button
-            class="menu"
+            class="menu-button"
             onclick="toggleMenu()"
             aria-label="Abrir menu"
         >
             ☰
         </button>
+
 
         <nav id="menu">
 
@@ -717,20 +1235,27 @@ footer{
                 Seguros
             </a>
 
+            <a href="#diferenciais">
+                Diferenciais
+            </a>
+
             <a href="#empresa">
                 A LiteCom
+            </a>
+
+            <a href="#faq">
+                FAQ
             </a>
 
             <a href="#contato">
                 Contato
             </a>
 
-            <!-- COTAÇÃO REAL -->
             <a
                 href="https://LiteCom.segurofacil.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="nav-button"
+                class="nav-cta"
             >
                 Cote pelo Site
             </a>
@@ -742,48 +1267,50 @@ footer{
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero" id="inicio">
 
-    <div class="hero-inner">
+    <div class="container">
 
         <div class="hero-content">
 
-            <span class="eyebrow">
-                Proteção que acompanha você
+            <span class="hero-label">
+                Desde 1990 • Proteção e confiança
             </span>
 
             <h1>
-                Segurança para o que
+                Proteção para o que
                 <span>realmente importa.</span>
             </h1>
 
-            <p>
-                Na LiteCom, você encontra soluções em seguros
-                para proteger sua vida, sua família, seu patrimônio
-                e seus negócios.
+            <p class="hero-text">
+                Soluções em seguros para pessoas,
+                famílias, veículos, residências e empresas.
+                Conte com a experiência da LiteCom para
+                encontrar a proteção adequada às suas necessidades.
             </p>
 
-            <div class="hero-buttons">
+            <div class="hero-actions">
 
-                <!-- COTAÇÃO REAL -->
                 <a
                     href="https://LiteCom.segurofacil.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn btn-primary"
                 >
-                    Solicitar cotação →
+                    Fazer uma cotação →
                 </a>
 
                 <a
-                    href="#seguros"
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     class="btn btn-outline"
                 >
-                    Conheça nossos seguros
+                    Falar com a LiteCom
                 </a>
 
             </div>
@@ -795,33 +1322,117 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
+     HERO PANELS
+===================================================== -->
+
+<div class="container hero-bottom">
+
+    <div class="hero-panels">
+
+        <div class="hero-panel">
+
+            <strong>
+                Atendimento personalizado
+            </strong>
+
+            <span>
+                Entendemos sua necessidade antes de buscar
+                uma solução.
+            </span>
+
+        </div>
+
+
+        <div class="hero-panel">
+
+            <strong>
+                Experiência no mercado
+            </strong>
+
+            <span>
+                Uma corretora com décadas de experiência
+                em proteção.
+            </span>
+
+        </div>
+
+
+        <div class="hero-panel">
+
+            <strong>
+                Cotação online
+            </strong>
+
+            <span>
+                Solicite sua cotação de maneira rápida
+                e prática.
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
      NÚMEROS
-========================= -->
+===================================================== -->
 
-<section class="stats">
+<section class="numbers">
 
-    <div class="stats-inner">
+    <div class="container number-grid">
 
-        <div class="stat">
-            <strong>30+</strong>
+        <div class="number">
+
+            <strong>
+                30+
+            </strong>
+
             <span>
                 anos de experiência
             </span>
+
         </div>
 
-        <div class="stat">
-            <strong>6+</strong>
+
+        <div class="number">
+
+            <strong>
+                6+
+            </strong>
+
             <span>
                 categorias de seguros
             </span>
+
         </div>
 
-        <div class="stat">
-            <strong>SC</strong>
+
+        <div class="number">
+
+            <strong>
+                100%
+            </strong>
+
             <span>
-                atendimento em Balneário Camboriú
+                atendimento personalizado
             </span>
+
+        </div>
+
+
+        <div class="number">
+
+            <strong>
+                SC
+            </strong>
+
+            <span>
+                Balneário Camboriú
+            </span>
+
         </div>
 
     </div>
@@ -829,42 +1440,39 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SEGUROS
-========================= -->
+===================================================== -->
 
-<section
-    class="section insurances"
-    id="seguros"
->
+<section class="section section-light" id="seguros">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="section-title">
 
-            <span class="small">
-                Nossas soluções
+            <span class="section-kicker">
+                Soluções LiteCom
             </span>
 
             <h2>
-                Seguros para cada momento
-                da sua vida
+                Um seguro para cada necessidade
             </h2>
 
             <p>
-                Conte com a LiteCom para encontrar uma proteção
-                adequada às suas necessidades.
+                Encontre soluções de proteção para
+                diferentes momentos da sua vida pessoal
+                e profissional.
             </p>
 
         </div>
 
 
-        <div class="cards">
+        <div class="insurance-grid">
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     🚗
                 </div>
 
@@ -873,16 +1481,26 @@ footer{
                 </h3>
 
                 <p>
-                    Proteção para seu veículo e tranquilidade
-                    para dirigir todos os dias.
+                    Proteção para seu veículo,
+                    trazendo mais tranquilidade
+                    para sua rotina.
                 </p>
+
+                <a
+                    href="https://LiteCom.segurofacil.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Solicitar cotação →
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     ♥
                 </div>
 
@@ -891,16 +1509,26 @@ footer{
                 </h3>
 
                 <p>
-                    Proteção financeira para você e para quem
-                    depende de você.
+                    Proteção financeira para você
+                    e para as pessoas que fazem
+                    parte da sua vida.
                 </p>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Falar com especialista →
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     🏢
                 </div>
 
@@ -909,16 +1537,26 @@ footer{
                 </h3>
 
                 <p>
-                    Soluções para proteger sua empresa,
-                    estrutura e operação.
+                    Soluções para ajudar a proteger
+                    sua empresa, estrutura e
+                    atividades.
                 </p>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Conhecer opções →
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     ⌂
                 </div>
 
@@ -927,16 +1565,25 @@ footer{
                 </h3>
 
                 <p>
-                    Sua casa protegida contra diferentes
-                    imprevistos do dia a dia.
+                    Proteção para sua casa e
+                    tranquilidade para sua família.
                 </p>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Solicitar atendimento →
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     ✈
                 </div>
 
@@ -945,16 +1592,26 @@ footer{
                 </h3>
 
                 <p>
-                    Viaje com mais tranquilidade e conte
-                    com proteção durante sua jornada.
+                    Viaje com mais tranquilidade
+                    contando com uma solução de
+                    proteção durante sua viagem.
                 </p>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Saber mais →
+                </a>
 
             </article>
 
 
-            <article class="card">
+            <article class="insurance-card">
 
-                <div class="card-icon">
+                <div class="insurance-icon">
                     +
                 </div>
 
@@ -963,9 +1620,19 @@ footer{
                 </h3>
 
                 <p>
-                    Precisa de uma solução específica?
-                    Fale com nossa equipe.
+                    Uma necessidade diferente?
+                    Converse com nossa equipe para
+                    encontrar uma alternativa.
                 </p>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="card-link"
+                >
+                    Falar com a equipe →
+                </a>
 
             </article>
 
@@ -977,79 +1644,116 @@ footer{
 </section>
 
 
-<!-- =========================
-     SOBRE
-========================= -->
+<!-- =====================================================
+     DIFERENCIAIS
+===================================================== -->
 
-<section
-    class="section about"
-    id="empresa"
->
+<section class="section section-white" id="diferenciais">
 
-    <div class="container">
+    <div class="container feature-layout">
 
-        <div class="about-grid">
+        <div class="feature-intro">
+
+            <span class="section-kicker">
+                Por que LiteCom?
+            </span>
+
+            <h2>
+                Experiência que transforma
+                proteção em tranquilidade.
+            </h2>
+
+            <p>
+                Escolher um seguro não precisa ser complicado.
+                A LiteCom ajuda você a entender suas opções
+                e buscar uma solução compatível com sua realidade.
+            </p>
+
+            <a
+                href="https://wa.me/554108005730939"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-blue"
+            >
+                Falar com um especialista →
+            </a>
+
+        </div>
 
 
-            <div class="about-box">
+        <div class="feature-list">
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    01
+                </div>
 
                 <h3>
-                    Experiência que protege.
+                    Atendimento próximo
                 </h3>
 
                 <p>
-                    São décadas acompanhando pessoas,
-                    famílias e empresas na escolha de
-                    soluções de proteção.
+                    Você fala com pessoas que entendem
+                    sua necessidade.
                 </p>
 
             </div>
 
 
-            <div class="about-text">
+            <div class="feature">
 
-                <span class="section-heading .small">
-                    Sobre a LiteCom
-                </span>
+                <div class="feature-number">
+                    02
+                </div>
 
-                <h2>
-                    Mais que um seguro:
-                    tranquilidade.
-                </h2>
-
-                <p>
-                    A LiteCom Corretora de Seguros atua para
-                    aproximar você das melhores alternativas
-                    de proteção.
-                </p>
+                <h3>
+                    Experiência
+                </h3>
 
                 <p>
-                    Nosso trabalho começa entendendo suas
-                    necessidades e buscando uma solução
-                    compatível com o seu momento.
+                    Décadas de atuação no mercado
+                    de seguros.
                 </p>
-
-                <ul class="checks">
-
-                    <li>
-                        Atendimento personalizado
-                    </li>
-
-                    <li>
-                        Experiência no mercado
-                    </li>
-
-                    <li>
-                        Variedade de soluções
-                    </li>
-
-                    <li>
-                        Suporte para suas decisões
-                    </li>
-
-                </ul>
 
             </div>
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <h3>
+                    Diversidade
+                </h3>
+
+                <p>
+                    Diferentes modalidades para
+                    diferentes necessidades.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    04
+                </div>
+
+                <h3>
+                    Praticidade
+                </h3>
+
+                <p>
+                    Cotação online e atendimento
+                    pelo WhatsApp.
+                </p>
+
+            </div>
+
 
         </div>
 
@@ -1058,70 +1762,544 @@ footer{
 </section>
 
 
-<!-- =========================
-     CTA
-========================= -->
+<!-- =====================================================
+     PROCESSO
+===================================================== -->
 
-<section
-    class="cta"
-    id="cotacao"
->
+<section class="section process">
 
-    <div class="cta-inner">
+    <div class="container">
 
-        <div>
+        <div class="section-title">
+
+            <span class="section-kicker">
+                Como funciona
+            </span>
 
             <h2>
-                Vamos proteger o que importa?
+                Simples do começo ao fim
             </h2>
 
             <p>
-                Solicite uma cotação e fale com a equipe LiteCom.
+                Um processo direto para você encontrar
+                a proteção que procura.
             </p>
 
         </div>
 
 
-        <!-- WHATSAPP REAL -->
+        <div class="process-grid">
 
-        <a
-            href="https://wa.me/554108005730939"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn btn-primary"
-        >
-            Falar pelo WhatsApp →
-        </a>
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    01
+                </div>
+
+                <h3>
+                    Conte sua necessidade
+                </h3>
+
+                <p>
+                    Entre em contato com a equipe
+                    LiteCom ou faça sua cotação online.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    02
+                </div>
+
+                <h3>
+                    Analisamos seu perfil
+                </h3>
+
+                <p>
+                    Buscamos entender quais alternativas
+                    fazem sentido para você.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    03
+                </div>
+
+                <h3>
+                    Você avalia as opções
+                </h3>
+
+                <p>
+                    Conheça as alternativas apresentadas
+                    e tire suas dúvidas.
+                </p>
+
+            </div>
+
+
+            <div class="process-card">
+
+                <div class="process-number">
+                    04
+                </div>
+
+                <h3>
+                    Proteção
+                </h3>
+
+                <p>
+                    Após a contratação, conte com
+                    atendimento da equipe.
+                </p>
+
+            </div>
+
+
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================
-     CONTATO
-========================= -->
+<!-- =====================================================
+     SOBRE
+===================================================== -->
 
-<section
-    class="section contact"
-    id="contato"
->
+<section class="section section-white" id="empresa">
+
+    <div class="container about-layout">
+
+
+        <div class="about-visual">
+
+            <div class="about-box">
+
+                <strong>
+                    LiteCom
+                </strong>
+
+                <p>
+                    Corretora de Seguros
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-content">
+
+            <span class="section-kicker">
+                A LiteCom
+            </span>
+
+            <h2>
+                Uma corretora feita
+                para cuidar do que importa.
+            </h2>
+
+            <p>
+                A LiteCom Corretora de Seguros trabalha
+                para aproximar pessoas e empresas das
+                soluções de proteção adequadas às suas
+                necessidades.
+            </p>
+
+            <p>
+                Nossa proposta é oferecer atendimento
+                próximo, orientação e praticidade em
+                cada etapa.
+            </p>
+
+
+            <ul class="check-list">
+
+                <li>
+                    Atendimento personalizado
+                </li>
+
+                <li>
+                    Soluções para pessoas e empresas
+                </li>
+
+                <li>
+                    Cotação online
+                </li>
+
+                <li>
+                    Atendimento pelo WhatsApp
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     COTAÇÃO
+===================================================== -->
+
+<section class="section quote-section">
 
     <div class="container">
 
-        <div class="section-heading">
+        <div class="quote-box">
 
-            <span class="small">
+            <div class="quote-main">
+
+                <span class="section-kicker">
+                    Cotação
+                </span>
+
+                <h2>
+                    Descubra a proteção
+                    ideal para você.
+                </h2>
+
+                <p>
+                    Faça sua cotação online ou fale diretamente
+                    com nossa equipe. É rápido, simples e você
+                    pode tirar suas dúvidas durante o processo.
+                </p>
+
+
+                <div class="quote-actions">
+
+                    <a
+                        href="https://LiteCom.segurofacil.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-blue"
+                    >
+                        Fazer cotação online →
+                    </a>
+
+                    <a
+                        href="https://wa.me/554108005730939"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn"
+                        style="
+                            border:1px solid #cbd9e3;
+                            color:#075da8;
+                        "
+                    >
+                        WhatsApp
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="quote-side">
+
+                <h3>
+                    Precisa de ajuda?
+                </h3>
+
+                <p>
+                    Nossa equipe está disponível para
+                    conversar sobre suas necessidades
+                    e orientar você.
+                </p>
+
+                <br>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
+                    Falar agora →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     DEPOIMENTOS
+===================================================== -->
+
+<section class="section section-light">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-kicker">
+                Relacionamento
+            </span>
+
+            <h2>
+                Atendimento que aproxima
+            </h2>
+
+            <p>
+                A confiança é construída no relacionamento
+                com cada cliente.
+            </p>
+
+        </div>
+
+
+        <div class="testimonials">
+
+
+            <article class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    Atendimento próximo e uma equipe
+                    sempre disposta a esclarecer nossas
+                    dúvidas.
+                </p>
+
+                <strong>
+                    Cliente LiteCom
+                </strong>
+
+                <span>
+                    Atendimento personalizado
+                </span>
+
+            </article>
+
+
+            <article class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    A facilidade para solicitar informações
+                    e fazer a cotação tornou todo o processo
+                    muito mais simples.
+                </p>
+
+                <strong>
+                    Cliente LiteCom
+                </strong>
+
+                <span>
+                    Cotação de seguro
+                </span>
+
+            </article>
+
+
+            <article class="testimonial">
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    Ter uma equipe para conversar quando
+                    precisamos faz toda a diferença.
+                </p>
+
+                <strong>
+                    Cliente LiteCom
+                </strong>
+
+                <span>
+                    Atendimento LiteCom
+                </span>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section class="section section-white" id="faq">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-kicker">
+                Perguntas frequentes
+            </span>
+
+            <h2>
+                Dúvidas? A gente explica.
+            </h2>
+
+        </div>
+
+
+        <div class="faq">
+
+            <details>
+
+                <summary>
+                    Como faço uma cotação?
+                </summary>
+
+                <p>
+                    Você pode acessar nossa plataforma de
+                    cotação online ou entrar em contato com
+                    a equipe LiteCom pelo WhatsApp.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Posso falar diretamente com a LiteCom?
+                </summary>
+
+                <p>
+                    Sim. Nossa equipe está disponível pelo
+                    WhatsApp para orientar você e entender
+                    sua necessidade.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    Quais tipos de seguro a LiteCom oferece?
+                </summary>
+
+                <p>
+                    Trabalhamos com diferentes modalidades,
+                    incluindo seguros Auto, Vida, Empresarial,
+                    Residencial, Viagem e outras soluções.
+                </p>
+
+            </details>
+
+
+            <details>
+
+                <summary>
+                    A cotação online é gratuita?
+                </summary>
+
+                <p>
+                    Para informações sobre condições e
+                    disponibilidade, acesse a plataforma
+                    de cotação ou fale com nossa equipe.
+                </p>
+
+            </details>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA FINAL
+===================================================== -->
+
+<section class="final-cta">
+
+    <div class="container final-content">
+
+        <div>
+
+            <h2>
+                Pronto para proteger
+                o que importa?
+            </h2>
+
+            <p>
+                Faça sua cotação ou fale com a LiteCom.
+            </p>
+
+        </div>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="https://LiteCom.segurofacil.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+            >
+                Cote pelo Site →
+            </a>
+
+            <a
+                href="https://wa.me/554108005730939"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+            >
+                WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     CONTATO
+===================================================== -->
+
+<section class="section section-light" id="contato">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="section-kicker">
                 Contato
             </span>
 
             <h2>
-                Estamos à sua disposição.
+                Fale com a LiteCom
             </h2>
 
             <p>
-                Entre em contato com a LiteCom para
-                saber mais sobre nossas soluções.
+                Estamos à disposição para atender você.
             </p>
 
         </div>
@@ -1133,29 +2311,36 @@ footer{
             <div class="contact-card">
 
                 <h3>
-                    LiteCom Corretora de Seguros
+                    Informações
                 </h3>
 
-                <div class="contact-line">
 
-                    <span>📍</span>
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+                        📍
+                    </div>
 
                     <div>
 
                         <strong>
-                            Endereço
+                            Localização
                         </strong>
 
-                        Balneário Camboriú — SC
+                        <span>
+                            Balneário Camboriú — SC
+                        </span>
 
                     </div>
 
                 </div>
 
 
-                <div class="contact-line">
+                <div class="contact-item">
 
-                    <span>💬</span>
+                    <div class="contact-item-icon">
+                        💬
+                    </div>
 
                     <div>
 
@@ -1163,17 +2348,30 @@ footer{
                             WhatsApp
                         </strong>
 
-                        <a
-                            href="https://wa.me/554108005730939"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style="
-                                color:#075da8;
-                                text-decoration:none;
-                            "
-                        >
-                            Fale conosco pelo WhatsApp
-                        </a>
+                        <span>
+                            Atendimento online
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-item-icon">
+                        🛡
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Atendimento
+                        </strong>
+
+                        <span>
+                            Corretora de Seguros
+                        </span>
 
                     </div>
 
@@ -1185,35 +2383,56 @@ footer{
             <div class="contact-card">
 
                 <h3>
-                    Solicite sua cotação
+                    Entre em contato
                 </h3>
 
                 <p
                     style="
-                        color:#65788b;
-                        margin-bottom:20px;
+                        color:#687b8c;
+                        font-size:13px;
+                        margin-bottom:22px;
                     "
                 >
-                    Faça sua cotação online de forma
-                    rápida e prática.
+                    Escolha uma das opções abaixo para
+                    falar com a LiteCom.
                 </p>
 
-                <!-- COTAÇÃO REAL -->
 
-                <a
-                    href="https://LiteCom.segurofacil.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn"
+                <div
                     style="
-                        background:#075da8;
-                        color:white;
+                        display:flex;
+                        flex-wrap:wrap;
+                        gap:10px;
                     "
                 >
-                    Fazer cotação online →
-                </a>
+
+                    <a
+                        href="https://wa.me/554108005730939"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-blue"
+                    >
+                        WhatsApp →
+                    </a>
+
+
+                    <a
+                        href="https://LiteCom.segurofacil.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn"
+                        style="
+                            color:#075da8;
+                            border:1px solid #cbd9e3;
+                        "
+                    >
+                        Cotação online →
+                    </a>
+
+                </div>
 
             </div>
+
 
         </div>
 
@@ -1222,55 +2441,126 @@ footer{
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
-    <div class="footer-inner">
+    <div class="container">
 
-        <div>
+        <div class="footer-grid">
 
-            <div class="footer-logo">
-                LiteCom
+
+            <div>
+
+                <div class="footer-brand">
+                    LiteCom
+                </div>
+
+                <p class="footer-description">
+                    Corretora de Seguros. Soluções de
+                    proteção para pessoas, famílias,
+                    patrimônios e empresas.
+                </p>
+
             </div>
 
-            <p class="footer-text">
-                Corretora de Seguros. Proteção para
-                pessoas, famílias, patrimônios e empresas.
-            </p>
+
+            <div class="footer-column">
+
+                <h4>
+                    Navegação
+                </h4>
+
+                <a href="#inicio">
+                    Início
+                </a>
+
+                <a href="#seguros">
+                    Seguros
+                </a>
+
+                <a href="#empresa">
+                    A LiteCom
+                </a>
+
+                <a href="#contato">
+                    Contato
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Soluções
+                </h4>
+
+                <a href="#seguros">
+                    Seguro Auto
+                </a>
+
+                <a href="#seguros">
+                    Seguro de Vida
+                </a>
+
+                <a href="#seguros">
+                    Seguro Empresarial
+                </a>
+
+                <a href="#seguros">
+                    Seguro Residencial
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Acesso rápido
+                </h4>
+
+                <a
+                    href="https://LiteCom.segurofacil.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Fazer cotação
+                </a>
+
+                <a
+                    href="https://wa.me/554108005730939"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a href="#faq">
+                    Perguntas frequentes
+                </a>
+
+            </div>
+
 
         </div>
 
 
-        <div class="footer-links">
+        <div class="footer-bottom">
 
-            <a href="#inicio">
-                Início
-            </a>
+            <span>
+                © 2026 LiteCom Corretora de Seguros.
+                Todos os direitos reservados.
+            </span>
 
-            <a href="#seguros">
-                Seguros
-            </a>
-
-            <a href="#empresa">
-                Empresa
-            </a>
-
-            <a href="#contato">
-                Contato
-            </a>
+            <span>
+                Balneário Camboriú — SC
+            </span>
 
         </div>
-
-    </div>
-
-
-    <div class="copyright">
-
-        © 2026 LiteCom Corretora de Seguros.
-        Todos os direitos reservados.
 
     </div>
 
@@ -1281,7 +2571,8 @@ footer{
 
 function toggleMenu(){
 
-    const menu = document.getElementById("menu");
+    const menu =
+        document.getElementById("menu");
 
     menu.classList.toggle("active");
 
@@ -1289,18 +2580,33 @@ function toggleMenu(){
 
 
 document
-    .querySelectorAll("nav a")
-    .forEach(link => {
+.querySelectorAll("nav a")
+.forEach(link => {
 
-        link.addEventListener("click", () => {
+    link.addEventListener("click", () => {
 
-            document
-                .getElementById("menu")
-                .classList.remove("active");
-
-        });
+        document
+        .getElementById("menu")
+        .classList.remove("active");
 
     });
+
+});
+
+
+/* Fecha o menu caso a tela volte para desktop */
+
+window.addEventListener("resize", () => {
+
+    if(window.innerWidth > 950){
+
+        document
+        .getElementById("menu")
+        .classList.remove("active");
+
+    }
+
+});
 
 </script>
 
