@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LiteCom — Corretora de Seguros</title>
+
+<meta name="description" content="LiteCom Corretora de Seguros — Proteção para você, sua família e seu patrimônio.">
+<meta name="theme-color" content="#063b73">
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#eef3f8;
+    color:#172536;
+    line-height:1.6;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+.topbar{
+    background:#052d59;
+    color:#dcecff;
+    font-size:13px;
+    border-bottom:1px solid #164f86;
+}
+
+.topbar-inner{
+    max-width:1180px;
+    margin:auto;
+    padding:7px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.language{
+    cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    background:#fff;
+    border-bottom:4px solid #0a5da8;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-inner{
+    max-width:1180px;
+    margin:auto;
+    min-height:82px;
+    padding:12px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+}
+
+.logo-mark{
+    width:46px;
+    height:46px;
+    border-radius:7px;
+    background:linear-gradient(145deg,#0c75c9,#043a72);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    font-weight:bold;
+    box-shadow:inset 0 1px 2px rgba(255,255,255,.35);
+}
+
+.logo-text strong{
+    display:block;
+    color:#063b73;
+    font-size:25px;
+    letter-spacing:-1px;
+}
+
+.logo-text span{
+    color:#66788c;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+nav a{
+    color:#263b50;
+    text-decoration:none;
+    padding:9px 12px;
+    font-size:14px;
+    border-radius:4px;
+}
+
+nav a:hover{
+    color:#075da8;
+    background:#edf5fc;
+}
+
+.nav-button{
+    background:#075da8!important;
+    color:white!important;
+    border:1px solid #03487f;
+    box-shadow:inset 0 1px rgba(255,255,255,.2);
+}
+
+.menu{
+    display:none;
+    background:none;
+    border:0;
+    font-size:28px;
+    color:#063b73;
+    cursor:pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    background:
+        linear-gradient(90deg,rgba(3,35,69,.96),rgba(3,65,112,.82)),
+        radial-gradient(circle at 80% 30%,#2388d0,#032d59);
+    color:white;
+    min-height:520px;
+    display:flex;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero:after{
+    content:"";
+    position:absolute;
+    right:-150px;
+    top:-150px;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:50%;
+    box-shadow:
+        0 0 0 40px rgba(255,255,255,.025),
+        0 0 0 80px rgba(255,255,255,.018);
+}
+
+.hero-inner{
+    width:1180px;
+    max-width:calc(100% - 40px);
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.eyebrow{
+    display:inline-block;
+    border:1px solid rgba(255,255,255,.35);
+    background:rgba(255,255,255,.08);
+    padding:5px 11px;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:clamp(38px,6vw,66px);
+    line-height:1.04;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#69c4ff;
+}
+
+.hero p{
+    font-size:18px;
+    color:#dbeafa;
+    max-width:620px;
+    margin-bottom:30px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:12px 20px;
+    border-radius:4px;
+    font-weight:bold;
+    font-size:14px;
+    transition:.2s;
+}
+
+.btn-primary{
+    background:#fff;
+    color:#064b86;
+    border:1px solid #fff;
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 7px 20px rgba(0,0,0,.2);
+}
+
+.btn-outline{
+    border:1px solid rgba(255,255,255,.6);
+    color:white;
+}
+
+.btn-outline:hover{
+    background:rgba(255,255,255,.1);
+}
+
+/* =========================
+   NÚMEROS
+========================= */
+
+.stats{
+    background:white;
+    border-bottom:1px solid #d4dfe9;
+}
+
+.stats-inner{
+    max-width:1180px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+}
+
+.stat{
+    padding:24px;
+    text-align:center;
+    border-right:1px solid #dce4ec;
+}
+
+.stat:last-child{
+    border:0;
+}
+
+.stat strong{
+    color:#075da8;
+    font-family:Georgia,serif;
+    font-size:28px;
+    display:block;
+}
+
+.stat span{
+    color:#68798a;
+    font-size:13px;
+}
+
+/* =========================
+   GERAL
+========================= */
+
+.section{
+    padding:75px 20px;
+}
+
+.container{
+    max-width:1180px;
+    margin:auto;
+}
+
+.section-heading{
+    text-align:center;
+    max-width:720px;
+    margin:0 auto 45px;
+}
+
+.section-heading .small{
+    color:#0870be;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.section-heading h2{
+    color:#073866;
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:38px;
+    line-height:1.15;
+    margin:9px 0 13px;
+}
+
+.section-heading p{
+    color:#65788b;
+}
+
+/* =========================
+   SEGUROS
+========================= */
+
+.insurances{
+    background:#f6f9fc;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.card{
+    background:white;
+    border:1px solid #d7e1ea;
+    border-radius:5px;
+    padding:25px;
+    position:relative;
+    box-shadow:0 3px 12px rgba(20,60,90,.05);
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    border-color:#9cc9e9;
+    box-shadow:0 12px 28px rgba(15,71,111,.12);
+}
+
+.card-icon{
+    width:48px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#e9f4fc;
+    color:#075da8;
+    border:1px solid #c7e2f5;
+    border-radius:5px;
+    font-size:23px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    color:#103d67;
+    font-size:18px;
+    margin-bottom:8px;
+}
+
+.card p{
+    color:#68798a;
+    font-size:14px;
+}
+
+/* =========================
+   SOBRE
+========================= */
+
+.about{
+    background:white;
+}
+
+.about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.about-box{
+    background:#f1f6fa;
+    border:1px solid #d4e0e9;
+    border-left:5px solid #0870be;
+    padding:30px;
+}
+
+.about-box h3{
+    font-family:Georgia,serif;
+    color:#073866;
+    font-size:25px;
+    margin-bottom:13px;
+}
+
+.about-box p{
+    color:#637487;
+    font-size:15px;
+}
+
+.about-text h2{
+    font-family:Georgia,serif;
+    color:#073866;
+    font-size:40px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    color:#5f7183;
+    margin-bottom:15px;
+}
+
+.checks{
+    list-style:none;
+    margin-top:22px;
+}
+
+.checks li{
+    margin:10px 0;
+    color:#344d64;
+    font-size:14px;
+}
+
+.checks li:before{
+    content:"✓";
+    color:#0870be;
+    font-weight:bold;
+    margin-right:9px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    background:#063b73;
+    color:white;
+    padding:60px 20px;
+}
+
+.cta-inner{
+    max-width:1000px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.cta h2{
+    font-family:Georgia,serif;
+    font-size:35px;
+    margin-bottom:7px;
+}
+
+.cta p{
+    color:#cfe2f3;
+}
+
+/* =========================
+   CONTATO
+========================= */
+
+.contact{
+    background:#eef3f8;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.contact-card{
+    background:white;
+    border:1px solid #d5e0e9;
+    padding:27px;
+    border-radius:5px;
+}
+
+.contact-card h3{
+    color:#073866;
+    margin-bottom:15px;
+}
+
+.contact-line{
+    display:flex;
+    gap:12px;
+    margin:15px 0;
+    color:#607285;
+    font-size:14px;
+}
+
+.contact-line strong{
+    display:block;
+    color:#294b68;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    background:#031f3c;
+    color:#a9bfd3;
+    padding:35px 20px 20px;
+}
+
+.footer-inner{
+    max-width:1180px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-logo{
+    color:white;
+    font-family:Georgia,serif;
+    font-size:23px;
+}
+
+.footer-text{
+    font-size:12px;
+    max-width:430px;
+    margin-top:7px;
+}
+
+.footer-links{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.footer-links a{
+    color:#c8d8e7;
+    text-decoration:none;
+    font-size:13px;
+}
+
+.copyright{
+    max-width:1180px;
+    margin:25px auto 0;
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,.1);
+    font-size:11px;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:white;
+        border-bottom:1px solid #ccd9e4;
+        box-shadow:0 8px 15px rgba(0,0,0,.08);
+        padding:10px;
+        flex-direction:column;
+    }
+
+    nav.active{
+        display:flex;
+    }
+
+    nav a{
+        width:100%;
+        text-align:center;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .about-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cta-inner{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:600px){
+
+    .topbar-inner{
+        justify-content:center;
+    }
+
+    .topbar-inner span:first-child{
+        display:none;
+    }
+
+    .hero{
+        min-height:560px;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .stats-inner{
+        grid-template-columns:1fr;
+    }
+
+    .stat{
+        border-right:0;
+        border-bottom:1px solid #dce4ec;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:55px 18px;
+    }
+
+    .section-heading h2{
+        font-size:31px;
+    }
+
+    .about-text h2{
+        font-size:32px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+    }
+
+    .footer-links{
+        flex-wrap:wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOPO -->
+<div class="topbar">
+    <div class="topbar-inner">
+        <span>LiteCom Corretora de Seguros • Balneário Camboriú — SC</span>
+
+        <span class="language">
+            Sua linguagem: <strong>Português</strong> ·
+            <span onclick="setLanguage('en')">English</span>
+        </span>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+
+        <a href="#" class="logo">
+            <div class="logo-mark">L</div>
+
+            <div class="logo-text">
+                <strong>LiteCom</strong>
+                <span>Corretora de Seguros</span>
+            </div>
+        </a>
+
+        <button class="menu" onclick="toggleMenu()">☰</button>
+
+        <nav id="menu">
+            <a href="#inicio">Início</a>
+            <a href="#seguros">Seguros</a>
+            <a href="#empresa">A LiteCom</a>
+            <a href="#contato">Contato</a>
+            <a href="#cotacao" class="nav-button">Cote pelo Site</a>
+        </nav>
+
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+    <div class="hero-inner">
+
+        <div class="hero-content">
+
+            <span class="eyebrow">Proteção que acompanha você</span>
+
+            <h1>
+                Segurança para o que
+                <span>realmente importa.</span>
+            </h1>
+
+            <p>
+                Na LiteCom, você encontra soluções em seguros
+                para proteger sua vida, sua família, seu patrimônio
+                e seus negócios.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#cotacao" class="btn btn-primary">
+                    Solicitar cotação →
+                </a>
+
+                <a href="#seguros" class="btn btn-outline">
+                    Conheça nossos seguros
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- NÚMEROS -->
+<section class="stats">
+    <div class="stats-inner">
+
+        <div class="stat">
+            <strong>30+</strong>
+            <span>anos de experiência</span>
+        </div>
+
+        <div class="stat">
+            <strong>6+</strong>
+            <span>categorias de seguros</span>
+        </div>
+
+        <div class="stat">
+            <strong>SC</strong>
+            <span>atendimento em Balneário Camboriú</span>
+        </div>
+
+    </div>
+</section>
+
+<!-- SEGUROS -->
+<section class="section insurances" id="seguros">
+
+    <div class="container">
+
+        <div class="section-heading">
+            <span class="small">Nossas soluções</span>
+
+            <h2>
+                Seguros para cada momento
+                da sua vida
+            </h2>
+
+            <p>
+                Conte com a LiteCom para encontrar uma proteção
+                adequada às suas necessidades.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <article class="card">
+                <div class="card-icon">🚗</div>
+                <h3>Seguro Auto</h3>
+                <p>
+                    Proteção para seu veículo e tranquilidade
+                    para dirigir todos os dias.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">♥</div>
+                <h3>Seguro de Vida</h3>
+                <p>
+                    Proteção financeira para você e para quem
+                    depende de você.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🏢</div>
+                <h3>Seguro Empresarial</h3>
+                <p>
+                    Soluções para proteger sua empresa,
+                    estrutura e operação.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">⌂</div>
+                <h3>Seguro Residencial</h3>
+                <p>
+                    Sua casa protegida contra diferentes
+                    imprevistos do dia a dia.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">✈</div>
+                <h3>Seguro Viagem</h3>
+                <p>
+                    Viaje com mais tranquilidade e conte
+                    com proteção durante sua jornada.
+                </p>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">+</div>
+                <h3>Seguros Personalizados</h3>
+                <p>
+                    Precisa de uma solução específica?
+                    Fale com nossa equipe.
+                </p>
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOBRE -->
+<section class="section about" id="empresa">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-box">
+
+                <h3>Experiência que protege.</h3>
+
+                <p>
+                    São décadas acompanhando pessoas,
+                    famílias e empresas na escolha de
+                    soluções de proteção.
+                </p>
+
+            </div>
+
+            <div class="about-text">
+
+                <span class="small">Sobre a LiteCom</span>
+
+                <h2>
+                    Mais que um seguro:
+                    tranquilidade.
+                </h2>
+
+                <p>
+                    A LiteCom Corretora de Seguros atua para
+                    aproximar você das melhores alternativas
+                    de proteção.
+                </p>
+
+                <p>
+                    Nosso trabalho começa entendendo suas
+                    necessidades e buscando uma solução
+                    compatível com o seu momento.
+                </p>
+
+                <ul class="checks">
+
+                    <li>Atendimento personalizado</li>
+                    <li>Experiência no mercado</li>
+                    <li>Variedade de soluções</li>
+                    <li>Suporte para suas decisões</li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta" id="cotacao">
+
+    <div class="cta-inner">
+
+        <div>
+            <h2>Vamos proteger o que importa?</h2>
+
+            <p>
+                Solicite uma cotação e fale com a equipe LiteCom.
+            </p>
+        </div>
+
+        <a
+            href="https://wa.me/"
+            target="_blank"
+            class="btn btn-primary"
+        >
+            Falar pelo WhatsApp →
+        </a>
+
+    </div>
+
+</section>
+
+<!-- CONTATO -->
+<section class="section contact" id="contato">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="small">Contato</span>
+
+            <h2>Estamos à sua disposição.</h2>
+
+            <p>
+                Entre em contato com a LiteCom para
+                saber mais sobre nossas soluções.
+            </p>
+
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+
+                <h3>LiteCom Corretora de Seguros</h3>
+
+                <div class="contact-line">
+                    <span>📍</span>
+                    <div>
+                        <strong>Endereço</strong>
+                        Balneário Camboriú — SC
+                    </div>
+                </div>
+
+                <div class="contact-line">
+                    <span>💬</span>
+                    <div>
+                        <strong>WhatsApp</strong>
+                        Fale conosco para sua cotação
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="contact-card">
+
+                <h3>Solicite sua cotação</h3>
+
+                <p style="color:#65788b;margin-bottom:20px;">
+                    Conte-nos o que você deseja proteger
+                    e nossa equipe poderá orientar você.
+                </p>
+
+                <a href="#cotacao" class="btn"
+                   style="background:#075da8;color:white;">
+                    Quero fazer uma cotação
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            <div class="footer-logo">LiteCom</div>
+
+            <p class="footer-text">
+                Corretora de Seguros. Proteção para
+                pessoas, famílias, patrimônios e empresas.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <a href="#inicio">Início</a>
+            <a href="#seguros">Seguros</a>
+            <a href="#empresa">Empresa</a>
+            <a href="#contato">Contato</a>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 LiteCom Corretora de Seguros. Todos os direitos reservados.
+    </div>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+
+    const menu = document.getElementById("menu");
+
+    menu.classList.toggle("active");
+
+}
+
+document.querySelectorAll("nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        document
+            .getElementById("menu")
+            .classList.remove("active");
+
+    });
+
+});
+
+function setLanguage(language){
+
+    if(language === "en"){
+
+        alert(
+            "English version coming soon.\n\n" +
+            "Versão em inglês em breve."
+        );
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
