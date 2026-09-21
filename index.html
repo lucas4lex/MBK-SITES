@@ -21,7 +21,9 @@ content="MBK SITES — criação de sites com estética clássica, tecnologia mo
   --shadow:4px 4px 0 rgba(32,32,28,.18);
 }
 
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
 html{
   scroll-behavior:smooth;
@@ -31,11 +33,7 @@ body{
   margin:0;
   color:var(--ink);
   background:
-    radial-gradient(
-      circle at 20% 10%,
-      rgba(255,255,255,.6),
-      transparent 28%
-    ),
+    radial-gradient(circle at 20% 10%,rgba(255,255,255,.6),transparent 28%),
     repeating-linear-gradient(
       0deg,
       rgba(32,32,28,.025) 0 1px,
@@ -46,16 +44,20 @@ body{
   line-height:1.55;
 }
 
-a{color:inherit}
+a{
+  color:inherit;
+}
 
 .wrap{
   width:min(1120px,92%);
   margin:auto;
 }
 
+/* HEADER */
+
 header{
   border-bottom:3px double var(--ink);
-  background:rgba(247,241,227,.9);
+  background:rgba(247,241,227,.94);
 }
 
 .top{
@@ -113,23 +115,52 @@ nav a:hover{
   text-decoration:underline;
 }
 
-/* IDIOMAS */
+/* LANGUAGE */
 
 .language-box{
+  position:relative;
   display:flex;
-  justify-content:flex-end;
-  padding:8px 0;
-  border-top:1px solid var(--line);
+  align-items:center;
+  gap:8px;
+  font:700 12px Arial,sans-serif;
+  text-transform:uppercase;
 }
 
-.language-box select{
-  border:1px solid var(--ink);
+.language-box label{
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.language-select{
+  appearance:none;
+  -webkit-appearance:none;
+  border:2px solid var(--ink);
   background:var(--paper2);
   color:var(--ink);
-  padding:6px 9px;
-  font:12px Arial,sans-serif;
+  padding:8px 34px 8px 10px;
+  font:700 12px Arial,sans-serif;
   cursor:pointer;
+  box-shadow:2px 2px 0 rgba(32,32,28,.15);
 }
+
+.language-select:hover{
+  background:#e8dfca;
+}
+
+.language-select:focus{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+
+.language-box::after{
+  content:"▼";
+  position:absolute;
+  right:10px;
+  pointer-events:none;
+  font-size:9px;
+}
+
+/* TICKER */
 
 .ticker{
   border-top:1px solid var(--line);
@@ -140,6 +171,8 @@ nav a:hover{
   justify-content:space-between;
   gap:15px;
 }
+
+/* HERO */
 
 .hero{
   padding:74px 0 60px;
@@ -214,7 +247,9 @@ h1{
 }
 
 @keyframes blink{
-  50%{opacity:0}
+  50%{
+    opacity:0;
+  }
 }
 
 .rule{
@@ -222,6 +257,8 @@ h1{
   border-top:3px double var(--ink);
   margin:0;
 }
+
+/* SECTIONS */
 
 section{
   padding:60px 0;
@@ -247,6 +284,8 @@ h2{
   font:11px "Courier New",monospace;
   color:var(--muted);
 }
+
+/* SERVICES */
 
 .grid{
   display:grid;
@@ -275,6 +314,8 @@ h2{
   color:var(--muted);
   font-size:15px;
 }
+
+/* PROJECTS */
 
 .portfolio{
   display:grid;
@@ -332,6 +373,8 @@ h2{
   font:11px "Courier New",monospace;
 }
 
+/* ABOUT */
+
 .about{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -363,6 +406,8 @@ h2{
   font-size:12px;
 }
 
+/* CONTACT */
+
 .contact{
   text-align:center;
   padding:80px 20px;
@@ -375,6 +420,8 @@ h2{
 .contact p{
   color:var(--muted);
 }
+
+/* FOOTER */
 
 footer{
   border-top:3px double var(--ink);
@@ -389,11 +436,28 @@ footer .wrap{
   gap:15px;
 }
 
-@media(max-width:800px){
+/* MOBILE */
+
+@media(max-width:1000px){
+
+  .top{
+    flex-wrap:wrap;
+    padding:15px 0;
+  }
 
   nav{
-    display:none;
+    order:3;
+    width:100%;
+    text-align:center;
   }
+
+  nav a{
+    margin:0 8px;
+  }
+
+}
+
+@media(max-width:800px){
 
   .hero,
   .portfolio,
@@ -421,7 +485,43 @@ footer .wrap{
     flex-direction:column;
   }
 
+  .language-box{
+    margin-left:auto;
+  }
+
+  .language-box label{
+    display:none;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .brand strong{
+    font-size:20px;
+  }
+
+  .brand small{
+    font-size:9px;
+  }
+
+  nav{
+    display:flex;
+    justify-content:space-between;
+  }
+
+  nav a{
+    font-size:10px;
+    margin:0;
+  }
+
   .ticker{
+    flex-direction:column;
+    gap:3px;
+  }
+
+  .section-title{
+    align-items:flex-start;
     flex-direction:column;
   }
 
@@ -433,149 +533,122 @@ footer .wrap{
 
 <header>
 
-<div class="wrap top">
+  <div class="wrap top">
 
-<a class="brand" href="#">
-<span class="logo">MBK</span>
+    <a class="brand" href="#">
+      <span class="logo">MBK</span>
 
-<span>
-<strong>MBK SITES</strong>
-<small>WEB DESIGN &amp; DEVELOPMENT</small>
-</span>
+      <span>
+        <strong>MBK SITES</strong>
+        <small>WEB DESIGN &amp; DEVELOPMENT</small>
+      </span>
+    </a>
 
-</a>
+    <nav>
+      <a href="#servicos" data-i18n="navServices">Serviços</a>
+      <a href="#projetos" data-i18n="navProjects">Projetos</a>
+      <a href="#sobre" data-i18n="navAbout">Sobre</a>
+      <a href="#contato" data-i18n="navContact">Contato</a>
+    </nav>
 
-<nav>
+    <!-- SELETOR DE IDIOMA -->
+    <div class="language-box">
 
-<a href="#servicos" data-i18n="navServices">
-Serviços
-</a>
+      <label for="language" id="languageLabel">
+        Sua linguagem:
+      </label>
 
-<a href="#projetos" data-i18n="navProjects">
-Projetos
-</a>
+      <select id="language" class="language-select">
 
-<a href="#sobre" data-i18n="navAbout">
-Sobre
-</a>
+        <option value="pt">🇧🇷 Português</option>
+        <option value="en">🇺🇸 English</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="it">🇮🇹 Italiano</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="ja">🇯🇵 日本語</option>
 
-<a href="#contato" data-i18n="navContact">
-Contato
-</a>
+      </select>
 
-</nav>
+    </div>
 
-</div>
+  </div>
 
+  <div class="wrap ticker">
 
-<div class="wrap language-box">
+    <span id="statusText">
+      STATUS: ONLINE ●
+    </span>
 
-<select id="languageSelector" aria-label="Language">
+    <span>
+      EST. 2006 — CURITIBA / BRASIL
+    </span>
 
-<option value="pt-BR">🇧🇷 Português</option>
-<option value="en-US">🇺🇸 English</option>
-<option value="es">🇪🇸 Español</option>
-<option value="fr">🇫🇷 Français</option>
-<option value="de">🇩🇪 Deutsch</option>
-<option value="it">🇮🇹 Italiano</option>
-<option value="ja">🇯🇵 日本語</option>
-<option value="ko">🇰🇷 한국어</option>
-<option value="zh">🇨🇳 中文</option>
-<option value="ru">🇷🇺 Русский</option>
-<option value="ar">🇸🇦 العربية</option>
-<option value="nl">🇳🇱 Nederlands</option>
-<option value="pl">🇵🇱 Polski</option>
-<option value="tr">🇹🇷 Türkçe</option>
-<option value="hi">🇮🇳 हिन्दी</option>
-<option value="id">🇮🇩 Bahasa Indonesia</option>
+    <span>
+      HTML • CSS • JS
+    </span>
 
-</select>
-
-</div>
-
-
-<div class="wrap ticker">
-
-<span data-i18n="status">
-STATUS: ONLINE ●
-</span>
-
-<span>
-EST. 2006 — CURITIBA / BRASIL - SÃO PAULO / BRASIL
-</span>
-
-<span>
-HTML • CSS • JS
-</span>
-
-</div>
+  </div>
 
 </header>
 
 
 <main>
 
+<!-- HERO -->
+
 <section class="wrap hero">
 
-<div>
+  <div>
 
-<div class="eyebrow" data-i18n="heroEyebrow">
-Internet clássica. Tecnologia de agora.
-</div>
+    <div class="eyebrow" data-i18n="eyebrow">
+      Internet clássica. Tecnologia de agora.
+    </div>
 
-<h1 data-i18n="heroTitle">
-Sites que<br>
-não parecem<br>
-iguais.
-</h1>
+    <h1 id="heroTitle">
+      Sites que<br>
+      não parecem<br>
+      iguais.
+    </h1>
 
-<p data-i18n="heroText">
-Design com personalidade, código limpo e aquele charme de site antigo —
-só que rápido, responsivo e preparado pra internet de hoje.
-</p>
+    <p id="heroText">
+      Design com personalidade, código limpo e aquele charme de site antigo —
+      só que rápido, responsivo e preparado pra internet de hoje.
+    </p>
 
-<a class="btn" href="#contato" data-i18n="heroButton">
-CRIAR MEU SITE →
-</a>
+    <a class="btn" href="#contato" id="createButton">
+      CRIAR MEU SITE →
+    </a>
 
-<a class="btn alt" href="#projetos" data-i18n="heroProjects">
-VER PROJETOS
-</a>
+    <a class="btn alt" href="#projetos" id="projectsButton">
+      VER PROJETOS
+    </a>
 
-</div>
+  </div>
 
 
-<aside class="stamp">
+  <aside class="stamp">
 
-<h2>WEB.LOG</h2>
+    <h2>WEB.LOG</h2>
 
-<div class="screen">
+    <div class="screen">
 
-&gt; <span data-i18n="logStart">
-iniciando MBK_SITES...
-</span><br>
+      &gt; iniciando MBK_SITES...<br>
 
-&gt; <span data-i18n="logCreativity">
-carregando criatividade ██████ 100%
-</span><br>
+      &gt; carregando criatividade ██████ 100%<br>
 
-&gt; <span data-i18n="logResponsive">
-verificando responsividade... OK
-</span><br>
+      &gt; verificando responsividade... OK<br>
 
-&gt; 2006... OK<br>
+      &gt; 2006... OK<br>
 
-&gt; 500 sites criados... OK<br><br>
+      &gt; 500 sites criados... OK<br>
+      <br>
 
-&gt; <span data-i18n="logReady">
-pronto para criar
-</span>
+      &gt; pronto para criar<span class="cursor">_</span>
 
-<span class="cursor">_</span>
+    </div>
 
-</div>
-
-</aside>
+  </aside>
 
 </section>
 
@@ -583,235 +656,233 @@ pronto para criar
 <hr class="rule">
 
 
+<!-- SERVIÇOS -->
+
 <section class="wrap" id="servicos">
 
-<div class="section-title">
+  <div class="section-title">
 
-<h2 data-i18n="servicesTitle">
-O que fazemos
-</h2>
+    <h2 id="servicesTitle">
+      O que fazemos
+    </h2>
 
-<span data-i18n="servicesLabel">
-[ 03 SERVIÇOS PRINCIPAIS ]
-</span>
+    <span id="servicesCount">
+      [ 03 SERVIÇOS PRINCIPAIS ]
+    </span>
 
-</div>
-
-
-<div class="grid">
-
-<article class="card">
-
-<div class="num">
-01 / DESIGN
-</div>
-
-<h3 data-i18n="service1Title">
-Visual com identidade
-</h3>
-
-<p data-i18n="service1Text">
-Layouts que fogem do “template genérico” e transformam
-a personalidade do projeto em interface.
-</p>
-
-</article>
+  </div>
 
 
-<article class="card">
+  <div class="grid">
 
-<div class="num">
-02 / CODE
-</div>
+    <article class="card">
 
-<h3 data-i18n="service2Title">
-HTML de verdade
-</h3>
+      <div class="num">
+        01 / DESIGN
+      </div>
 
-<p data-i18n="service2Text">
-Estrutura sem frescura, CSS caprichado e JavaScript
-quando ele realmente precisa estar ali.
-</p>
+      <h3 id="designTitle">
+        Visual com identidade
+      </h3>
 
-</article>
+      <p id="designText">
+        Layouts que fogem do “template genérico” e transformam
+        a personalidade do projeto em interface.
+      </p>
+
+    </article>
 
 
-<article class="card">
+    <article class="card">
 
-<div class="num">
-03 / WEB
-</div>
+      <div class="num">
+        02 / CODE
+      </div>
 
-<h3 data-i18n="service3Title">
-Feito pra funcionar
-</h3>
+      <h3 id="codeTitle">
+        HTML de verdade
+      </h3>
 
-<p data-i18n="service3Text">
-Responsivo, acessível, leve e pensado para funcionar
-bem no celular, tablet e computador.
-</p>
+      <p id="codeText">
+        Estrutura sem frescura, CSS caprichado e JavaScript
+        quando ele realmente precisa estar ali.
+      </p>
 
-</article>
+    </article>
 
-</div>
+
+    <article class="card">
+
+      <div class="num">
+        03 / WEB
+      </div>
+
+      <h3 id="webTitle">
+        Feito pra funcionar
+      </h3>
+
+      <p id="webText">
+        Responsivo, acessível, leve e pensado para funcionar
+        bem no celular, tablet e computador.
+      </p>
+
+    </article>
+
+  </div>
 
 </section>
 
+
+<!-- PROJETOS -->
 
 <section class="wrap" id="projetos">
 
-<div class="section-title">
+  <div class="section-title">
 
-<h2 data-i18n="projectsTitle">
-Projetos
-</h2>
+    <h2 id="portfolioTitle">
+      Projetos
+    </h2>
 
-<span>
-[ ARQUIVO MBK / 2026 ]
-</span>
+    <span id="portfolioArchive">
+      [ ARQUIVO MBK / 2026 ]
+    </span>
 
-</div>
-
-
-<div class="portfolio">
-
-<article class="project big">
-
-<span class="tag" data-i18n="projectTag">
-WEB / INSTITUCIONAL
-</span>
-
-<h3 data-i18n="projectTitle">
-Um site com cara de arquivo da internet.
-</h3>
-
-<p data-i18n="projectText">
-Tipografia editorial, texturas discretas e navegação direta.
-Nostalgia na estética; performance na engenharia.
-</p>
-
-<small>
-HTML5 / CSS3 / VANILLA JS
-</small>
-
-</article>
+  </div>
 
 
-<div class="project">
+  <div class="portfolio">
 
-<span class="tag" data-i18n="creativeTag">
-CRIATIVO
-</span>
+    <article class="project big">
 
-<h3 data-i18n="creativeTitle">
-Menos template.<br>
-Mais ideia.
-</h3>
+      <span class="tag">
+        WEB / INSTITUCIONAL
+      </span>
 
-<p data-i18n="creativeText">
-Interfaces personalizadas para marcas, criadores e projetos
-que merecem ter uma presença própria.
-</p>
+      <h3 id="projectOneTitle">
+        Um site com cara de arquivo da internet.
+      </h3>
 
-<small>
-DESIGN SYSTEM / UI
-</small>
+      <p id="projectOneText">
+        Tipografia editorial, texturas discretas e navegação direta.
+        Nostalgia na estética; performance na engenharia.
+      </p>
 
-</div>
+      <small>
+        HTML5 / CSS3 / VANILLA JS
+      </small>
 
-</div>
+    </article>
+
+
+    <div class="project">
+
+      <span class="tag">
+        CRIATIVO
+      </span>
+
+      <h3 id="projectTwoTitle">
+        Menos template.<br>
+        Mais ideia.
+      </h3>
+
+      <p id="projectTwoText">
+        Interfaces personalizadas para marcas, criadores e projetos
+        que merecem ter uma presença própria.
+      </p>
+
+      <small>
+        DESIGN SYSTEM / UI
+      </small>
+
+    </div>
+
+  </div>
 
 </section>
 
+
+<!-- SOBRE -->
 
 <section class="wrap about" id="sobre">
 
-<article>
+  <article>
 
-<div class="eyebrow" data-i18n="manifesto">
-Manifesto
-</div>
+    <div class="eyebrow" id="manifestoLabel">
+      Manifesto
+    </div>
 
-<h2 data-i18n="aboutTitle">
-Velho não é ultrapassado.
-</h2>
+    <h2 id="manifestoTitle">
+      Velho não é ultrapassado.
+    </h2>
 
-<p data-i18n="aboutText">
-A MBK SITES mistura referências da web clássica com práticas
-modernas de desenvolvimento. A ideia é simples: fazer sites
-memoráveis, sem sacrificar velocidade, compatibilidade ou usabilidade.
-</p>
+    <p id="manifestoText">
+      A MBK SITES mistura referências da web clássica com práticas
+      modernas de desenvolvimento. A ideia é simples: fazer sites
+      memoráveis, sem sacrificar velocidade, compatibilidade ou usabilidade.
+    </p>
 
-</article>
+  </article>
 
 
-<article>
+  <article>
 
-<div class="eyebrow" data-i18n="technical">
-Ficha técnica
-</div>
+    <div class="eyebrow" id="technicalLabel">
+      Ficha técnica
+    </div>
 
-<ul class="facts">
+    <ul class="facts">
 
-<li>
-<span data-i18n="factStyle">
-Estilo
-</span>
-<b>RETRO / MODERNO</b>
-</li>
+      <li>
+        <span id="factStyle">Estilo</span>
+        <b>RETRO / MODERNO</b>
+      </li>
 
-<li>
-<span data-i18n="factStructure">
-Estrutura
-</span>
-<b>HTML5</b>
-</li>
+      <li>
+        <span id="factStructure">Estrutura</span>
+        <b>HTML5</b>
+      </li>
 
-<li>
-<span>
-CSS
-</span>
-<b>CSS PURO</b>
-</li>
+      <li>
+        <span id="factCss">Estilo</span>
+        <b>CSS PURO</b>
+      </li>
 
-<li>
-<span data-i18n="factInteraction">
-Interação
-</span>
-<b>JAVASCRIPT</b>
-</li>
+      <li>
+        <span id="factInteraction">Interação</span>
+        <b>JAVASCRIPT</b>
+      </li>
 
-<li>
-<span data-i18n="factResponsive">
-Responsivo
-</span>
-<b>SIM ★</b>
-</li>
+      <li>
+        <span id="factResponsive">Responsivo</span>
+        <b>SIM ★</b>
+      </li>
 
-</ul>
+    </ul>
 
-</article>
+  </article>
 
 </section>
 
 
+<!-- CONTATO -->
+
 <section class="contact" id="contato">
 
-<div class="eyebrow" data-i18n="contactEyebrow">
-Seu próximo site começa aqui
-</div>
+  <div class="eyebrow" id="contactEyebrow">
+    Seu próximo site começa aqui
+  </div>
 
-<h2 data-i18n="contactTitle">
-VAMO TIRAR A IDEIA DO PAPEL?
-</h2>
+  <h2 id="contactTitle">
+    VAMO TIRAR A IDEIA DO PAPEL?
+  </h2>
 
-<p data-i18n="contactText">
-Conte o que vc quer criar. A MBK SITES cuida do resto.
-</p>
+  <p id="contactText">
+    Conte o que vc quer criar. A MBK SITES cuida do resto.
+  </p>
 
-<a class="btn" href="mailto:contato@mbksites.com">
-CONTATO@MBKSITES.COM →
-</a>
+  <a class="btn" href="mailto:contato@mbksites.com">
+    CONTATO@MBKSITES.COM →
+  </a>
 
 </section>
 
@@ -820,1067 +891,640 @@ CONTATO@MBKSITES.COM →
 
 <footer>
 
-<div class="wrap">
+  <div class="wrap">
 
-<span>
-© 2006 - 2026 MBK SITES — TODOS OS DIREITOS RESERVADOS.
-</span>
+    <span id="copyright">
+      © 2006 - 2026 MBK SITES — TODOS OS DIREITOS RESERVADOS.
+    </span>
 
-<span>
-FEITO COM HTML, CSS E CAFÉ ☕
-</span>
+    <span>
+      FEITO COM HTML, CSS E CAFÉ ☕
+    </span>
 
-</div>
+  </div>
 
 </footer>
 
 
 <script>
 
+/* =========================================================
+   SISTEMA DE IDIOMAS — MBK SITES
+========================================================= */
+
 const translations = {
 
-"pt-BR":{
+  pt:{
+    language:"Sua linguagem:",
+    status:"STATUS: ONLINE ●",
 
-navServices:"Serviços",
-navProjects:"Projetos",
-navAbout:"Sobre",
-navContact:"Contato",
+    navServices:"Serviços",
+    navProjects:"Projetos",
+    navAbout:"Sobre",
+    navContact:"Contato",
 
-status:"STATUS: ONLINE ●",
+    eyebrow:"Internet clássica. Tecnologia de agora.",
+    title:"Sites que<br>não parecem<br>iguais.",
 
-heroEyebrow:"Internet clássica. Tecnologia de agora.",
+    heroText:
+      "Design com personalidade, código limpo e aquele charme de site antigo — só que rápido, responsivo e preparado pra internet de hoje.",
 
-heroTitle:"Sites que<br>não parecem<br>iguais.",
+    create:"CRIAR MEU SITE →",
+    projects:"VER PROJETOS",
 
-heroText:"Design com personalidade, código limpo e aquele charme de site antigo — só que rápido, responsivo e preparado pra internet de hoje.",
+    servicesTitle:"O que fazemos",
+    servicesCount:"[ 03 SERVIÇOS PRINCIPAIS ]",
 
-heroButton:"CRIAR MEU SITE →",
-heroProjects:"VER PROJETOS",
+    designTitle:"Visual com identidade",
+    designText:
+      "Layouts que fogem do “template genérico” e transformam a personalidade do projeto em interface.",
 
-logStart:"iniciando MBK_SITES...",
-logCreativity:"carregando criatividade ██████ 100%",
-logResponsive:"verificando responsividade... OK",
-logReady:"pronto para criar",
+    codeTitle:"HTML de verdade",
+    codeText:
+      "Estrutura sem frescura, CSS caprichado e JavaScript quando ele realmente precisa estar ali.",
 
-servicesTitle:"O que fazemos",
-servicesLabel:"[ 03 SERVIÇOS PRINCIPAIS ]",
+    webTitle:"Feito pra funcionar",
+    webText:
+      "Responsivo, acessível, leve e pensado para funcionar bem no celular, tablet e computador.",
 
-service1Title:"Visual com identidade",
-service1Text:"Layouts que fogem do “template genérico” e transformam a personalidade do projeto em interface.",
+    projectsTitle:"Projetos",
+    archive:"[ ARQUIVO MBK / 2026 ]",
 
-service2Title:"HTML de verdade",
-service2Text:"Estrutura sem frescura, CSS caprichado e JavaScript quando ele realmente precisa estar ali.",
+    projectOneTitle:"Um site com cara de arquivo da internet.",
+    projectOneText:
+      "Tipografia editorial, texturas discretas e navegação direta. Nostalgia na estética; performance na engenharia.",
 
-service3Title:"Feito pra funcionar",
-service3Text:"Responsivo, acessível, leve e pensado para funcionar bem no celular, tablet e computador.",
+    projectTwoTitle:"Menos template.<br>Mais ideia.",
+    projectTwoText:
+      "Interfaces personalizadas para marcas, criadores e projetos que merecem ter uma presença própria.",
 
-projectsTitle:"Projetos",
-projectTag:"WEB / INSTITUCIONAL",
-projectTitle:"Um site com cara de arquivo da internet.",
-projectText:"Tipografia editorial, texturas discretas e navegação direta. Nostalgia na estética; performance na engenharia.",
+    manifesto:"Manifesto",
+    manifestoTitle:"Velho não é ultrapassado.",
+    manifestoText:
+      "A MBK SITES mistura referências da web clássica com práticas modernas de desenvolvimento. A ideia é simples: fazer sites memoráveis, sem sacrificar velocidade, compatibilidade ou usabilidade.",
 
-creativeTag:"CRIATIVO",
-creativeTitle:"Menos template.<br>Mais ideia.",
-creativeText:"Interfaces personalizadas para marcas, criadores e projetos que merecem ter uma presença própria.",
+    technical:"Ficha técnica",
 
-manifesto:"Manifesto",
-aboutTitle:"Velho não é ultrapassado.",
-aboutText:"A MBK SITES mistura referências da web clássica com práticas modernas de desenvolvimento. A ideia é simples: fazer sites memoráveis, sem sacrificar velocidade, compatibilidade ou usabilidade.",
+    style:"Estilo",
+    structure:"Estrutura",
+    css:"Estilo",
+    interaction:"Interação",
+    responsive:"Responsivo",
 
-technical:"Ficha técnica",
-factStyle:"Estilo",
-factStructure:"Estrutura",
-factInteraction:"Interação",
-factResponsive:"Responsivo",
+    contactEyebrow:"Seu próximo site começa aqui",
+    contactTitle:"VAMO TIRAR A IDEIA DO PAPEL?",
+    contactText:"Conte o que vc quer criar. A MBK SITES cuida do resto.",
 
-contactEyebrow:"Seu próximo site começa aqui",
-contactTitle:"VAMO TIRAR A IDEIA DO PAPEL?",
-contactText:"Conte o que vc quer criar. A MBK SITES cuida do resto."
+    copyright:"© 2006 - 2026 MBK SITES — TODOS OS DIREITOS RESERVADOS."
+  },
 
-},
 
-"en-US":{
+  en:{
+    language:"Your Language:",
+    status:"STATUS: ONLINE ●",
 
-navServices:"Services",
-navProjects:"Projects",
-navAbout:"About",
-navContact:"Contact",
+    navServices:"Services",
+    navProjects:"Projects",
+    navAbout:"About",
+    navContact:"Contact",
 
-status:"STATUS: ONLINE ●",
+    eyebrow:"Classic Internet. Modern Technology.",
+    title:"Websites that<br>don't look<br>the same.",
 
-heroEyebrow:"Classic internet. Modern technology.",
+    heroText:
+      "Personality-driven design, clean code and that old-school website charm — fast, responsive and ready for today's internet.",
 
-heroTitle:"Websites that<br>don't look<br>the same.",
+    create:"CREATE MY WEBSITE →",
+    projects:"VIEW PROJECTS",
 
-heroText:"Personality-driven design, clean code and the charm of old-school websites — fast, responsive and built for today's internet.",
+    servicesTitle:"What we do",
+    servicesCount:"[ 03 MAIN SERVICES ]",
 
-heroButton:"CREATE MY WEBSITE →",
-heroProjects:"VIEW PROJECTS",
+    designTitle:"Identity-driven design",
+    designText:
+      "Layouts that escape generic templates and turn each project's personality into an interface.",
 
-logStart:"starting MBK_SITES...",
-logCreativity:"loading creativity ██████ 100%",
-logResponsive:"checking responsiveness... OK",
-logReady:"ready to create",
+    codeTitle:"Real HTML",
+    codeText:
+      "Clean structure, carefully crafted CSS and JavaScript only when it actually belongs there.",
 
-servicesTitle:"What we do",
-servicesLabel:"[ 03 MAIN SERVICES ]",
+    webTitle:"Built to work",
+    webText:
+      "Responsive, accessible, lightweight and designed for phones, tablets and computers.",
 
-service1Title:"Identity-driven design",
-service1Text:"Layouts that escape generic templates and turn the personality of a project into an interface.",
+    projectsTitle:"Projects",
+    archive:"[ MBK ARCHIVE / 2026 ]",
 
-service2Title:"Real HTML",
-service2Text:"Clean structure, carefully crafted CSS and JavaScript only when it actually belongs there.",
+    projectOneTitle:"A website that feels like an internet archive.",
+    projectOneText:
+      "Editorial typography, subtle textures and direct navigation. Nostalgia in the aesthetics; performance in the engineering.",
 
-service3Title:"Built to work",
-service3Text:"Responsive, accessible, lightweight and designed for phones, tablets and computers.",
+    projectTwoTitle:"Less template.<br>More idea.",
+    projectTwoText:
+      "Custom interfaces for brands, creators and projects that deserve their own presence.",
 
-projectsTitle:"Projects",
-projectTag:"WEB / CORPORATE",
-projectTitle:"A website that feels like an internet archive.",
-projectText:"Editorial typography, subtle textures and direct navigation. Nostalgia in the aesthetics; performance in the engineering.",
+    manifesto:"Manifesto",
+    manifestoTitle:"Old doesn't mean outdated.",
+    manifestoText:
+      "MBK SITES combines classic web references with modern development practices. The idea is simple: create memorable websites without sacrificing speed, compatibility or usability.",
 
-creativeTag:"CREATIVE",
-creativeTitle:"Less template.<br>More ideas.",
-creativeText:"Custom interfaces for brands, creators and projects that deserve a unique presence.",
+    technical:"Technical sheet",
 
-manifesto:"Manifesto",
-aboutTitle:"Old doesn't mean outdated.",
-aboutText:"MBK SITES combines classic web references with modern development practices. The idea is simple: create memorable websites without sacrificing speed, compatibility or usability.",
+    style:"Style",
+    structure:"Structure",
+    css:"Style",
+    interaction:"Interaction",
+    responsive:"Responsive",
 
-technical:"Technical sheet",
-factStyle:"Style",
-factStructure:"Structure",
-factInteraction:"Interaction",
-factResponsive:"Responsive",
+    contactEyebrow:"Your next website starts here",
+    contactTitle:"LET'S GET YOUR IDEA OFF THE PAPER.",
+    contactText:"Tell us what you want to create. MBK SITES takes care of the rest.",
 
-contactEyebrow:"Your next website starts here",
-contactTitle:"LET'S GET THAT IDEA OFF PAPER.",
-contactText:"Tell us what you want to create. MBK SITES takes care of the rest."
+    copyright:"© 2006 - 2026 MBK SITES — ALL RIGHTS RESERVED."
+  },
 
-},
 
-"es":{
+  es:{
+    language:"Tu idioma:",
+    status:"ESTADO: ONLINE ●",
 
-navServices:"Servicios",
-navProjects:"Proyectos",
-navAbout:"Nosotros",
-navContact:"Contacto",
+    navServices:"Servicios",
+    navProjects:"Proyectos",
+    navAbout:"Nosotros",
+    navContact:"Contacto",
 
-status:"ESTADO: ONLINE ●",
+    eyebrow:"Internet clásica. Tecnología actual.",
+    title:"Sitios que<br>no parecen<br>iguales.",
 
-heroEyebrow:"Internet clásica. Tecnología de ahora.",
+    heroText:
+      "Diseño con personalidad, código limpio y ese encanto de los sitios antiguos — rápido, adaptable y preparado para Internet.",
 
-heroTitle:"Sitios que<br>no parecen<br>iguales.",
+    create:"CREAR MI SITIO →",
+    projects:"VER PROYECTOS",
 
-heroText:"Diseño con personalidad, código limpio y ese encanto de los sitios antiguos — rápido, responsive y preparado para internet.",
+    servicesTitle:"Lo que hacemos",
+    servicesCount:"[ 03 SERVICIOS PRINCIPALES ]",
 
-heroButton:"CREAR MI SITIO →",
-heroProjects:"VER PROYECTOS",
+    designTitle:"Diseño con identidad",
+    designText:
+      "Diseños que escapan de las plantillas genéricas y convierten la personalidad del proyecto en interfaz.",
 
-logStart:"iniciando MBK_SITES...",
-logCreativity:"cargando creatividad ██████ 100%",
-logResponsive:"comprobando responsividad... OK",
-logReady:"listo para crear",
+    codeTitle:"HTML de verdad",
+    codeText:
+      "Estructura limpia, CSS cuidado y JavaScript cuando realmente es necesario.",
 
-servicesTitle:"Lo que hacemos",
-servicesLabel:"[ 03 SERVICIOS PRINCIPALES ]",
+    webTitle:"Hecho para funcionar",
+    webText:
+      "Adaptable, accesible, ligero y pensado para móviles, tablets y ordenadores.",
 
-service1Title:"Diseño con identidad",
-service1Text:"Diseños que escapan de las plantillas genéricas y convierten la personalidad del proyecto en interfaz.",
+    projectsTitle:"Proyectos",
+    archive:"[ ARCHIVO MBK / 2026 ]",
 
-service2Title:"HTML de verdad",
-service2Text:"Estructura limpia, CSS cuidado y JavaScript cuando realmente es necesario.",
+    projectOneTitle:"Un sitio con cara de archivo de Internet.",
+    projectOneText:
+      "Tipografía editorial, texturas discretas y navegación directa. Nostalgia en la estética; rendimiento en la ingeniería.",
 
-service3Title:"Hecho para funcionar",
-service3Text:"Responsive, accesible, ligero y pensado para móviles, tablets y ordenadores.",
+    projectTwoTitle:"Menos plantilla.<br>Más idea.",
+    projectTwoText:
+      "Interfaces personalizadas para marcas, creadores y proyectos que merecen tener una presencia propia.",
 
-projectsTitle:"Proyectos",
-projectTag:"WEB / INSTITUCIONAL",
-projectTitle:"Un sitio con aspecto de archivo de internet.",
-projectText:"Tipografía editorial, texturas discretas y navegación directa. Nostalgia en la estética; rendimiento en la ingeniería.",
+    manifesto:"Manifiesto",
+    manifestoTitle:"Antiguo no significa obsoleto.",
+    manifestoText:
+      "MBK SITES combina referencias de la web clásica con prácticas modernas de desarrollo.",
 
-creativeTag:"CREATIVO",
-creativeTitle:"Menos plantilla.<br>Más ideas.",
-creativeText:"Interfaces personalizadas para marcas, creadores y proyectos que merecen una presencia propia.",
+    technical:"Ficha técnica",
 
-manifesto:"Manifiesto",
-aboutTitle:"Viejo no significa anticuado.",
-aboutText:"MBK SITES mezcla referencias de la web clásica con prácticas modernas de desarrollo.",
+    style:"Estilo",
+    structure:"Estructura",
+    css:"Estilo",
+    interaction:"Interacción",
+    responsive:"Adaptable",
 
-technical:"Ficha técnica",
-factStyle:"Estilo",
-factStructure:"Estructura",
-factInteraction:"Interacción",
-factResponsive:"Responsive",
+    contactEyebrow:"Tu próximo sitio comienza aquí",
+    contactTitle:"¿SACAMOS TU IDEA DEL PAPEL?",
+    contactText:"Cuéntanos qué quieres crear. MBK SITES se encarga del resto.",
 
-contactEyebrow:"Tu próximo sitio comienza aquí",
-contactTitle:"¿SACAMOS LA IDEA DEL PAPEL?",
-contactText:"Cuéntanos qué quieres crear. MBK SITES se encarga del resto."
+    copyright:"© 2006 - 2026 MBK SITES — TODOS LOS DERECHOS RESERVADOS."
+  },
 
-},
 
-"fr":{
+  fr:{
+    language:"Votre langue :",
+    status:"STATUT : EN LIGNE ●",
 
-navServices:"Services",
-navProjects:"Projets",
-navAbout:"À propos",
-navContact:"Contact",
+    navServices:"Services",
+    navProjects:"Projets",
+    navAbout:"À propos",
+    navContact:"Contact",
 
-status:"STATUT : EN LIGNE ●",
+    eyebrow:"Internet classique. Technologie moderne.",
+    title:"Des sites qui<br>ne se ressemblent<br>pas.",
 
-heroEyebrow:"Internet classique. Technologie moderne.",
+    heroText:
+      "Un design avec de la personnalité, du code propre et le charme des anciens sites web — rapide, responsive et moderne.",
 
-heroTitle:"Des sites qui<br>ne se ressemblent<br>pas.",
+    create:"CRÉER MON SITE →",
+    projects:"VOIR LES PROJETS",
 
-heroText:"Un design avec personnalité, du code propre et le charme des anciens sites web — rapide, responsive et moderne.",
+    servicesTitle:"Ce que nous faisons",
+    servicesCount:"[ 03 SERVICES PRINCIPAUX ]",
 
-heroButton:"CRÉER MON SITE →",
-heroProjects:"VOIR LES PROJETS",
+    designTitle:"Design avec identité",
+    designText:
+      "Des interfaces qui évitent les modèles génériques et donnent une vraie personnalité au projet.",
 
-logStart:"démarrage de MBK_SITES...",
-logCreativity:"chargement de la créativité ██████ 100%",
-logResponsive:"vérification responsive... OK",
-logReady:"prêt à créer",
+    codeTitle:"Du vrai HTML",
+    codeText:
+      "Une structure propre, du CSS soigné et du JavaScript uniquement lorsque nécessaire.",
 
-servicesTitle:"Ce que nous faisons",
-servicesLabel:"[ 03 SERVICES PRINCIPAUX ]",
+    webTitle:"Conçu pour fonctionner",
+    webText:
+      "Responsive, accessible, léger et adapté aux mobiles, tablettes et ordinateurs.",
 
-service1Title:"Design avec identité",
-service1Text:"Des interfaces qui évitent les modèles génériques et donnent une véritable personnalité au projet.",
+    projectsTitle:"Projets",
+    archive:"[ ARCHIVE MBK / 2026 ]",
 
-service2Title:"Du vrai HTML",
-service2Text:"Une structure propre, du CSS soigné et du JavaScript seulement lorsque nécessaire.",
+    projectOneTitle:"Un site avec l'apparence d'une archive Internet.",
+    projectOneText:
+      "Typographie éditoriale, textures discrètes et navigation directe. Nostalgie dans l'esthétique ; performance dans l'ingénierie.",
 
-service3Title:"Conçu pour fonctionner",
-service3Text:"Responsive, accessible, léger et conçu pour tous les écrans.",
+    projectTwoTitle:"Moins de modèle.<br>Plus d'idée.",
+    projectTwoText:
+      "Des interfaces personnalisées pour les marques, créateurs et projets qui méritent leur propre identité.",
 
-projectsTitle:"Projets",
+    manifesto:"Manifeste",
+    manifestoTitle:"Ancien ne signifie pas dépassé.",
+    manifestoText:
+      "MBK SITES mélange les références du web classique avec les pratiques modernes du développement.",
 
-projectTag:"WEB / INSTITUTIONNEL",
-projectTitle:"Un site qui ressemble à une archive d'internet.",
-projectText:"Typographie éditoriale, textures discrètes et navigation directe.",
+    technical:"Fiche technique",
 
-creativeTag:"CRÉATIF",
-creativeTitle:"Moins de modèles.<br>Plus d'idées.",
-creativeText:"Des interfaces personnalisées pour les marques et créateurs.",
+    style:"Style",
+    structure:"Structure",
+    css:"Style",
+    interaction:"Interaction",
+    responsive:"Responsive",
 
-manifesto:"Manifeste",
-aboutTitle:"Ancien ne veut pas dire dépassé.",
-aboutText:"MBK SITES mélange les références du web classique avec les pratiques modernes du développement.",
+    contactEyebrow:"Votre prochain site commence ici",
+    contactTitle:"SORTONS VOTRE IDÉE DU PAPIER.",
+    contactText:"Dites-nous ce que vous voulez créer. MBK SITES s'occupe du reste.",
 
-technical:"Fiche technique",
-factStyle:"Style",
-factStructure:"Structure",
-factInteraction:"Interaction",
-factResponsive:"Responsive",
+    copyright:"© 2006 - 2026 MBK SITES — TOUS DROITS RÉSERVÉS."
+  },
 
-contactEyebrow:"Votre prochain site commence ici",
-contactTitle:"ON SORT L'IDÉE DU PAPIER ?",
-contactText:"Dites-nous ce que vous voulez créer. MBK SITES s'occupe du reste."
 
-},
+  it:{
+    language:"La tua lingua:",
+    status:"STATO: ONLINE ●",
 
-"de":{
+    navServices:"Servizi",
+    navProjects:"Progetti",
+    navAbout:"Chi siamo",
+    navContact:"Contatti",
 
-navServices:"Leistungen",
-navProjects:"Projekte",
-navAbout:"Über uns",
-navContact:"Kontakt",
+    eyebrow:"Internet classica. Tecnologia moderna.",
+    title:"Siti che<br>non sembrano<br>uguali.",
 
-status:"STATUS: ONLINE ●",
+    heroText:
+      "Design con personalità, codice pulito e il fascino dei vecchi siti web — veloce, responsive e moderno.",
 
-heroEyebrow:"Klassisches Internet. Moderne Technologie.",
+    create:"CREA IL MIO SITO →",
+    projects:"VEDI I PROGETTI",
 
-heroTitle:"Websites, die<br>nicht gleich<br>aussehen.",
+    servicesTitle:"Cosa facciamo",
+    servicesCount:"[ 03 SERVIZI PRINCIPALI ]",
 
-heroText:"Persönliches Design, sauberer Code und der Charme klassischer Websites — schnell, responsiv und modern.",
+    designTitle:"Design con identità",
+    designText:
+      "Layout che evitano i template generici e trasformano la personalità del progetto in interfaccia.",
 
-heroButton:"MEINE WEBSITE ERSTELLEN →",
-heroProjects:"PROJEKTE ANSEHEN",
+    codeTitle:"HTML vero",
+    codeText:
+      "Struttura pulita, CSS curato e JavaScript solo quando serve davvero.",
 
-servicesTitle:"Was wir machen",
-servicesLabel:"[ 03 HAUPTLEISTUNGEN ]",
+    webTitle:"Fatto per funzionare",
+    webText:
+      "Responsive, accessibile, leggero e progettato per smartphone, tablet e computer.",
 
-service1Title:"Design mit Identität",
-service1Text:"Layouts, die sich von generischen Templates abheben und Persönlichkeit zeigen.",
+    projectsTitle:"Progetti",
+    archive:"[ ARCHIVIO MBK / 2026 ]",
 
-service2Title:"Echtes HTML",
-service2Text:"Saubere Struktur, sorgfältiges CSS und JavaScript nur dort, wo es sinnvoll ist.",
+    projectOneTitle:"Un sito con l'aspetto di un archivio Internet.",
+    projectOneText:
+      "Tipografia editoriale, texture discrete e navigazione diretta. Nostalgia nell'estetica; prestazioni nell'ingegneria.",
 
-service3Title:"Funktioniert einfach",
-service3Text:"Responsiv, zugänglich, schnell und für alle Geräte entwickelt.",
+    projectTwoTitle:"Meno template.<br>Più idea.",
+    projectTwoText:
+      "Interfacce personalizzate per marchi, creatori e progetti che meritano una presenza propria.",
 
-projectsTitle:"Projekte",
+    manifesto:"Manifesto",
+    manifestoTitle:"Vecchio non significa superato.",
+    manifestoText:
+      "MBK SITES combina riferimenti del web classico con moderne pratiche di sviluppo.",
 
-projectTag:"WEB / INSTITUTIONELL",
-projectTitle:"Eine Website wie ein Internetarchiv.",
+    technical:"Scheda tecnica",
 
-creativeTag:"KREATIV",
-creativeTitle:"Weniger Template.<br>Mehr Idee.",
+    style:"Stile",
+    structure:"Struttura",
+    css:"Stile",
+    interaction:"Interazione",
+    responsive:"Responsive",
 
-manifesto:"Manifest",
-aboutTitle:"Alt bedeutet nicht veraltet.",
-aboutText:"MBK SITES verbindet klassische Webästhetik mit moderner Entwicklung.",
+    contactEyebrow:"Il tuo prossimo sito inizia qui",
+    contactTitle:"PORTIAMO L'IDEA ALLA REALTÀ.",
+    contactText:"Raccontaci cosa vuoi creare. MBK SITES pensa al resto.",
 
-technical:"Technische Daten",
-factStyle:"Stil",
-factStructure:"Struktur",
-factInteraction:"Interaktion",
-factResponsive:"Responsiv",
+    copyright:"© 2006 - 2026 MBK SITES — TUTTI I DIRITTI RISERVATI."
+  },
 
-contactEyebrow:"Deine nächste Website beginnt hier",
-contactTitle:"HOLEN WIR DIE IDEE AUS DEM PAPIER?",
-contactText:"Erzähle uns, was du erstellen möchtest."
 
-},
+  de:{
+    language:"Deine Sprache:",
+    status:"STATUS: ONLINE ●",
 
-"it":{
+    navServices:"Leistungen",
+    navProjects:"Projekte",
+    navAbout:"Über uns",
+    navContact:"Kontakt",
 
-navServices:"Servizi",
-navProjects:"Progetti",
-navAbout:"Chi siamo",
-navContact:"Contatti",
+    eyebrow:"Klassisches Internet. Moderne Technologie.",
+    title:"Websites, die<br>nicht gleich<br>aussehen.",
 
-status:"STATO: ONLINE ●",
+    heroText:
+      "Design mit Persönlichkeit, sauberer Code und der Charme alter Websites — schnell, responsiv und modern.",
 
-heroEyebrow:"Internet classica. Tecnologia moderna.",
+    create:"MEINE WEBSITE ERSTELLEN →",
+    projects:"PROJEKTE ANSEHEN",
 
-heroTitle:"Siti che<br>non sembrano<br>uguali.",
+    servicesTitle:"Was wir machen",
+    servicesCount:"[ 03 HAUPTLEISTUNGEN ]",
 
-heroText:"Design con personalità, codice pulito e il fascino dei vecchi siti web — veloce, responsive e moderno.",
+    designTitle:"Design mit Identität",
+    designText:
+      "Layouts abseits generischer Vorlagen, die die Persönlichkeit eines Projekts sichtbar machen.",
 
-heroButton:"CREA IL MIO SITO →",
-heroProjects:"VEDI I PROGETTI",
+    codeTitle:"Echtes HTML",
+    codeText:
+      "Saubere Struktur, sorgfältiges CSS und JavaScript nur dort, wo es wirklich gebraucht wird.",
 
-servicesTitle:"Cosa facciamo",
-servicesLabel:"[ 03 SERVIZI PRINCIPALI ]",
+    webTitle:"Gemacht, um zu funktionieren",
+    webText:
+      "Responsiv, zugänglich, leicht und für Smartphones, Tablets und Computer entwickelt.",
 
-service1Title:"Design con identità",
-service1Text:"Layout che evitano i template generici e trasformano la personalità del progetto in interfaccia.",
+    projectsTitle:"Projekte",
+    archive:"[ MBK ARCHIV / 2026 ]",
 
-service2Title:"HTML vero",
-service2Text:"Struttura pulita, CSS curato e JavaScript solo quando serve.",
+    projectOneTitle:"Eine Website wie ein Internetarchiv.",
+    projectOneText:
+      "Editorial-Typografie, dezente Texturen und direkte Navigation. Nostalgie im Design; Performance in der Technik.",
 
-service3Title:"Creato per funzionare",
-service3Text:"Responsive, accessibile, leggero e pensato per ogni dispositivo.",
+    projectTwoTitle:"Weniger Vorlage.<br>Mehr Idee.",
+    projectTwoText:
+      "Individuelle Interfaces für Marken, Kreative und Projekte mit eigener Identität.",
 
-projectsTitle:"Progetti",
+    manifesto:"Manifest",
+    manifestoTitle:"Alt bedeutet nicht veraltet.",
+    manifestoText:
+      "MBK SITES verbindet klassische Webästhetik mit modernen Entwicklungspraktiken.",
 
-projectTag:"WEB / ISTITUZIONALE",
-projectTitle:"Un sito dall'aspetto di un archivio internet.",
+    technical:"Technisches Datenblatt",
 
-creativeTag:"CREATIVO",
-creativeTitle:"Meno template.<br>Più idee.",
+    style:"Stil",
+    structure:"Struktur",
+    css:"Stil",
+    interaction:"Interaktion",
+    responsive:"Responsiv",
 
-manifesto:"Manifesto",
-aboutTitle:"Vecchio non significa superato.",
-aboutText:"MBK SITES unisce riferimenti del web classico a pratiche moderne di sviluppo.",
+    contactEyebrow:"Deine nächste Website beginnt hier",
+    contactTitle:"BRINGEN WIR DEINE IDEE AUF DEN BILDSCHIRM.",
+    contactText:"Erzähl uns, was du erstellen möchtest. MBK SITES kümmert sich um den Rest.",
 
-technical:"Scheda tecnica",
-factStyle:"Stile",
-factStructure:"Struttura",
-factInteraction:"Interazione",
-factResponsive:"Responsive",
+    copyright:"© 2006 - 2026 MBK SITES — ALLE RECHTE VORBEHALTEN."
+  },
 
-contactEyebrow:"Il tuo prossimo sito inizia qui",
-contactTitle:"PORTIAMO L'IDEA FUORI DAL FOGLIO?",
-contactText:"Raccontaci cosa vuoi creare."
 
-},
+  ja:{
+    language:"あなたの言語：",
+    status:"ステータス：オンライン ●",
 
-"ja":{
+    navServices:"サービス",
+    navProjects:"プロジェクト",
+    navAbout:"私たちについて",
+    navContact:"お問い合わせ",
 
-navServices:"サービス",
-navProjects:"プロジェクト",
-navAbout:"私たちについて",
-navContact:"お問い合わせ",
+    eyebrow:"クラシックなインターネット。現代のテクノロジー。",
+    title:"同じように<br>見えない<br>ウェブサイト。",
 
-status:"ステータス: ONLINE ●",
+    heroText:
+      "個性的なデザイン、きれいなコード、昔のウェブサイトの魅力。そして現代の高速・レスポンシブな技術。",
 
-heroEyebrow:"クラシックなインターネット。現代のテクノロジー。",
+    create:"サイトを作る →",
+    projects:"プロジェクトを見る",
 
-heroTitle:"同じようには<br>見えない<br>ウェブサイト。",
+    servicesTitle:"サービス",
+    servicesCount:"[ 03 MAIN SERVICES ]",
 
-heroText:"個性のあるデザイン、クリーンなコード、昔のウェブサイトの魅力。高速でレスポンシブ、現代のウェブに対応します。",
+    designTitle:"個性のあるデザイン",
+    designText:
+      "一般的なテンプレートから離れ、プロジェクトの個性をインターフェースにします。",
 
-heroButton:"サイトを作る →",
-heroProjects:"プロジェクトを見る",
+    codeTitle:"本物のHTML",
+    codeText:
+      "シンプルな構造、美しいCSS、必要なときだけJavaScriptを使用します。",
 
-servicesTitle:"私たちができること",
-servicesLabel:"[ 主要サービス 03 ]",
+    webTitle:"実際に使えるウェブ",
+    webText:
+      "スマートフォン、タブレット、パソコンに対応した軽量でアクセシブルな設計。",
 
-service1Title:"個性的なデザイン",
-service1Text:"ありきたりなテンプレートを避け、プロジェクトの個性をインターフェースにします。",
+    projectsTitle:"プロジェクト",
+    archive:"[ MBK ARCHIVE / 2026 ]",
 
-service2Title:"本物のHTML",
-service2Text:"クリーンな構造、丁寧なCSS、必要な場合だけJavaScriptを使用します。",
+    projectOneTitle:"インターネットアーカイブのようなサイト。",
+    projectOneText:
+      "エディトリアルなタイポグラフィ、控えめなテクスチャ、シンプルなナビゲーション。",
 
-service3Title:"使えるサイト",
-service3Text:"レスポンシブ、軽量でスマートフォンからPCまで対応します。",
+    projectTwoTitle:"テンプレートを減らす。<br>アイデアを増やす。",
+    projectTwoText:
+      "ブランド、クリエイター、独自の存在感を必要とするプロジェクトのためのインターフェース。",
 
-projectsTitle:"プロジェクト",
+    manifesto:"マニフェスト",
+    manifestoTitle:"古いことは、時代遅れではない。",
+    manifestoText:
+      "MBK SITESはクラシックなウェブデザインと現代的な開発技術を組み合わせています。",
 
-projectTag:"WEB / CORPORATE",
-projectTitle:"インターネットアーカイブのようなウェブサイト。",
+    technical:"技術仕様",
 
-creativeTag:"クリエイティブ",
-creativeTitle:"テンプレートを減らす。<br>アイデアを増やす。",
+    style:"スタイル",
+    structure:"構造",
+    css:"スタイル",
+    interaction:"インタラクション",
+    responsive:"レスポンシブ",
 
-manifesto:"マニフェスト",
-aboutTitle:"古いことは時代遅れではない。",
-aboutText:"MBK SITESはクラシックなウェブの美学と現代的な開発技術を組み合わせます。",
+    contactEyebrow:"次のウェブサイトはここから",
+    contactTitle:"アイデアを形にしよう。",
+    contactText:"作りたいものを教えてください。MBK SITESがサポートします。",
 
-technical:"技術仕様",
-factStyle:"スタイル",
-factStructure:"構造",
-factInteraction:"インタラクション",
-factResponsive:"レスポンシブ",
-
-contactEyebrow:"次のウェブサイトはここから",
-contactTitle:"アイデアを形にしよう。",
-contactText:"作りたいものを教えてください。"
-
-},
-
-"ko":{
-
-navServices:"서비스",
-navProjects:"프로젝트",
-navAbout:"소개",
-navContact:"연락처",
-
-status:"상태: ONLINE ●",
-
-heroEyebrow:"클래식 인터넷. 현대 기술.",
-
-heroTitle:"똑같아 보이지<br>않는<br>웹사이트.",
-
-heroText:"개성 있는 디자인과 깔끔한 코드, 오래된 웹의 매력을 현대적인 속도와 반응형 기술로 구현합니다.",
-
-heroButton:"웹사이트 만들기 →",
-heroProjects:"프로젝트 보기",
-
-servicesTitle:"우리가 하는 일",
-servicesLabel:"[ 주요 서비스 03 ]",
-
-service1Title:"개성 있는 디자인",
-service1Text:"평범한 템플릿을 벗어나 프로젝트의 개성을 인터페이스로 표현합니다.",
-
-service2Title:"진짜 HTML",
-service2Text:"깔끔한 구조와 세심한 CSS, 필요한 경우에만 JavaScript를 사용합니다.",
-
-service3Title:"제대로 작동하도록",
-service3Text:"모바일, 태블릿, PC에서 빠르고 편리하게 사용할 수 있습니다.",
-
-projectsTitle:"프로젝트",
-
-projectTag:"WEB / INSTITUTIONAL",
-projectTitle:"인터넷 아카이브 같은 웹사이트.",
-
-creativeTag:"CREATIVE",
-creativeTitle:"템플릿은 줄이고.<br>아이디어는 더하고.",
-
-manifesto:"매니페스토",
-aboutTitle:"오래됐다고 낡은 것은 아닙니다.",
-aboutText:"MBK SITES는 클래식 웹의 감성과 현대적인 개발 방식을 결합합니다.",
-
-technical:"기술 사양",
-factStyle:"스타일",
-factStructure:"구조",
-factInteraction:"인터랙션",
-factResponsive:"반응형",
-
-contactEyebrow:"당신의 다음 웹사이트가 시작됩니다",
-contactTitle:"아이디어를 현실로 만들어볼까요?",
-contactText:"만들고 싶은 것을 알려주세요."
-
-},
-
-"zh":{
-
-navServices:"服务",
-navProjects:"项目",
-navAbout:"关于",
-navContact:"联系",
-
-status:"状态：在线 ●",
-
-heroEyebrow:"经典互联网。现代技术。",
-
-heroTitle:"不一样的<br>网站。",
-
-heroText:"有个性的设计、干净的代码，以及经典网页的魅力，同时拥有现代互联网的速度和响应式体验。",
-
-heroButton:"创建我的网站 →",
-heroProjects:"查看项目",
-
-servicesTitle:"我们做什么",
-servicesLabel:"[ 03 项主要服务 ]",
-
-service1Title:"个性化设计",
-service1Text:"拒绝千篇一律的模板，让项目的个性成为界面的一部分。",
-
-service2Title:"真正的 HTML",
-service2Text:"清晰的结构、精心设计的 CSS，以及真正需要时才使用的 JavaScript。",
-
-service3Title:"为实际使用而生",
-service3Text:"响应式、轻量，并适用于手机、平板和电脑。",
-
-projectsTitle:"项目",
-
-projectTag:"WEB / 企业",
-projectTitle:"像互联网档案馆一样的网站。",
-
-creativeTag:"创意",
-creativeTitle:"少一点模板。<br>多一点想法。",
-
-manifesto:"宣言",
-aboutTitle:"老，并不意味着过时。",
-aboutText:"MBK SITES 将经典网页美学与现代开发实践结合起来。",
-
-technical:"技术资料",
-factStyle:"风格",
-factStructure:"结构",
-factInteraction:"交互",
-factResponsive:"响应式",
-
-contactEyebrow:"你的下一个网站从这里开始",
-contactTitle:"让我们把想法变成现实。",
-contactText:"告诉我们你想创建什么。"
-
-},
-
-"ru":{
-
-navServices:"Услуги",
-navProjects:"Проекты",
-navAbout:"О нас",
-navContact:"Контакты",
-
-status:"СТАТУС: ONLINE ●",
-
-heroEyebrow:"Классический интернет. Современные технологии.",
-
-heroTitle:"Сайты, которые<br>не выглядят<br>одинаково.",
-
-heroText:"Индивидуальный дизайн, чистый код и атмосфера старого интернета — быстро, адаптивно и современно.",
-
-heroButton:"СОЗДАТЬ САЙТ →",
-heroProjects:"СМОТРЕТЬ ПРОЕКТЫ",
-
-servicesTitle:"Что мы делаем",
-servicesLabel:"[ 03 ОСНОВНЫЕ УСЛУГИ ]",
-
-service1Title:"Дизайн с характером",
-service1Text:"Макеты без шаблонной скуки, созданные вокруг личности проекта.",
-
-service2Title:"Настоящий HTML",
-service2Text:"Чистая структура, аккуратный CSS и JavaScript только там, где он действительно нужен.",
-
-service3Title:"Создано для работы",
-service3Text:"Адаптивно, быстро и удобно на телефоне, планшете и компьютере.",
-
-projectsTitle:"Проекты",
-
-projectTag:"WEB / КОРПОРАТИВНЫЙ",
-projectTitle:"Сайт, похожий на интернет-архив.",
-
-creativeTag:"КРЕАТИВ",
-creativeTitle:"Меньше шаблонов.<br>Больше идей.",
-
-manifesto:"Манифест",
-aboutTitle:"Старое не значит устаревшее.",
-aboutText:"MBK SITES объединяет эстетику классического веба с современными технологиями.",
-
-technical:"Техническая информация",
-factStyle:"Стиль",
-factStructure:"Структура",
-factInteraction:"Интерактивность",
-factResponsive:"Адаптивность",
-
-contactEyebrow:"Ваш следующий сайт начинается здесь",
-contactTitle:"ПРЕВРАТИМ ИДЕЮ В САЙТ?",
-contactText:"Расскажите, что вы хотите создать."
-
-},
-
-"ar":{
-
-navServices:"الخدمات",
-navProjects:"المشاريع",
-navAbout:"من نحن",
-navContact:"اتصل بنا",
-
-status:"الحالة: متصل ●",
-
-heroEyebrow:"إنترنت كلاسيكي. تقنية حديثة.",
-
-heroTitle:"مواقع لا<br>تبدو<br>متشابهة.",
-
-heroText:"تصميم بشخصية، كود نظيف، وسحر مواقع الإنترنت القديمة — مع سرعة واستجابة تناسب الإنترنت الحديث.",
-
-heroButton:"أنشئ موقعي →",
-heroProjects:"شاهد المشاريع",
-
-servicesTitle:"ماذا نفعل",
-servicesLabel:"[ 03 خدمات رئيسية ]",
-
-service1Title:"تصميم بهوية",
-service1Text:"تصاميم تبتعد عن القوالب الجاهزة وتحول شخصية المشروع إلى واجهة.",
-
-service2Title:"HTML حقيقي",
-service2Text:"هيكل نظيف وCSS متقن وJavaScript عند الحاجة فقط.",
-
-service3Title:"مصمم ليعمل",
-service3Text:"متجاوب وسريع ومناسب للهاتف والكمبيوتر.",
-
-projectsTitle:"المشاريع",
-
-projectTag:"WEB / مؤسسي",
-projectTitle:"موقع يبدو كأرشيف للإنترنت.",
-
-creativeTag:"إبداعي",
-creativeTitle:"قوالب أقل.<br>أفكار أكثر.",
-
-manifesto:"بيان",
-aboutTitle:"قديم لا يعني متجاوزاً.",
-aboutText:"تجمع MBK SITES بين جماليات الويب الكلاسيكي وممارسات التطوير الحديثة.",
-
-technical:"المواصفات التقنية",
-factStyle:"النمط",
-factStructure:"البنية",
-factInteraction:"التفاعل",
-factResponsive:"متجاوب",
-
-contactEyebrow:"موقعك القادم يبدأ هنا",
-contactTitle:"هل نحول الفكرة إلى حقيقة؟",
-contactText:"أخبرنا بما تريد إنشاءه."
-
-},
-
-"nl":{
-
-navServices:"Diensten",
-navProjects:"Projecten",
-navAbout:"Over ons",
-navContact:"Contact",
-
-status:"STATUS: ONLINE ●",
-
-heroEyebrow:"Klassiek internet. Moderne technologie.",
-
-heroTitle:"Websites die<br>niet hetzelfde<br>lijken.",
-
-heroText:"Persoonlijk ontwerp, schone code en de charme van klassieke websites — snel, responsive en modern.",
-
-heroButton:"MIJN WEBSITE MAKEN →",
-heroProjects:"PROJECTEN BEKIJKEN",
-
-servicesTitle:"Wat we doen",
-servicesLabel:"[ 03 HOOFDDIENSTEN ]",
-
-service1Title:"Design met identiteit",
-service1Text:"Layouts die generieke templates vermijden en de persoonlijkheid van het project tonen.",
-
-service2Title:"Echte HTML",
-service2Text:"Schone structuur, verzorgde CSS en JavaScript wanneer het echt nodig is.",
-
-service3Title:"Gemaakt om te werken",
-service3Text:"Responsive, toegankelijk en lichtgewicht.",
-
-projectsTitle:"Projecten",
-
-projectTag:"WEB / INSTITUTIONEEL",
-projectTitle:"Een website met het gevoel van een internetarchief.",
-
-creativeTag:"CREATIEF",
-creativeTitle:"Minder template.<br>Meer idee.",
-
-manifesto:"Manifest",
-aboutTitle:"Oud betekent niet verouderd.",
-aboutText:"MBK SITES combineert klassieke webesthetiek met moderne ontwikkeling.",
-
-technical:"Technische fiche",
-factStyle:"Stijl",
-factStructure:"Structuur",
-factInteraction:"Interactie",
-factResponsive:"Responsive",
-
-contactEyebrow:"Je volgende website begint hier",
-contactTitle:"ZULLEN WE HET IDEE REALISEREN?",
-contactText:"Vertel ons wat je wilt maken."
-
-},
-
-"pl":{
-
-navServices:"Usługi",
-navProjects:"Projekty",
-navAbout:"O nas",
-navContact:"Kontakt",
-
-status:"STATUS: ONLINE ●",
-
-heroEyebrow:"Klasyczny internet. Nowoczesna technologia.",
-
-heroTitle:"Strony, które<br>nie wyglądają<br>tak samo.",
-
-heroText:"Design z charakterem, czysty kod i klimat dawnych stron internetowych — szybko, responsywnie i nowocześnie.",
-
-heroButton:"STWÓRZ MOJĄ STRONĘ →",
-heroProjects:"ZOBACZ PROJEKTY",
-
-servicesTitle:"Co robimy",
-servicesLabel:"[ 03 GŁÓWNE USŁUGI ]",
-
-service1Title:"Design z tożsamością",
-service1Text:"Projekty, które unikają generycznych szablonów.",
-
-service2Title:"Prawdziwy HTML",
-service2Text:"Czysta struktura, dopracowany CSS i JavaScript tylko wtedy, gdy jest potrzebny.",
-
-service3Title:"Stworzone do działania",
-service3Text:"Responsywne, lekkie i dostępne na każdym urządzeniu.",
-
-projectsTitle:"Projekty",
-
-projectTag:"WEB / INSTYTUCJONALNE",
-projectTitle:"Strona wyglądająca jak archiwum internetu.",
-
-creativeTag:"KREATYWNE",
-creativeTitle:"Mniej szablonu.<br>Więcej pomysłu.",
-
-manifesto:"Manifest",
-aboutTitle:"Stare nie znaczy przestarzałe.",
-aboutText:"MBK SITES łączy klasyczną estetykę internetu z nowoczesnym tworzeniem stron.",
-
-technical:"Specyfikacja",
-factStyle:"Styl",
-factStructure:"Struktura",
-factInteraction:"Interakcja",
-factResponsive:"Responsywność",
-
-contactEyebrow:"Twoja następna strona zaczyna się tutaj",
-contactTitle:"PRZENIEŚMY POMYSŁ DO SIECI.",
-contactText:"Powiedz nam, co chcesz stworzyć."
-
-},
-
-"tr":{
-
-navServices:"Hizmetler",
-navProjects:"Projeler",
-navAbout:"Hakkımızda",
-navContact:"İletişim",
-
-status:"DURUM: ONLINE ●",
-
-heroEyebrow:"Klasik internet. Modern teknoloji.",
-
-heroTitle:"Aynı görünmeyen<br>web<br>siteleri.",
-
-heroText:"Kişilik sahibi tasarım, temiz kod ve eski internetin havası — hızlı, responsive ve modern.",
-
-heroButton:"SİTEMİ OLUŞTUR →",
-heroProjects:"PROJELERİ GÖR",
-
-servicesTitle:"Ne yapıyoruz",
-servicesLabel:"[ 03 ANA HİZMET ]",
-
-service1Title:"Kimlik sahibi tasarım",
-service1Text:"Genel şablonlardan uzak, projenin karakterini yansıtan arayüzler.",
-
-service2Title:"Gerçek HTML",
-service2Text:"Temiz yapı, özenli CSS ve gerektiğinde JavaScript.",
-
-service3Title:"Çalışmak için tasarlandı",
-service3Text:"Responsive, hafif ve tüm cihazlara uygun.",
-
-projectsTitle:"Projeler",
-
-projectTag:"WEB / KURUMSAL",
-projectTitle:"İnternet arşivi hissi veren bir site.",
-
-creativeTag:"YARATICI",
-creativeTitle:"Daha az şablon.<br>Daha fazla fikir.",
-
-manifesto:"Manifesto",
-aboutTitle:"Eski, modası geçmiş demek değildir.",
-aboutText:"MBK SITES klasik web estetiğini modern geliştirme yöntemleriyle birleştirir.",
-
-technical:"Teknik bilgiler",
-factStyle:"Stil",
-factStructure:"Yapı",
-factInteraction:"Etkileşim",
-factResponsive:"Responsive",
-
-contactEyebrow:"Bir sonraki siteniz burada başlıyor",
-contactTitle:"FİKRİ GERÇEĞE DÖNÜŞTÜRELİM Mİ?",
-contactText:"Ne oluşturmak istediğinizi anlatın."
-
-},
-
-"hi":{
-
-navServices:"सेवाएँ",
-navProjects:"प्रोजेक्ट्स",
-navAbout:"हमारे बारे में",
-navContact:"संपर्क",
-
-status:"स्थिति: ONLINE ●",
-
-heroEyebrow:"क्लासिक इंटरनेट। आधुनिक तकनीक।",
-
-heroTitle:"ऐसी वेबसाइटें जो<br>एक जैसी<br>नहीं दिखतीं।",
-
-heroText:"व्यक्तित्व वाला डिज़ाइन, साफ़ कोड और पुराने वेब का आकर्षण — तेज़, responsive और आधुनिक।",
-
-heroButton:"मेरी वेबसाइट बनाएँ →",
-heroProjects:"प्रोजेक्ट देखें",
-
-servicesTitle:"हम क्या करते हैं",
-servicesLabel:"[ 03 मुख्य सेवाएँ ]",
-
-service1Title:"पहचान वाला डिज़ाइन",
-service1Text:"ऐसे लेआउट जो सामान्य templates से अलग हों।",
-
-service2Title:"असली HTML",
-service2Text:"साफ़ संरचना, बेहतरीन CSS और ज़रूरत पड़ने पर JavaScript।",
-
-service3Title:"काम करने के लिए बनाया गया",
-service3Text:"Responsive, हल्का और सभी devices के लिए तैयार।",
-
-projectsTitle:"प्रोजेक्ट्स",
-
-projectTag:"WEB / INSTITUTIONAL",
-projectTitle:"इंटरनेट archive जैसा दिखने वाला website.",
-
-creativeTag:"CREATIVE",
-creativeTitle:"कम template.<br>ज़्यादा विचार.",
-
-manifesto:"घोषणापत्र",
-aboutTitle:"पुराना हमेशा outdated नहीं होता।",
-aboutText:"MBK SITES classic web aesthetics को modern development practices के साथ जोड़ता है।",
-
-technical:"तकनीकी जानकारी",
-factStyle:"स्टाइल",
-factStructure:"संरचना",
-factInteraction:"इंटरैक्शन",
-factResponsive:"Responsive",
-
-contactEyebrow:"आपकी अगली वेबसाइट यहाँ से शुरू होती है",
-contactTitle:"आइडिया को वेबसाइट में बदलें?",
-contactText:"हमें बताइए कि आप क्या बनाना चाहते हैं।"
-
-},
-
-"id":{
-
-navServices:"Layanan",
-navProjects:"Proyek",
-navAbout:"Tentang",
-navContact:"Kontak",
-
-status:"STATUS: ONLINE ●",
-
-heroEyebrow:"Internet klasik. Teknologi modern.",
-
-heroTitle:"Website yang<br>tidak terlihat<br>sama.",
-
-heroText:"Desain penuh karakter, kode bersih dan nuansa website klasik — cepat, responsif dan modern.",
-
-heroButton:"BUAT WEBSITE SAYA →",
-heroProjects:"LIHAT PROYEK",
-
-servicesTitle:"Apa yang kami lakukan",
-servicesLabel:"[ 03 LAYANAN UTAMA ]",
-
-service1Title:"Desain dengan identitas",
-service1Text:"Layout yang menghindari template generik dan menunjukkan karakter proyek.",
-
-service2Title:"HTML nyata",
-service2Text:"Struktur bersih, CSS rapi dan JavaScript hanya saat diperlukan.",
-
-service3Title:"Dibuat untuk bekerja",
-service3Text:"Responsif, ringan dan cocok untuk semua perangkat.",
-
-projectsTitle:"Proyek",
-
-projectTag:"WEB / INSTITUSIONAL",
-projectTitle:"Website dengan nuansa arsip internet.",
-
-creativeTag:"KREATIF",
-creativeTitle:"Lebih sedikit template.<br>Lebih banyak ide.",
-
-manifesto:"Manifesto",
-aboutTitle:"Tua bukan berarti ketinggalan zaman.",
-aboutText:"MBK SITES menggabungkan estetika web klasik dengan praktik pengembangan modern.",
-
-technical:"Spesifikasi teknis",
-factStyle:"Gaya",
-factStructure:"Struktur",
-factInteraction:"Interaksi",
-factResponsive:"Responsif",
-
-contactEyebrow:"Website berikutnya dimulai di sini",
-contactTitle:"MARI WUJUDKAN IDE ITU.",
-contactText:"Ceritakan apa yang ingin Anda buat."
-
-}
+    copyright:"© 2006 - 2026 MBK SITES — ALL RIGHTS RESERVED."
+  }
 
 };
 
 
-function changeLanguage(language){
+/* =========================================================
+   APLICAÇÃO DO IDIOMA
+========================================================= */
 
-const dictionary =
-translations[language] ||
-translations["pt-BR"];
+function changeLanguage(lang){
+
+  const t = translations[lang];
+
+  document.documentElement.lang =
+    lang === "pt" ? "pt-BR" : lang;
+
+  document.getElementById("languageLabel").textContent =
+    t.language;
+
+  document.getElementById("statusText").textContent =
+    t.status;
+
+  document.querySelector('[data-i18n="navServices"]').textContent =
+    t.navServices;
+
+  document.querySelector('[data-i18n="navProjects"]').textContent =
+    t.navProjects;
+
+  document.querySelector('[data-i18n="navAbout"]').textContent =
+    t.navAbout;
+
+  document.querySelector('[data-i18n="navContact"]').textContent =
+    t.navContact;
+
+  document.querySelector(".hero .eyebrow").textContent =
+    t.eyebrow;
+
+  document.getElementById("heroTitle").innerHTML =
+    t.title;
+
+  document.getElementById("heroText").textContent =
+    t.heroText;
+
+  document.getElementById("createButton").textContent =
+    t.create;
+
+  document.getElementById("projectsButton").textContent =
+    t.projects;
+
+  document.getElementById("servicesTitle").textContent =
+    t.servicesTitle;
+
+  document.getElementById("servicesCount").textContent =
+    t.servicesCount;
+
+  document.getElementById("designTitle").textContent =
+    t.designTitle;
+
+  document.getElementById("designText").textContent =
+    t.designText;
+
+  document.getElementById("codeTitle").textContent =
+    t.codeTitle;
+
+  document.getElementById("codeText").textContent =
+    t.codeText;
+
+  document.getElementById("webTitle").textContent =
+    t.webTitle;
+
+  document.getElementById("webText").textContent =
+    t.webText;
+
+  document.getElementById("portfolioTitle").textContent =
+    t.projectsTitle;
+
+  document.getElementById("portfolioArchive").textContent =
+    t.archive;
+
+  document.getElementById("projectOneTitle").textContent =
+    t.projectOneTitle;
+
+  document.getElementById("projectOneText").textContent =
+    t.projectOneText;
+
+  document.getElementById("projectTwoTitle").innerHTML =
+    t.projectTwoTitle;
+
+  document.getElementById("projectTwoText").textContent =
+    t.projectTwoText;
+
+  document.getElementById("manifestoLabel").textContent =
+    t.manifesto;
+
+  document.getElementById("manifestoTitle").textContent =
+    t.manifestoTitle;
+
+  document.getElementById("manifestoText").textContent =
+    t.manifestoText;
+
+  document.getElementById("technicalLabel").textContent =
+    t.technical;
+
+  document.getElementById("factStyle").textContent =
+    t.style;
+
+  document.getElementById("factStructure").textContent =
+    t.structure;
+
+  document.getElementById("factCss").textContent =
+    t.css;
+
+  document.getElementById("factInteraction").textContent =
+    t.interaction;
+
+  document.getElementById("factResponsive").textContent =
+    t.responsive;
+
+  document.getElementById("contactEyebrow").textContent =
+    t.contactEyebrow;
+
+  document.getElementById("contactTitle").textContent =
+    t.contactTitle;
+
+  document.getElementById("contactText").textContent =
+    t.contactText;
+
+  document.getElementById("copyright").textContent =
+    t.copyright;
+
+  /* salva o idioma escolhido */
+  localStorage.setItem("mbk-language",lang);
+}
+
+
+/* =========================================================
+   EVENTO DO SELECT
+========================================================= */
 
 document
-.querySelectorAll("[data-i18n]")
-.forEach(element=>{
+  .getElementById("language")
+  .addEventListener("change",function(){
 
-const key =
-element.getAttribute("data-i18n");
+    changeLanguage(this.value);
 
-if(dictionary[key]){
-element.innerHTML =
-dictionary[key];
-}
-
-});
+  });
 
 
-document.documentElement.lang =
-language;
-
-localStorage.setItem(
-"mbk-language",
-language
-);
-
-}
-
-
-/* seletor */
-
-const selector =
-document.getElementById(
-"languageSelector"
-);
-
-selector.addEventListener(
-"change",
-function(){
-
-changeLanguage(
-this.value
-);
-
-}
-);
-
-
-/* idioma salvo */
+/* =========================================================
+   CARREGA O ÚLTIMO IDIOMA
+========================================================= */
 
 const savedLanguage =
-localStorage.getItem(
-"mbk-language"
-);
+  localStorage.getItem("mbk-language") || "pt";
 
+document.getElementById("language").value =
+  savedLanguage;
 
-/* idioma do navegador */
-
-const browserLanguage =
-navigator.language;
-
-
-/* procura idioma compatível */
-
-let initialLanguage =
-savedLanguage;
-
-if(!initialLanguage){
-
-if(translations[browserLanguage]){
-
-initialLanguage =
-browserLanguage;
-
-}else{
-
-const shortLanguage =
-browserLanguage.split("-")[0];
-
-const found =
-Object.keys(translations)
-.find(language =>
-language.startsWith(shortLanguage)
-);
-
-initialLanguage =
-found || "pt-BR";
-
-}
-
-}
-
-
-/* aplica */
-
-selector.value =
-initialLanguage;
-
-changeLanguage(
-initialLanguage
-);
-
-
-/* suporte RTL */
-
-function updateDirection(language){
-
-const rtl =
-language === "ar";
-
-document.documentElement.dir =
-rtl ? "rtl" : "ltr";
-
-}
-
-const originalChangeLanguage =
-changeLanguage;
-
-
-/* mantém RTL + tradução */
-
-function applyLanguage(language){
-
-originalChangeLanguage(language);
-updateDirection(language);
-
-}
-
-selector.removeEventListener(
-"change",
-()=>{}
-);
-
-selector.addEventListener(
-"change",
-function(){
-
-applyLanguage(
-this.value
-);
-
-}
-);
-
-applyLanguage(
-initialLanguage
-);
+changeLanguage(savedLanguage);
 
 </script>
 
