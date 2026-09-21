@@ -43,12 +43,8 @@ body{
     margin:auto;
     padding:7px 20px;
     display:flex;
-    justify-content:space-between;
+    justify-content:center;
     align-items:center;
-}
-
-.language{
-    cursor:pointer;
 }
 
 /* =========================
@@ -199,7 +195,7 @@ nav a:hover{
 }
 
 .hero h1{
-    font-family:Georgia, "Times New Roman", serif;
+    font-family:Georgia,"Times New Roman",serif;
     font-size:clamp(38px,6vw,66px);
     line-height:1.04;
     margin-bottom:20px;
@@ -619,14 +615,6 @@ footer{
 
 @media(max-width:600px){
 
-    .topbar-inner{
-        justify-content:center;
-    }
-
-    .topbar-inner span:first-child{
-        display:none;
-    }
-
     .hero{
         min-height:560px;
     }
@@ -677,51 +665,96 @@ footer{
 
 <body>
 
-<!-- TOPO -->
+<!-- =========================
+     TOPO
+========================= -->
+
 <div class="topbar">
     <div class="topbar-inner">
-        <span>LiteCom Corretora de Seguros • Balneário Camboriú — SC</span>
-
-        <span class="language">
-            Sua linguagem: <strong>Português</strong> ·
-            <span onclick="setLanguage('en')">English</span>
+        <span>
+            LiteCom Corretora de Seguros • Balneário Camboriú — SC
         </span>
     </div>
 </div>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
     <div class="header-inner">
 
-        <a href="#" class="logo">
-            <div class="logo-mark">L</div>
+        <a href="#inicio" class="logo">
+
+            <div class="logo-mark">
+                L
+            </div>
 
             <div class="logo-text">
                 <strong>LiteCom</strong>
                 <span>Corretora de Seguros</span>
             </div>
+
         </a>
 
-        <button class="menu" onclick="toggleMenu()">☰</button>
+        <button
+            class="menu"
+            onclick="toggleMenu()"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </button>
 
         <nav id="menu">
-            <a href="#inicio">Início</a>
-            <a href="#seguros">Seguros</a>
-            <a href="#empresa">A LiteCom</a>
-            <a href="#contato">Contato</a>
-            <a href="#cotacao" class="nav-button">Cote pelo Site</a>
+
+            <a href="#inicio">
+                Início
+            </a>
+
+            <a href="#seguros">
+                Seguros
+            </a>
+
+            <a href="#empresa">
+                A LiteCom
+            </a>
+
+            <a href="#contato">
+                Contato
+            </a>
+
+            <!-- COTAÇÃO REAL -->
+            <a
+                href="https://LiteCom.segurofacil.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="nav-button"
+            >
+                Cote pelo Site
+            </a>
+
         </nav>
 
     </div>
+
 </header>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero" id="inicio">
+
     <div class="hero-inner">
 
         <div class="hero-content">
 
-            <span class="eyebrow">Proteção que acompanha você</span>
+            <span class="eyebrow">
+                Proteção que acompanha você
+            </span>
 
             <h1>
                 Segurança para o que
@@ -735,49 +768,83 @@ footer{
             </p>
 
             <div class="hero-buttons">
-                <a href="#cotacao" class="btn btn-primary">
+
+                <!-- COTAÇÃO REAL -->
+                <a
+                    href="https://LiteCom.segurofacil.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary"
+                >
                     Solicitar cotação →
                 </a>
 
-                <a href="#seguros" class="btn btn-outline">
+                <a
+                    href="#seguros"
+                    class="btn btn-outline"
+                >
                     Conheça nossos seguros
                 </a>
+
             </div>
 
         </div>
 
     </div>
+
 </section>
 
-<!-- NÚMEROS -->
+
+<!-- =========================
+     NÚMEROS
+========================= -->
+
 <section class="stats">
+
     <div class="stats-inner">
 
         <div class="stat">
             <strong>30+</strong>
-            <span>anos de experiência</span>
+            <span>
+                anos de experiência
+            </span>
         </div>
 
         <div class="stat">
             <strong>6+</strong>
-            <span>categorias de seguros</span>
+            <span>
+                categorias de seguros
+            </span>
         </div>
 
         <div class="stat">
             <strong>SC</strong>
-            <span>atendimento em Balneário Camboriú</span>
+            <span>
+                atendimento em Balneário Camboriú
+            </span>
         </div>
 
     </div>
+
 </section>
 
-<!-- SEGUROS -->
-<section class="section insurances" id="seguros">
+
+<!-- =========================
+     SEGUROS
+========================= -->
+
+<section
+    class="section insurances"
+    id="seguros"
+>
 
     <div class="container">
 
         <div class="section-heading">
-            <span class="small">Nossas soluções</span>
+
+            <span class="small">
+                Nossas soluções
+            </span>
 
             <h2>
                 Seguros para cada momento
@@ -788,63 +855,120 @@ footer{
                 Conte com a LiteCom para encontrar uma proteção
                 adequada às suas necessidades.
             </p>
+
         </div>
+
 
         <div class="cards">
 
+
             <article class="card">
-                <div class="card-icon">🚗</div>
-                <h3>Seguro Auto</h3>
+
+                <div class="card-icon">
+                    🚗
+                </div>
+
+                <h3>
+                    Seguro Auto
+                </h3>
+
                 <p>
                     Proteção para seu veículo e tranquilidade
                     para dirigir todos os dias.
                 </p>
+
             </article>
 
+
             <article class="card">
-                <div class="card-icon">♥</div>
-                <h3>Seguro de Vida</h3>
+
+                <div class="card-icon">
+                    ♥
+                </div>
+
+                <h3>
+                    Seguro de Vida
+                </h3>
+
                 <p>
                     Proteção financeira para você e para quem
                     depende de você.
                 </p>
+
             </article>
 
+
             <article class="card">
-                <div class="card-icon">🏢</div>
-                <h3>Seguro Empresarial</h3>
+
+                <div class="card-icon">
+                    🏢
+                </div>
+
+                <h3>
+                    Seguro Empresarial
+                </h3>
+
                 <p>
                     Soluções para proteger sua empresa,
                     estrutura e operação.
                 </p>
+
             </article>
 
+
             <article class="card">
-                <div class="card-icon">⌂</div>
-                <h3>Seguro Residencial</h3>
+
+                <div class="card-icon">
+                    ⌂
+                </div>
+
+                <h3>
+                    Seguro Residencial
+                </h3>
+
                 <p>
                     Sua casa protegida contra diferentes
                     imprevistos do dia a dia.
                 </p>
+
             </article>
 
+
             <article class="card">
-                <div class="card-icon">✈</div>
-                <h3>Seguro Viagem</h3>
+
+                <div class="card-icon">
+                    ✈
+                </div>
+
+                <h3>
+                    Seguro Viagem
+                </h3>
+
                 <p>
                     Viaje com mais tranquilidade e conte
                     com proteção durante sua jornada.
                 </p>
+
             </article>
 
+
             <article class="card">
-                <div class="card-icon">+</div>
-                <h3>Seguros Personalizados</h3>
+
+                <div class="card-icon">
+                    +
+                </div>
+
+                <h3>
+                    Seguros Personalizados
+                </h3>
+
                 <p>
                     Precisa de uma solução específica?
                     Fale com nossa equipe.
                 </p>
+
             </article>
+
 
         </div>
 
@@ -852,16 +976,26 @@ footer{
 
 </section>
 
-<!-- SOBRE -->
-<section class="section about" id="empresa">
+
+<!-- =========================
+     SOBRE
+========================= -->
+
+<section
+    class="section about"
+    id="empresa"
+>
 
     <div class="container">
 
         <div class="about-grid">
 
+
             <div class="about-box">
 
-                <h3>Experiência que protege.</h3>
+                <h3>
+                    Experiência que protege.
+                </h3>
 
                 <p>
                     São décadas acompanhando pessoas,
@@ -871,9 +1005,12 @@ footer{
 
             </div>
 
+
             <div class="about-text">
 
-                <span class="small">Sobre a LiteCom</span>
+                <span class="section-heading .small">
+                    Sobre a LiteCom
+                </span>
 
                 <h2>
                     Mais que um seguro:
@@ -894,10 +1031,21 @@ footer{
 
                 <ul class="checks">
 
-                    <li>Atendimento personalizado</li>
-                    <li>Experiência no mercado</li>
-                    <li>Variedade de soluções</li>
-                    <li>Suporte para suas decisões</li>
+                    <li>
+                        Atendimento personalizado
+                    </li>
+
+                    <li>
+                        Experiência no mercado
+                    </li>
+
+                    <li>
+                        Variedade de soluções
+                    </li>
+
+                    <li>
+                        Suporte para suas decisões
+                    </li>
 
                 </ul>
 
@@ -909,22 +1057,37 @@ footer{
 
 </section>
 
-<!-- CTA -->
-<section class="cta" id="cotacao">
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section
+    class="cta"
+    id="cotacao"
+>
 
     <div class="cta-inner">
 
         <div>
-            <h2>Vamos proteger o que importa?</h2>
+
+            <h2>
+                Vamos proteger o que importa?
+            </h2>
 
             <p>
                 Solicite uma cotação e fale com a equipe LiteCom.
             </p>
+
         </div>
 
+
+        <!-- WHATSAPP REAL -->
+
         <a
-            href="https://wa.me/"
+            href="https://wa.me/554108005730939"
             target="_blank"
+            rel="noopener noreferrer"
             class="btn btn-primary"
         >
             Falar pelo WhatsApp →
@@ -934,16 +1097,27 @@ footer{
 
 </section>
 
-<!-- CONTATO -->
-<section class="section contact" id="contato">
+
+<!-- =========================
+     CONTATO
+========================= -->
+
+<section
+    class="section contact"
+    id="contato"
+>
 
     <div class="container">
 
         <div class="section-heading">
 
-            <span class="small">Contato</span>
+            <span class="small">
+                Contato
+            </span>
 
-            <h2>Estamos à sua disposição.</h2>
+            <h2>
+                Estamos à sua disposição.
+            </h2>
 
             <p>
                 Entre em contato com a LiteCom para
@@ -952,42 +1126,91 @@ footer{
 
         </div>
 
+
         <div class="contact-grid">
+
 
             <div class="contact-card">
 
-                <h3>LiteCom Corretora de Seguros</h3>
+                <h3>
+                    LiteCom Corretora de Seguros
+                </h3>
 
                 <div class="contact-line">
+
                     <span>📍</span>
+
                     <div>
-                        <strong>Endereço</strong>
+
+                        <strong>
+                            Endereço
+                        </strong>
+
                         Balneário Camboriú — SC
+
                     </div>
+
                 </div>
 
+
                 <div class="contact-line">
+
                     <span>💬</span>
+
                     <div>
-                        <strong>WhatsApp</strong>
-                        Fale conosco para sua cotação
+
+                        <strong>
+                            WhatsApp
+                        </strong>
+
+                        <a
+                            href="https://wa.me/554108005730939"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style="
+                                color:#075da8;
+                                text-decoration:none;
+                            "
+                        >
+                            Fale conosco pelo WhatsApp
+                        </a>
+
                     </div>
+
                 </div>
 
             </div>
 
+
             <div class="contact-card">
 
-                <h3>Solicite sua cotação</h3>
+                <h3>
+                    Solicite sua cotação
+                </h3>
 
-                <p style="color:#65788b;margin-bottom:20px;">
-                    Conte-nos o que você deseja proteger
-                    e nossa equipe poderá orientar você.
+                <p
+                    style="
+                        color:#65788b;
+                        margin-bottom:20px;
+                    "
+                >
+                    Faça sua cotação online de forma
+                    rápida e prática.
                 </p>
 
-                <a href="#cotacao" class="btn"
-                   style="background:#075da8;color:white;">
-                    Quero fazer uma cotação
+                <!-- COTAÇÃO REAL -->
+
+                <a
+                    href="https://LiteCom.segurofacil.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn"
+                    style="
+                        background:#075da8;
+                        color:white;
+                    "
+                >
+                    Fazer cotação online →
                 </a>
 
             </div>
@@ -998,34 +1221,61 @@ footer{
 
 </section>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
     <div class="footer-inner">
 
         <div>
-            <div class="footer-logo">LiteCom</div>
+
+            <div class="footer-logo">
+                LiteCom
+            </div>
 
             <p class="footer-text">
                 Corretora de Seguros. Proteção para
                 pessoas, famílias, patrimônios e empresas.
             </p>
+
         </div>
 
+
         <div class="footer-links">
-            <a href="#inicio">Início</a>
-            <a href="#seguros">Seguros</a>
-            <a href="#empresa">Empresa</a>
-            <a href="#contato">Contato</a>
+
+            <a href="#inicio">
+                Início
+            </a>
+
+            <a href="#seguros">
+                Seguros
+            </a>
+
+            <a href="#empresa">
+                Empresa
+            </a>
+
+            <a href="#contato">
+                Contato
+            </a>
+
         </div>
 
     </div>
 
+
     <div class="copyright">
-        © 2026 LiteCom Corretora de Seguros. Todos os direitos reservados.
+
+        © 2026 LiteCom Corretora de Seguros.
+        Todos os direitos reservados.
+
     </div>
 
 </footer>
+
 
 <script>
 
@@ -1037,30 +1287,20 @@ function toggleMenu(){
 
 }
 
-document.querySelectorAll("nav a").forEach(link => {
 
-    link.addEventListener("click", () => {
+document
+    .querySelectorAll("nav a")
+    .forEach(link => {
 
-        document
-            .getElementById("menu")
-            .classList.remove("active");
+        link.addEventListener("click", () => {
+
+            document
+                .getElementById("menu")
+                .classList.remove("active");
+
+        });
 
     });
-
-});
-
-function setLanguage(language){
-
-    if(language === "en"){
-
-        alert(
-            "English version coming soon.\n\n" +
-            "Versão em inglês em breve."
-        );
-
-    }
-
-}
 
 </script>
 
