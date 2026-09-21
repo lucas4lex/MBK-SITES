@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBK SITES — Sites com alma de internet clássica</title>
+<meta name="description" content="MBK SITES — criação de sites com estética clássica, tecnologia moderna e personalidade.">
+<style>
+  :root{
+    --paper:#eee7d6;
+    --paper2:#f7f1e3;
+    --ink:#20201c;
+    --muted:#666154;
+    --line:#a9a18f;
+    --accent:#173f35;
+    --gold:#b48a3b;
+    --shadow:4px 4px 0 rgba(32,32,28,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 20% 10%,rgba(255,255,255,.6),transparent 28%),
+      repeating-linear-gradient(0deg,rgba(32,32,28,.025) 0 1px,transparent 1px 4px),
+      var(--paper);
+    font-family:Georgia,"Times New Roman",serif;
+    line-height:1.55;
+  }
+  a{color:inherit}
+  .wrap{width:min(1120px,92%);margin:auto}
+  header{
+    border-bottom:3px double var(--ink);
+    background:rgba(247,241,227,.9);
+  }
+  .top{
+    min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .brand{
+    display:flex;align-items:center;gap:12px;text-decoration:none;
+  }
+  .logo{
+    width:46px;height:46px;border:2px solid var(--ink);
+    display:grid;place-items:center;font-weight:bold;font-family:Arial,sans-serif;
+    background:var(--accent);color:#fff;box-shadow:var(--shadow);
+  }
+  .brand strong{font:700 25px Georgia,serif;letter-spacing:-1px}
+  .brand small{display:block;color:var(--muted);font:11px Arial,sans-serif;letter-spacing:2px}
+  nav{font:700 13px Arial,sans-serif}
+  nav a{margin-left:22px;text-decoration:none;text-transform:uppercase}
+  nav a:hover{color:var(--gold);text-decoration:underline}
+  .ticker{
+    border-top:1px solid var(--line);padding:7px 0;
+    font:12px "Courier New",monospace;letter-spacing:.5px;
+    display:flex;justify-content:space-between;gap:15px
+  }
+  .hero{padding:74px 0 60px;display:grid;grid-template-columns:1.25fr .75fr;gap:55px;align-items:center}
+  .eyebrow{
+    font:700 12px Arial,sans-serif;letter-spacing:3px;text-transform:uppercase;color:var(--accent)
+  }
+  h1{font-size:clamp(48px,7vw,86px);line-height:.92;margin:14px 0 24px;letter-spacing:-4px}
+  .hero p{font-size:19px;max-width:650px;color:#49463d}
+  .btn{
+    display:inline-block;margin-top:14px;padding:12px 18px;
+    border:2px solid var(--ink);background:var(--accent);color:white;
+    text-decoration:none;font:700 13px Arial,sans-serif;box-shadow:var(--shadow)
+  }
+  .btn.alt{background:transparent;color:var(--ink);margin-left:8px}
+  .stamp{
+    border:2px solid var(--ink);padding:25px;background:var(--paper2);
+    transform:rotate(1.5deg);box-shadow:8px 8px 0 rgba(32,32,28,.12)
+  }
+  .stamp h2{margin:0 0 10px;font-size:29px}
+  .stamp .screen{
+    border:2px inset #777;background:#101713;color:#d8e7d4;
+    padding:17px;font:13px/1.55 "Courier New",monospace;
+    min-height:180px;
+  }
+  .cursor{animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .rule{border:0;border-top:3px double var(--ink);margin:0}
+  section{padding:60px 0}
+  .section-title{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);padding-bottom:13px;margin-bottom:30px}
+  h2{font-size:38px;line-height:1;margin:0}
+  .section-title span{font:11px "Courier New",monospace;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{
+    border:1px solid var(--ink);padding:22px;background:rgba(247,241,227,.62);
+    box-shadow:3px 3px 0 rgba(32,32,28,.13)
+  }
+  .card .num{font:700 12px "Courier New",monospace;color:var(--gold)}
+  .card h3{font-size:25px;margin:9px 0}
+  .card p{color:var(--muted);font-size:15px}
+  .portfolio{display:grid;grid-template-columns:1.4fr .8fr;gap:18px}
+  .project{
+    min-height:260px;border:2px solid var(--ink);padding:22px;
+    background:var(--paper2);position:relative;overflow:hidden
+  }
+  .project:after{
+    content:"MBK";position:absolute;right:-15px;bottom:-45px;
+    font:bold 150px Arial,sans-serif;color:rgba(23,63,53,.07)
+  }
+  .project.big{min-height:380px;background:linear-gradient(135deg,#f7f1e3 0 55%,#dcd2b9 55%)}
+  .tag{display:inline-block;border:1px solid var(--ink);padding:4px 8px;font:10px Arial,sans-serif;text-transform:uppercase}
+  .project h3{font-size:31px;max-width:450px;margin:18px 0 8px}
+  .project p{max-width:450px}
+  .project small{font:11px "Courier New",monospace}
+  .about{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+    border-top:3px double var(--ink);border-bottom:3px double var(--ink)
+  }
+  .about article{padding:45px 0}
+  .facts{list-style:none;padding:0;margin:0}
+  .facts li{border-bottom:1px dotted var(--line);padding:10px 0;display:flex;justify-content:space-between;gap:20px}
+  .facts b{font-family:Arial,sans-serif;font-size:12px}
+  .contact{
+    text-align:center;padding:80px 20px
+  }
+  .contact h2{font-size:52px}
+  .contact p{color:var(--muted)}
+  footer{
+    border-top:3px double var(--ink);padding:20px 0;
+    font:11px "Courier New",monospace;color:var(--muted)
+  }
+  footer .wrap{display:flex;justify-content:space-between;gap:15px}
+  @media(max-width:800px){
+    nav{display:none}.hero,.portfolio,.about{grid-template-columns:1fr}.grid{grid-template-columns:1fr}
+    .hero{padding-top:50px}.stamp{transform:none}.contact h2{font-size:39px}
+    footer .wrap{flex-direction:column}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap top">
+    <a class="brand" href="#">
+      <span class="logo">MBK</span>
+      <span><strong>MBK SITES</strong><small>WEB DESIGN &amp; DEVELOPMENT</small></span>
+    </a>
+    <nav>
+      <a href="#servicos">Serviços</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+  <div class="wrap ticker">
+    <span>STATUS: ONLINE ●</span>
+    <span>EST. 2006 — CURITIBA / BRASIL - SÃO PAULO / BRASIL</span>
+    <span>HTML • CSS • JS</span>
+  </div>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <div class="eyebrow">Internet clássica. Tecnologia de agora.</div>
+      <h1>Sites que<br>não parecem<br>iguais.</h1>
+      <p>Design com personalidade, código limpo e aquele charme de site antigo — só que rápido, responsivo e preparado pra internet de hoje.</p>
+      <a class="btn" href="#contato">CRIAR MEU SITE →</a>
+      <a class="btn alt" href="#projetos">VER PROJETOS</a>
+    </div>
+    <aside class="stamp">
+      <h2>WEB.LOG</h2>
+      <div class="screen">
+        &gt; iniciando MBK_SITES...<br>
+        &gt; carregando criatividade ██████ 100%<br>
+        &gt; verificando responsividade... OK<br>
+        &gt; 2006... OK<br>
+        &gt; 500 sites criados... OK<br><br>
+        &gt; pronto para criar<span class="cursor">_</span>
+      </div>
+    </aside>
+  </section>
+
+  <hr class="rule">
+
+  <section class="wrap" id="servicos">
+    <div class="section-title">
+      <h2>O que fazemos</h2><span>[ 03 SERVIÇOS PRINCIPAIS ]</span>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <div class="num">01 / DESIGN</div>
+        <h3>Visual com identidade</h3>
+        <p>Layouts que fogem do “template genérico” e transformam a personalidade do projeto em interface.</p>
+      </article>
+      <article class="card">
+        <div class="num">02 / CODE</div>
+        <h3>HTML de verdade</h3>
+        <p>Estrutura sem frescura, CSS caprichado e JavaScript quando ele realmente precisa estar ali.</p>
+      </article>
+      <article class="card">
+        <div class="num">03 / WEB</div>
+        <h3>Feito pra funcionar</h3>
+        <p>Responsivo, acessível, leve e pensado para funcionar bem no celular, tablet e computador.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap" id="projetos">
+    <div class="section-title">
+      <h2>Projetos</h2><span>[ ARQUIVO MBK / 2026 ]</span>
+    </div>
+    <div class="portfolio">
+      <article class="project big">
+        <span class="tag">WEB / INSTITUCIONAL</span>
+        <h3>Um site com cara de arquivo da internet.</h3>
+        <p>Tipografia editorial, texturas discretas e navegação direta. Nostalgia na estética; performance na engenharia.</p>
+        <small>HTML5 / CSS3 / VANILLA JS</small>
+      </article>
+      <div class="project">
+        <span class="tag">CRIATIVO</span>
+        <h3>Menos template.<br>Mais ideia.</h3>
+        <p>Interfaces personalizadas para marcas, criadores e projetos que merecem ter uma presença própria.</p>
+        <small>DESIGN SYSTEM / UI</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap about" id="sobre">
+    <article>
+      <div class="eyebrow">Manifesto</div>
+      <h2>Velho não é ultrapassado.</h2>
+      <p>A MBK SITES mistura referências da web clássica com práticas modernas de desenvolvimento. A ideia é simples: fazer sites memoráveis, sem sacrificar velocidade, compatibilidade ou usabilidade.</p>
+    </article>
+    <article>
+      <div class="eyebrow">Ficha técnica</div>
+      <ul class="facts">
+        <li><span>Estilo</span><b>RETRO / MODERNO</b></li>
+        <li><span>Estrutura</span><b>HTML5</b></li>
+        <li><span>Estilo</span><b>CSS PURO</b></li>
+        <li><span>Interação</span><b>JAVASCRIPT</b></li>
+        <li><span>Responsivo</span><b>SIM ★</b></li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="contact" id="contato">
+    <div class="eyebrow">Seu próximo site começa aqui</div>
+    <h2>VAMO TIRAR A IDEIA DO PAPEL?</h2>
+    <p>Conte o que vc quer criar. A MBK SITES cuida do resto.</p>
+    <a class="btn" href="mailto:contato@mbksites.com">CONTATO@MBKSITES.COM →</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2006 - 2026 MBK SITES — TODOS OS DIREITOS RESERVADOS.</span>
+    <span>FEITO COM HTML, CSS E CAFÉ ☕</span>
+  </div>
+</footer>
+</body>
+</html>
