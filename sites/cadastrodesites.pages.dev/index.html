@@ -2,62 +2,29 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cadastro de Sites</title>
 
-    <meta
-        name="description"
-        content="Diretório de sites da internet."
-    >
-
-    <link
-        rel="stylesheet"
-        href="estilo.css"
-    >
-
+    <link rel="stylesheet" href="./estilo.css">
 </head>
 
-
 <body>
-
 
 <header class="topo">
 
     <div class="topo-interno">
 
-        <a
-            href="index.html"
-            class="logo"
-        >
+        <a href="./index.html" class="logo">
             CADASTRO<span>DE</span>SITES
         </a>
 
-
         <nav>
-
-            <a href="index.html">
-                Início
-            </a>
-
-            <a href="index.html#sites">
-                Sites
-            </a>
-
-            <a href="index.html#categorias">
-                Categorias
-            </a>
-
-            <a href="cadastros.html">
-                Cadastros
-            </a>
-
+            <a href="./index.html">Início</a>
+            <a href="#sites">Sites</a>
+            <a href="#categorias">Categorias</a>
+            <a href="./cadastros.html">Cadastros</a>
         </nav>
 
     </div>
@@ -65,31 +32,19 @@
 </header>
 
 
-
 <main class="container">
 
 
-    <!--
-    ========================================
-    RESULTADO
-    ========================================
-    -->
+    <!-- =====================================
+         RESULTADO DO ?c= OU ?categoria=
+    ====================================== -->
 
-    <section id="resultado">
-
-        <div class="carregando">
-            Carregando...
-        </div>
-
-    </section>
+    <section id="resultado"></section>
 
 
-
-    <!--
-    ========================================
-    LISTA DE SITES
-    ========================================
-    -->
+    <!-- =====================================
+         SITES CADASTRADOS
+    ====================================== -->
 
     <section id="sites">
 
@@ -105,12 +60,9 @@
     </section>
 
 
-
-    <!--
-    ========================================
-    CATEGORIAS
-    ========================================
-    -->
+    <!-- =====================================
+         CATEGORIAS
+    ====================================== -->
 
     <section
         id="categorias"
@@ -121,7 +73,6 @@
             CATEGORIAS
         </div>
 
-
         <div
             id="listaCategorias"
             class="categorias"
@@ -130,12 +81,9 @@
     </section>
 
 
-
-    <!--
-    ========================================
-    SOBRE
-    ========================================
-    -->
+    <!-- =====================================
+         SOBRE
+    ====================================== -->
 
     <section
         id="sobre"
@@ -146,7 +94,6 @@
             SOBRE O CADASTRO DE SITES
         </div>
 
-
         <div class="conteudo">
 
             <p>
@@ -155,24 +102,25 @@
                 sites na internet.
             </p>
 
-
-            <p>
-                Cada site possui uma página própria
-                dentro do diretório.
-            </p>
-
-
             <div class="aviso">
 
-                <strong>Exemplos:</strong>
+                Você pode acessar um site específico usando:
 
-                <br>
+                <br><br>
 
-                ?c=multipage.pages.dev
+                <strong>
+                    ?c=multipage.pages.dev
+                </strong>
 
-                <br>
+                <br><br>
 
-                ?categoria=Tecnologia
+                Ou acessar uma categoria:
+
+                <br><br>
+
+                <strong>
+                    ?categoria=Tecnologia
+                </strong>
 
             </div>
 
@@ -180,9 +128,7 @@
 
     </section>
 
-
 </main>
-
 
 
 <footer>
@@ -193,16 +139,12 @@
             CADASTRO DE SITES
         </strong>
 
-
         <p>
             Diretório independente de sites.
         </p>
 
-
         <div class="copyright">
-
             © 2026 Cadastro de Sites
-
         </div>
 
     </div>
@@ -210,17 +152,20 @@
 </footer>
 
 
+<!-- IMPORTANTE:
+     cadastro.js vem ANTES do código que
+     utiliza a variável "cadastros".
+-->
 
-<script src="cadastro.js"></script>
+<script src="./cadastro.js"></script>
 
 
 <script>
 
-
 /*
-========================================
+==================================================
  ELEMENTOS
-========================================
+==================================================
 */
 
 const resultado =
@@ -233,18 +178,16 @@ const listaCategorias =
     document.getElementById("listaCategorias");
 
 
-
 /*
-========================================
- PARÂMETROS DA URL
-========================================
+==================================================
+ PARÂMETROS
+==================================================
 */
 
 const parametros =
     new URLSearchParams(
         window.location.search
     );
-
 
 const chave =
     parametros.get("c");
@@ -253,12 +196,67 @@ const categoria =
     parametros.get("categoria");
 
 
+/*
+==================================================
+ FUNÇÃO: CRIAR CARD
+==================================================
+*/
+
+function criarCard(cadastro) {
+
+    const card =
+        document.createElement("article");
+
+    card.className =
+        "site-card";
+
+
+    card.innerHTML = `
+
+        <div class="card-categoria">
+
+            <a
+                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
+            >
+                ${cadastro.categoria}
+            </a>
+
+        </div>
+
+
+        <h2>
+            ${cadastro.nome}
+        </h2>
+
+
+        <div class="card-url">
+            ${cadastro.url}
+        </div>
+
+
+        <p>
+            ${cadastro.descricao}
+        </p>
+
+
+        <a
+            href="?c=${encodeURIComponent(cadastro.chave)}"
+        >
+            VER CADASTRO →
+        </a>
+
+    `;
+
+
+    listaSites.appendChild(card);
+
+}
+
 
 /*
-========================================
- MOSTRAR SITE
- ?c=
-========================================
+==================================================
+ ?c= SITE ESPECÍFICO
+==================================================
 */
 
 if (chave) {
@@ -276,7 +274,7 @@ if (chave) {
 
         resultado.innerHTML = `
 
-            <article class="pagina-site">
+            <section class="pagina-site">
 
                 <div class="etiqueta">
                     SITE CADASTRADO
@@ -289,21 +287,16 @@ if (chave) {
 
 
                 <div class="endereco">
-
                     ${cadastro.url}
-
                 </div>
 
 
                 <p class="descricao">
-
                     ${cadastro.descricao}
-
                 </p>
 
 
                 <div class="informacoes">
-
 
                     <div>
 
@@ -336,7 +329,6 @@ if (chave) {
 
                     </div>
 
-
                 </div>
 
 
@@ -349,10 +341,18 @@ if (chave) {
                     VISITAR SITE →
                 </a>
 
-
-            </article>
+            </section>
 
         `;
+
+
+        /*
+        MOSTRA TODOS OS SITES
+        */
+
+        cadastros.forEach(
+            criarCard
+        );
 
     }
 
@@ -361,53 +361,56 @@ if (chave) {
 
         resultado.innerHTML = `
 
-            <article class="pagina-site erro">
+            <section class="pagina-site erro">
 
                 <div class="etiqueta">
                     NÃO ENCONTRADO
                 </div>
 
-
                 <h1>
                     Site não encontrado
                 </h1>
 
-
                 <p>
-                    Não encontramos um cadastro para:
+                    Não existe cadastro para:
                 </p>
-
 
                 <code>
                     ${chave}
                 </code>
 
-
                 <br><br>
 
-
                 <a
-                    href="index.html"
+                    href="./index.html"
                     class="botao"
                 >
                     VOLTAR AO INÍCIO
                 </a>
 
-            </article>
+            </section>
 
         `;
+
+
+        /*
+        Mesmo com erro,
+        mantém a lista geral.
+        */
+
+        cadastros.forEach(
+            criarCard
+        );
 
     }
 
 }
 
 
-
 /*
-========================================
- MOSTRAR CATEGORIA
- ?categoria=
-========================================
+==================================================
+ ?categoria= FILTRO
+==================================================
 */
 
 else if (categoria) {
@@ -423,30 +426,26 @@ else if (categoria) {
 
     resultado.innerHTML = `
 
-        <section class="pagina-site">
+        <section class="pagina-site categoria-pagina">
 
             <div class="etiqueta">
                 CATEGORIA
             </div>
 
-
             <h1>
                 ${categoria}
             </h1>
 
-
             <p class="descricao">
 
-                Sites cadastrados na categoria
-                <strong>${categoria}</strong>.
+                Sites cadastrados nesta categoria.
 
             </p>
-
 
             <div class="contador">
 
                 ${resultados.length}
-                site(s) cadastrado(s)
+                site(s) encontrado(s)
 
             </div>
 
@@ -456,49 +455,27 @@ else if (categoria) {
 
 
     /*
-     * NENHUM RESULTADO
-     */
+    Limpa a lista
+    */
 
-    if (resultados.length === 0) {
-
-        listaSites.innerHTML = `
-
-            <div class="bloco">
-
-                <div class="conteudo">
-
-                    Nenhum site foi cadastrado
-                    nesta categoria.
-
-                </div>
-
-            </div>
-
-        `;
-
-    }
+    listaSites.innerHTML = "";
 
 
     /*
-     * RESULTADOS
-     */
+    Mostra apenas a categoria
+    */
 
-    else {
-
-        resultados.forEach(
-            criarCard
-        );
-
-    }
+    resultados.forEach(
+        criarCard
+    );
 
 }
 
 
-
 /*
-========================================
- PÁGINA NORMAL
-========================================
+==================================================
+ SEM PARÂMETRO
+==================================================
 */
 
 else {
@@ -511,29 +488,20 @@ else {
                 DIRETÓRIO DE SITES
             </div>
 
-
             <h1>
-
                 Encontre sites
                 <br>
                 na internet.
-
             </h1>
 
-
             <p>
-
                 Um catálogo simples,
                 rápido e organizado para
                 descobrir novos sites.
-
             </p>
 
-
             <div class="exemplo-url">
-
                 cadastrodesites.pages.dev/?c=seusite.com
-
             </div>
 
         </section>
@@ -542,8 +510,8 @@ else {
 
 
     /*
-     * MOSTRAR TODOS
-     */
+    Todos os sites
+    */
 
     cadastros.forEach(
         criarCard
@@ -552,82 +520,15 @@ else {
 }
 
 
-
 /*
-========================================
- CRIAR CARD
-========================================
-*/
-
-function criarCard(cadastro) {
-
-    const card =
-        document.createElement("article");
-
-
-    card.className =
-        "site-card";
-
-
-    card.innerHTML = `
-
-        <div class="card-categoria">
-
-            <a
-                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
-            >
-                ${cadastro.categoria}
-            </a>
-
-        </div>
-
-
-        <h2>
-
-            ${cadastro.nome}
-
-        </h2>
-
-
-        <div class="card-url">
-
-            ${cadastro.url}
-
-        </div>
-
-
-        <p>
-
-            ${cadastro.descricao}
-
-        </p>
-
-
-        <a
-            href="?c=${encodeURIComponent(cadastro.chave)}"
-        >
-            VER CADASTRO →
-
-        </a>
-
-    `;
-
-
-    listaSites.appendChild(card);
-
-}
-
-
-
-/*
-========================================
+==================================================
  CATEGORIAS
-========================================
+ SEMPRE APARECEM
+==================================================
 */
 
 listarCategorias().forEach(
     function(nomeCategoria) {
-
 
         const link =
             document.createElement("a");
@@ -642,10 +543,12 @@ listarCategorias().forEach(
 
         link.innerHTML = `
 
-            ${nomeCategoria}
+            <span>
+                ${nomeCategoria}
+            </span>
 
             <small>
-                (${quantidadeCategoria(nomeCategoria)})
+                ${quantidadeCategoria(nomeCategoria)}
             </small>
 
         `;
@@ -656,9 +559,7 @@ listarCategorias().forEach(
     }
 );
 
-
 </script>
-
 
 </body>
 
