@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro de Sites</title>
+<head>
+
+    <meta charset="UTF-8">
+
     <meta
-        name="description"
-        content="Diretório de sites brasileiros."
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
-    <link rel="stylesheet" href="estilo.css">
+    <title>Cadastro de Sites</title>
+
+    <meta
+        name="description"
+        content="Diretório de sites da internet."
+    >
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
 </head>
 
+
 <body>
+
 
 <header class="topo">
 
     <div class="topo-interno">
 
-        <a href="index.html" class="logo">
+        <a
+            href="index.html"
+            class="logo"
+        >
             CADASTRO<span>DE</span>SITES
         </a>
 
+
         <nav>
-            <a href="index.html">Início</a>
-            <a href="#sites">Sites</a>
-            <a href="#categorias">Categorias</a>
-            <a href="#sobre">Sobre</a>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="index.html#sites">
+                Sites
+            </a>
+
+            <a href="index.html#categorias">
+                Categorias
+            </a>
+
+            <a href="cadastros.html">
+                Cadastros
+            </a>
+
         </nav>
 
     </div>
@@ -35,101 +65,144 @@
 </header>
 
 
+
 <main class="container">
 
-    <!-- SITE INDIVIDUAL -->
-    <section id="site">
+
+    <!--
+    ========================================
+    RESULTADO
+    ========================================
+    -->
+
+    <section id="resultado">
 
         <div class="carregando">
-            Carregando cadastro...
+            Carregando...
         </div>
 
     </section>
 
 
-    <!-- LISTA GERAL -->
-    <section id="lista">
+
+    <!--
+    ========================================
+    LISTA DE SITES
+    ========================================
+    -->
+
+    <section id="sites">
 
         <div class="titulo-secao">
-            <span>SITES CADASTRADOS</span>
+            SITES CADASTRADOS
         </div>
 
-        <div id="sites" class="sites-grid"></div>
+        <div
+            id="listaSites"
+            class="sites-grid"
+        ></div>
 
     </section>
 
 
-    <!-- CATEGORIAS -->
 
-    <section id="categorias" class="bloco">
+    <!--
+    ========================================
+    CATEGORIAS
+    ========================================
+    -->
+
+    <section
+        id="categorias"
+        class="bloco"
+    >
 
         <div class="titulo-secao">
-            <span>CATEGORIAS</span>
+            CATEGORIAS
         </div>
 
-        <div class="categorias">
 
-            <a href="#">Tecnologia</a>
-            <a href="#">Empresas</a>
-            <a href="#">Serviços</a>
-            <a href="#">Educação</a>
-            <a href="#">Automóveis</a>
-            <a href="#">Seguros</a>
-            <a href="#">Comércio</a>
-            <a href="#">Entretenimento</a>
-            <a href="#">Notícias</a>
-            <a href="#">Blogs</a>
-            <a href="#">Outros</a>
-
-        </div>
+        <div
+            id="listaCategorias"
+            class="categorias"
+        ></div>
 
     </section>
 
 
-    <!-- SOBRE -->
 
-    <section id="sobre" class="bloco">
+    <!--
+    ========================================
+    SOBRE
+    ========================================
+    -->
+
+    <section
+        id="sobre"
+        class="bloco"
+    >
 
         <div class="titulo-secao">
-            <span>SOBRE O CADASTRO DE SITES</span>
+            SOBRE O CADASTRO DE SITES
         </div>
+
 
         <div class="conteudo">
 
             <p>
-                O Cadastro de Sites é um diretório para encontrar
-                empresas, projetos, serviços e páginas na internet.
+                O Cadastro de Sites é um diretório
+                independente para encontrar e divulgar
+                sites na internet.
             </p>
+
 
             <p>
-                Cada site possui seu próprio cadastro e pode ser
-                acessado através de um endereço simples.
+                Cada site possui uma página própria
+                dentro do diretório.
             </p>
 
+
             <div class="aviso">
-                Exemplo:
-                <strong>?c=multipage.pages.dev</strong>
+
+                <strong>Exemplos:</strong>
+
+                <br>
+
+                ?c=multipage.pages.dev
+
+                <br>
+
+                ?categoria=Tecnologia
+
             </div>
 
         </div>
 
     </section>
 
+
 </main>
+
 
 
 <footer>
 
     <div class="footer-interno">
 
-        <strong>CADASTRO DE SITES</strong>
+        <strong>
+            CADASTRO DE SITES
+        </strong>
+
 
         <p>
             Diretório independente de sites.
         </p>
 
+
         <div class="copyright">
+
             © 2026 Cadastro de Sites
+
         </div>
 
     </div>
@@ -137,134 +210,269 @@
 </footer>
 
 
-<script src="cadastros.js"></script>
+
+<script src="cadastro.js"></script>
+
 
 <script>
 
-    const parametro =
-        new URLSearchParams(window.location.search).get("c");
 
-    const areaSite =
-        document.getElementById("site");
+/*
+========================================
+ ELEMENTOS
+========================================
+*/
 
-    const areaLista =
-        document.getElementById("sites");
+const resultado =
+    document.getElementById("resultado");
+
+const listaSites =
+    document.getElementById("listaSites");
+
+const listaCategorias =
+    document.getElementById("listaCategorias");
+
+
+
+/*
+========================================
+ PARÂMETROS DA URL
+========================================
+*/
+
+const parametros =
+    new URLSearchParams(
+        window.location.search
+    );
+
+
+const chave =
+    parametros.get("c");
+
+const categoria =
+    parametros.get("categoria");
+
+
+
+/*
+========================================
+ MOSTRAR SITE
+ ?c=
+========================================
+*/
+
+if (chave) {
+
+    const cadastro =
+        encontrarCadastro(chave);
+
+
+    if (cadastro) {
+
+        document.title =
+            cadastro.nome +
+            " — Cadastro de Sites";
+
+
+        resultado.innerHTML = `
+
+            <article class="pagina-site">
+
+                <div class="etiqueta">
+                    SITE CADASTRADO
+                </div>
+
+
+                <h1>
+                    ${cadastro.nome}
+                </h1>
+
+
+                <div class="endereco">
+
+                    ${cadastro.url}
+
+                </div>
+
+
+                <p class="descricao">
+
+                    ${cadastro.descricao}
+
+                </p>
+
+
+                <div class="informacoes">
+
+
+                    <div>
+
+                        <small>
+                            CATEGORIA
+                        </small>
+
+                        <strong>
+
+                            <a
+                                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
+                            >
+                                ${cadastro.categoria}
+                            </a>
+
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            CADASTRADO EM
+                        </small>
+
+                        <strong>
+                            ${cadastro.data}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+                <a
+                    href="${cadastro.urlCompleta}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="botao"
+                >
+                    VISITAR SITE →
+                </a>
+
+
+            </article>
+
+        `;
+
+    }
+
+
+    else {
+
+        resultado.innerHTML = `
+
+            <article class="pagina-site erro">
+
+                <div class="etiqueta">
+                    NÃO ENCONTRADO
+                </div>
+
+
+                <h1>
+                    Site não encontrado
+                </h1>
+
+
+                <p>
+                    Não encontramos um cadastro para:
+                </p>
+
+
+                <code>
+                    ${chave}
+                </code>
+
+
+                <br><br>
+
+
+                <a
+                    href="index.html"
+                    class="botao"
+                >
+                    VOLTAR AO INÍCIO
+                </a>
+
+            </article>
+
+        `;
+
+    }
+
+}
+
+
+
+/*
+========================================
+ MOSTRAR CATEGORIA
+ ?categoria=
+========================================
+*/
+
+else if (categoria) {
+
+    const resultados =
+        encontrarCategoria(categoria);
+
+
+    document.title =
+        categoria +
+        " — Cadastro de Sites";
+
+
+    resultado.innerHTML = `
+
+        <section class="pagina-site">
+
+            <div class="etiqueta">
+                CATEGORIA
+            </div>
+
+
+            <h1>
+                ${categoria}
+            </h1>
+
+
+            <p class="descricao">
+
+                Sites cadastrados na categoria
+                <strong>${categoria}</strong>.
+
+            </p>
+
+
+            <div class="contador">
+
+                ${resultados.length}
+                site(s) cadastrado(s)
+
+            </div>
+
+        </section>
+
+    `;
 
 
     /*
-     * MOSTRAR SITE INDIVIDUAL
+     * NENHUM RESULTADO
      */
 
-    if (parametro) {
+    if (resultados.length === 0) {
 
-        const cadastro =
-            encontrarCadastro(parametro);
+        listaSites.innerHTML = `
 
-        if (cadastro) {
+            <div class="bloco">
 
-            document.title =
-                cadastro.nome + " — Cadastro de Sites";
+                <div class="conteudo">
 
-            areaSite.innerHTML = `
+                    Nenhum site foi cadastrado
+                    nesta categoria.
 
-                <article class="pagina-site">
-
-                    <div class="etiqueta">
-                        SITE CADASTRADO
-                    </div>
-
-                    <h1>${cadastro.nome}</h1>
-
-                    <div class="endereco">
-                        ${cadastro.url}
-                    </div>
-
-                    <p class="descricao">
-                        ${cadastro.descricao}
-                    </p>
-
-                    <div class="informacoes">
-
-                        <div>
-                            <small>CATEGORIA</small>
-                            <strong>${cadastro.categoria}</strong>
-                        </div>
-
-                        <div>
-                            <small>CADASTRADO EM</small>
-                            <strong>${cadastro.data}</strong>
-                        </div>
-
-                    </div>
-
-                    <a
-                        href="${cadastro.urlCompleta}"
-                        target="_blank"
-                        rel="noopener"
-                        class="botao"
-                    >
-                        VISITAR SITE →
-                    </a>
-
-                </article>
-
-            `;
-
-        } else {
-
-            areaSite.innerHTML = `
-
-                <article class="pagina-site erro">
-
-                    <div class="etiqueta">
-                        CADASTRO NÃO ENCONTRADO
-                    </div>
-
-                    <h1>Site não encontrado</h1>
-
-                    <p>
-                        Não existe nenhum cadastro para:
-                    </p>
-
-                    <code>${parametro}</code>
-
-                    <br><br>
-
-                    <a href="index.html" class="botao">
-                        VOLTAR AO INÍCIO
-                    </a>
-
-                </article>
-
-            `;
-
-        }
-
-    } else {
-
-        areaSite.innerHTML = `
-
-            <section class="hero">
-
-                <div class="etiqueta">
-                    DIRETÓRIO DE SITES
                 </div>
 
-                <h1>
-                    Encontre sites<br>
-                    na internet.
-                </h1>
-
-                <p>
-                    Um catálogo simples, rápido e organizado
-                    para descobrir novos sites.
-                </p>
-
-                <div class="exemplo-url">
-                    cadastrodesites.pages.dev/?c=seusite.com
-                </div>
-
-            </section>
+            </div>
 
         `;
 
@@ -272,47 +480,186 @@
 
 
     /*
-     * LISTAR TODOS OS CADASTROS
+     * RESULTADOS
      */
 
-    cadastros.forEach(function(cadastro) {
+    else {
 
-        const item =
-            document.createElement("article");
+        resultados.forEach(
+            criarCard
+        );
 
-        item.className = "site-card";
+    }
 
-        item.innerHTML = `
+}
 
-            <div class="card-categoria">
-                ${cadastro.categoria}
+
+
+/*
+========================================
+ PÁGINA NORMAL
+========================================
+*/
+
+else {
+
+    resultado.innerHTML = `
+
+        <section class="hero">
+
+            <div class="etiqueta">
+                DIRETÓRIO DE SITES
             </div>
 
-            <h2>
-                ${cadastro.nome}
-            </h2>
 
-            <div class="card-url">
-                ${cadastro.url}
-            </div>
+            <h1>
+
+                Encontre sites
+                <br>
+                na internet.
+
+            </h1>
+
 
             <p>
-                ${cadastro.descricao}
+
+                Um catálogo simples,
+                rápido e organizado para
+                descobrir novos sites.
+
             </p>
 
+
+            <div class="exemplo-url">
+
+                cadastrodesites.pages.dev/?c=seusite.com
+
+            </div>
+
+        </section>
+
+    `;
+
+
+    /*
+     * MOSTRAR TODOS
+     */
+
+    cadastros.forEach(
+        criarCard
+    );
+
+}
+
+
+
+/*
+========================================
+ CRIAR CARD
+========================================
+*/
+
+function criarCard(cadastro) {
+
+    const card =
+        document.createElement("article");
+
+
+    card.className =
+        "site-card";
+
+
+    card.innerHTML = `
+
+        <div class="card-categoria">
+
             <a
-                href="?c=${encodeURIComponent(cadastro.chave)}"
+                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
             >
-                VER CADASTRO →
+                ${cadastro.categoria}
             </a>
+
+        </div>
+
+
+        <h2>
+
+            ${cadastro.nome}
+
+        </h2>
+
+
+        <div class="card-url">
+
+            ${cadastro.url}
+
+        </div>
+
+
+        <p>
+
+            ${cadastro.descricao}
+
+        </p>
+
+
+        <a
+            href="?c=${encodeURIComponent(cadastro.chave)}"
+        >
+            VER CADASTRO →
+
+        </a>
+
+    `;
+
+
+    listaSites.appendChild(card);
+
+}
+
+
+
+/*
+========================================
+ CATEGORIAS
+========================================
+*/
+
+listarCategorias().forEach(
+    function(nomeCategoria) {
+
+
+        const link =
+            document.createElement("a");
+
+
+        link.href =
+            "?categoria=" +
+            encodeURIComponent(
+                nomeCategoria
+            );
+
+
+        link.innerHTML = `
+
+            ${nomeCategoria}
+
+            <small>
+                (${quantidadeCategoria(nomeCategoria)})
+            </small>
 
         `;
 
-        areaLista.appendChild(item);
 
-    });
+        listaCategorias.appendChild(link);
+
+    }
+);
+
 
 </script>
 
+
 </body>
+
 </html>
