@@ -1,0 +1,749 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background:
+        linear-gradient(
+            #eeeeee 1px,
+            transparent 1px
+        );
+
+    background-size: 100% 4px;
+
+    background-color: #e9e9e9;
+
+    color: #222;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.topo {
+
+    background: #111;
+
+    border-bottom:
+        4px solid #c5a331;
+
+    color: white;
+}
+
+
+.topo-interno {
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding:
+        13px 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+    font-weight: bold;
+}
+
+
+.logo span {
+    color: #d5b13b;
+}
+
+
+nav {
+
+    display: flex;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+}
+
+
+nav a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    padding:
+        6px 11px;
+
+    border:
+        1px solid #444;
+
+    background: #1b1b1b;
+}
+
+
+nav a:hover {
+
+    background: #d5b13b;
+
+    color: #111;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: min(
+        1180px,
+        calc(100% - 30px)
+    );
+
+    margin:
+        20px auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    background: white;
+
+    border:
+        1px solid #aaa;
+
+    padding:
+        45px 35px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 2px 5px
+        rgba(0,0,0,.08);
+}
+
+
+.hero h1 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 44px;
+
+    line-height: 1.05;
+
+    margin:
+        10px 0;
+}
+
+
+.hero p {
+
+    color: #555;
+
+    max-width: 650px;
+}
+
+
+.exemplo-url {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 9px 12px;
+
+    background: #eee;
+
+    border:
+        1px solid #ccc;
+
+    font-family: monospace;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   ETIQUETA
+========================= */
+
+.etiqueta {
+
+    display: inline-block;
+
+    background: #111;
+
+    color: white;
+
+    padding:
+        4px 9px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   SITE INDIVIDUAL
+========================= */
+
+.pagina-site {
+
+    background: white;
+
+    border:
+        1px solid #aaa;
+
+    padding: 35px;
+
+    margin-bottom: 20px;
+}
+
+
+.pagina-site h1 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 38px;
+
+    margin:
+        12px 0 0;
+}
+
+
+.endereco {
+
+    color: #777;
+
+    font-family: monospace;
+
+    margin-bottom: 20px;
+}
+
+
+.descricao {
+
+    max-width: 800px;
+
+    font-size: 17px;
+
+    color: #444;
+}
+
+
+.informacoes {
+
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin:
+        25px 0;
+}
+
+
+.informacoes div {
+
+    border:
+        1px solid #ccc;
+
+    background: #f5f5f5;
+
+    padding:
+        12px 16px;
+
+    min-width: 170px;
+}
+
+
+.informacoes small {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+.informacoes strong {
+
+    display: block;
+
+    margin-top: 3px;
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+.botao {
+
+    display: inline-block;
+
+    background: #111;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding:
+        10px 17px;
+
+    border:
+        1px solid #000;
+
+    font-weight: bold;
+
+    font-size: 13px;
+}
+
+
+.botao:hover {
+
+    background: #c5a331;
+
+    color: #111;
+}
+
+
+.pequeno {
+
+    padding:
+        7px 12px;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   TÍTULOS
+========================= */
+
+.titulo-secao {
+
+    background: #171717;
+
+    color: white;
+
+    border-bottom:
+        3px solid #c5a331;
+
+    padding:
+        11px 15px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-weight: bold;
+}
+
+
+.bloco {
+
+    background: white;
+
+    border:
+        1px solid #aaa;
+
+    margin-bottom: 20px;
+}
+
+
+.conteudo {
+
+    padding: 20px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.sites-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+.site-card {
+
+    background: white;
+
+    border:
+        1px solid #bbb;
+
+    padding: 20px;
+
+    transition:
+        transform .15s,
+        box-shadow .15s;
+}
+
+
+.site-card:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.12);
+}
+
+
+.card-categoria {
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    font-weight: bold;
+
+    color: #987a11;
+}
+
+
+.site-card h2 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    margin:
+        4px 0;
+}
+
+
+.card-url {
+
+    font-family: monospace;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+.site-card p {
+
+    color: #555;
+
+    font-size: 14px;
+}
+
+
+.site-card a {
+
+    color: #164f91;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias {
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+
+.categorias a {
+
+    color: #164f91;
+
+    text-decoration: none;
+
+    background: #f4f4f4;
+
+    border:
+        1px solid #ccc;
+
+    padding: 8px;
+
+    font-size: 13px;
+}
+
+
+.categorias a:hover {
+
+    background: #e8dfbd;
+}
+
+
+/* =========================
+   AVISO
+========================= */
+
+.aviso {
+
+    background: #f7f0d5;
+
+    border-left:
+        5px solid #c5a331;
+
+    padding:
+        12px 15px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   LISTA DE CADASTROS
+========================= */
+
+.cadastro-linha {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    border-bottom:
+        1px solid #ddd;
+
+    padding:
+        14px 0;
+}
+
+
+.cadastro-linha:last-child {
+    border-bottom: 0;
+}
+
+
+.cadastro-linha strong {
+
+    display: block;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+}
+
+
+.cadastro-linha small {
+
+    display: block;
+
+    color: #777;
+
+    font-family: monospace;
+}
+
+
+/* =========================
+   ERRO
+========================= */
+
+.erro {
+
+    border-top:
+        5px solid #9b2222;
+}
+
+
+.erro code {
+
+    display: inline-block;
+
+    background: #eee;
+
+    border:
+        1px solid #ccc;
+
+    padding:
+        8px 12px;
+
+    font-family: monospace;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+
+    background: #111;
+
+    color: #aaa;
+
+    border-top:
+        4px solid #c5a331;
+
+    margin-top: 40px;
+}
+
+
+.footer-interno {
+
+    max-width: 1180px;
+
+    margin: auto;
+
+    padding:
+        28px 20px;
+}
+
+
+.footer-interno strong {
+
+    color: white;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 18px;
+}
+
+
+.copyright {
+
+    border-top:
+        1px solid #333;
+
+    margin-top: 20px;
+
+    padding-top: 12px;
+
+    font-size: 11px;
+
+    color: #777;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 750px) {
+
+    .topo-interno {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .sites-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .categorias {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .hero h1 {
+
+        font-size: 34px;
+    }
+
+
+    .pagina-site h1 {
+
+        font-size: 30px;
+    }
+
+
+    .cadastro-linha {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .categorias {
+
+        grid-template-columns: 1fr;
+    }
+
+}
