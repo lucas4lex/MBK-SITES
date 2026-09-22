@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Sites</title>
+    <meta
+        name="description"
+        content="Diretório de sites brasileiros."
+    >
+
+    <link rel="stylesheet" href="estilo.css">
+</head>
+
+<body>
+
+<header class="topo">
+
+    <div class="topo-interno">
+
+        <a href="index.html" class="logo">
+            CADASTRO<span>DE</span>SITES
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="#sites">Sites</a>
+            <a href="#categorias">Categorias</a>
+            <a href="#sobre">Sobre</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- SITE INDIVIDUAL -->
+    <section id="site">
+
+        <div class="carregando">
+            Carregando cadastro...
+        </div>
+
+    </section>
+
+
+    <!-- LISTA GERAL -->
+    <section id="lista">
+
+        <div class="titulo-secao">
+            <span>SITES CADASTRADOS</span>
+        </div>
+
+        <div id="sites" class="sites-grid"></div>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+
+    <section id="categorias" class="bloco">
+
+        <div class="titulo-secao">
+            <span>CATEGORIAS</span>
+        </div>
+
+        <div class="categorias">
+
+            <a href="#">Tecnologia</a>
+            <a href="#">Empresas</a>
+            <a href="#">Serviços</a>
+            <a href="#">Educação</a>
+            <a href="#">Automóveis</a>
+            <a href="#">Seguros</a>
+            <a href="#">Comércio</a>
+            <a href="#">Entretenimento</a>
+            <a href="#">Notícias</a>
+            <a href="#">Blogs</a>
+            <a href="#">Outros</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOBRE -->
+
+    <section id="sobre" class="bloco">
+
+        <div class="titulo-secao">
+            <span>SOBRE O CADASTRO DE SITES</span>
+        </div>
+
+        <div class="conteudo">
+
+            <p>
+                O Cadastro de Sites é um diretório para encontrar
+                empresas, projetos, serviços e páginas na internet.
+            </p>
+
+            <p>
+                Cada site possui seu próprio cadastro e pode ser
+                acessado através de um endereço simples.
+            </p>
+
+            <div class="aviso">
+                Exemplo:
+                <strong>?c=multipage.pages.dev</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-interno">
+
+        <strong>CADASTRO DE SITES</strong>
+
+        <p>
+            Diretório independente de sites.
+        </p>
+
+        <div class="copyright">
+            © 2026 Cadastro de Sites
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="cadastros.js"></script>
+
+<script>
+
+    const parametro =
+        new URLSearchParams(window.location.search).get("c");
+
+    const areaSite =
+        document.getElementById("site");
+
+    const areaLista =
+        document.getElementById("sites");
+
+
+    /*
+     * MOSTRAR SITE INDIVIDUAL
+     */
+
+    if (parametro) {
+
+        const cadastro =
+            encontrarCadastro(parametro);
+
+        if (cadastro) {
+
+            document.title =
+                cadastro.nome + " — Cadastro de Sites";
+
+            areaSite.innerHTML = `
+
+                <article class="pagina-site">
+
+                    <div class="etiqueta">
+                        SITE CADASTRADO
+                    </div>
+
+                    <h1>${cadastro.nome}</h1>
+
+                    <div class="endereco">
+                        ${cadastro.url}
+                    </div>
+
+                    <p class="descricao">
+                        ${cadastro.descricao}
+                    </p>
+
+                    <div class="informacoes">
+
+                        <div>
+                            <small>CATEGORIA</small>
+                            <strong>${cadastro.categoria}</strong>
+                        </div>
+
+                        <div>
+                            <small>CADASTRADO EM</small>
+                            <strong>${cadastro.data}</strong>
+                        </div>
+
+                    </div>
+
+                    <a
+                        href="${cadastro.urlCompleta}"
+                        target="_blank"
+                        rel="noopener"
+                        class="botao"
+                    >
+                        VISITAR SITE →
+                    </a>
+
+                </article>
+
+            `;
+
+        } else {
+
+            areaSite.innerHTML = `
+
+                <article class="pagina-site erro">
+
+                    <div class="etiqueta">
+                        CADASTRO NÃO ENCONTRADO
+                    </div>
+
+                    <h1>Site não encontrado</h1>
+
+                    <p>
+                        Não existe nenhum cadastro para:
+                    </p>
+
+                    <code>${parametro}</code>
+
+                    <br><br>
+
+                    <a href="index.html" class="botao">
+                        VOLTAR AO INÍCIO
+                    </a>
+
+                </article>
+
+            `;
+
+        }
+
+    } else {
+
+        areaSite.innerHTML = `
+
+            <section class="hero">
+
+                <div class="etiqueta">
+                    DIRETÓRIO DE SITES
+                </div>
+
+                <h1>
+                    Encontre sites<br>
+                    na internet.
+                </h1>
+
+                <p>
+                    Um catálogo simples, rápido e organizado
+                    para descobrir novos sites.
+                </p>
+
+                <div class="exemplo-url">
+                    cadastrodesites.pages.dev/?c=seusite.com
+                </div>
+
+            </section>
+
+        `;
+
+    }
+
+
+    /*
+     * LISTAR TODOS OS CADASTROS
+     */
+
+    cadastros.forEach(function(cadastro) {
+
+        const item =
+            document.createElement("article");
+
+        item.className = "site-card";
+
+        item.innerHTML = `
+
+            <div class="card-categoria">
+                ${cadastro.categoria}
+            </div>
+
+            <h2>
+                ${cadastro.nome}
+            </h2>
+
+            <div class="card-url">
+                ${cadastro.url}
+            </div>
+
+            <p>
+                ${cadastro.descricao}
+            </p>
+
+            <a
+                href="?c=${encodeURIComponent(cadastro.chave)}"
+            >
+                VER CADASTRO →
+            </a>
+
+        `;
+
+        areaLista.appendChild(item);
+
+    });
+
+</script>
+
+</body>
+</html>
