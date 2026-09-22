@@ -19,20 +19,20 @@ const cadastros = [
 
 
     {
-        chave: "litecom.pages.dev",
+        chave: "prsauto.pages.dev",
 
-        nome: "LiteCom",
+        nome: "PRS AUTO - CARROS",
 
-        url: "litecom.pages.dev",
+        url: "prsauto.pages.dev",
 
-        urlCompleta: "https://litecom.pages.dev/",
+        urlCompleta: "https://prsauto.pages.dev/",
 
         categoria: "Empresas",
 
         data: "22/09/2026",
 
         descricao:
-            "Site institucional da LiteCom."
+            "Site institucional da PRS AUTO."
     },
 
 
