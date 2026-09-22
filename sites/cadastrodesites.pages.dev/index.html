@@ -1,566 +1,272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Cadastro de Sites</title>
+    <meta name="description" content="Diretório de sites cadastrados na internet.">
 
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="./estilo.css">
 </head>
 
 <body>
 
-<header class="topo">
-
-    <div class="topo-interno">
-
-        <a href="index.html" class="logo">
-            CADASTRO<span>DE</span>SITES
-        </a>
-
-        <nav>
-            <a href="./index.html">Início</a>
-            <a href="#sites">Sites</a>
-            <a href="#categorias">Categorias</a>
-            <a href="./cadastros.html">Cadastros</a>
-        </nav>
-
-    </div>
-
-</header>
-
-
-<main class="container">
-
-
-    <!-- =====================================
-         RESULTADO DO ?c= OU ?categoria=
-    ====================================== -->
-
-    <section id="resultado"></section>
-
-
-    <!-- =====================================
-         SITES CADASTRADOS
-    ====================================== -->
-
-    <section id="sites">
-
-        <div class="titulo-secao">
-            SITES CADASTRADOS
-        </div>
-
-        <div
-            id="listaSites"
-            class="sites-grid"
-        ></div>
-
-    </section>
-
-
-    <!-- =====================================
-         CATEGORIAS
-    ====================================== -->
-
-    <section
-        id="categorias"
-        class="bloco"
-    >
-
-        <div class="titulo-secao">
-            CATEGORIAS
-        </div>
-
-        <div
-            id="listaCategorias"
-            class="categorias"
-        ></div>
-
-    </section>
-
-
-    <!-- =====================================
-         SOBRE
-    ====================================== -->
-
-    <section
-        id="sobre"
-        class="bloco"
-    >
-
-        <div class="titulo-secao">
-            SOBRE O CADASTRO DE SITES
-        </div>
-
-        <div class="conteudo">
-
-            <p>
-                O Cadastro de Sites é um diretório
-                independente para encontrar e divulgar
-                sites na internet.
-            </p>
-
-            <div class="aviso">
-
-                Você pode acessar um site específico usando:
-
-                <br><br>
-
-                <strong>
-                    ?c=multipage.pages.dev
-                </strong>
-
-                <br><br>
-
-                Ou acessar uma categoria:
-
-                <br><br>
-
-                <strong>
-                    ?categoria=Tecnologia
-                </strong>
-
+    <header class="topo">
+        <div class="topo-inner">
+            <div class="marca">
+                <span class="marca-simbolo">◆</span>
+                <div>
+                    <strong>CADASTRO DE SITES</strong>
+                    <small>diretório independente da internet</small>
+                </div>
             </div>
 
+            <nav class="menu">
+                <a href="./">INÍCIO</a>
+                <a href="./cadastros.html">CADASTROS</a>
+            </nav>
         </div>
+    </header>
 
-    </section>
 
-</main>
-
-
-<footer>
-
-    <div class="footer-interno">
-
-        <strong>
-            CADASTRO DE SITES
-        </strong>
-
-        <p>
-            Diretório independente de sites.
-        </p>
-
-        <div class="copyright">
-            © 2026 Cadastro de Sites
-        </div>
-
-    </div>
-
-</footer>
-
-
-<!-- IMPORTANTE:
-     cadastro.js vem ANTES do código que
-     utiliza a variável "cadastros".
--->
-
-<script src="./cadastro.js"></script>
-
-
-<script>
-
-/*
-==================================================
- ELEMENTOS
-==================================================
-*/
-
-const resultado =
-    document.getElementById("resultado");
-
-const listaSites =
-    document.getElementById("listaSites");
-
-const listaCategorias =
-    document.getElementById("listaCategorias");
-
-
-/*
-==================================================
- PARÂMETROS
-==================================================
-*/
-
-const parametros =
-    new URLSearchParams(
-        window.location.search
-    );
-
-const chave =
-    parametros.get("c");
-
-const categoria =
-    parametros.get("categoria");
-
-
-/*
-==================================================
- FUNÇÃO: CRIAR CARD
-==================================================
-*/
-
-function criarCard(cadastro) {
-
-    const card =
-        document.createElement("article");
-
-    card.className =
-        "site-card";
-
-
-    card.innerHTML = `
-
-        <div class="card-categoria">
-
-            <a
-                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
-            >
-                ${cadastro.categoria}
-            </a>
-
-        </div>
-
-
-        <h2>
-            ${cadastro.nome}
-        </h2>
-
-
-        <div class="card-url">
-            ${cadastro.url}
-        </div>
-
-
-        <p>
-            ${cadastro.descricao}
-        </p>
-
-
-        <a
-            href="?c=${encodeURIComponent(cadastro.chave)}"
-        >
-            VER CADASTRO →
-        </a>
-
-    `;
-
-
-    listaSites.appendChild(card);
-
-}
-
-
-/*
-==================================================
- ?c= SITE ESPECÍFICO
-==================================================
-*/
-
-if (chave) {
-
-    const cadastro =
-        encontrarCadastro(chave);
-
-
-    if (cadastro) {
-
-        document.title =
-            cadastro.nome +
-            " — Cadastro de Sites";
-
-
-        resultado.innerHTML = `
-
-            <section class="pagina-site">
-
-                <div class="etiqueta">
-                    SITE CADASTRADO
-                </div>
-
-
-                <h1>
-                    ${cadastro.nome}
-                </h1>
-
-
-                <div class="endereco">
-                    ${cadastro.url}
-                </div>
-
-
-                <p class="descricao">
-                    ${cadastro.descricao}
-                </p>
-
-
-                <div class="informacoes">
-
-                    <div>
-
-                        <small>
-                            CATEGORIA
-                        </small>
-
-                        <strong>
-
-                            <a
-                                href="?categoria=${encodeURIComponent(cadastro.categoria)}"
-                            >
-                                ${cadastro.categoria}
-                            </a>
-
-                        </strong>
-
-                    </div>
-
-
-                    <div>
-
-                        <small>
-                            CADASTRADO EM
-                        </small>
-
-                        <strong>
-                            ${cadastro.data}
-                        </strong>
-
-                    </div>
-
-                </div>
-
-
-                <a
-                    href="${cadastro.urlCompleta}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="botao"
-                >
-                    VISITAR SITE →
-                </a>
-
-            </section>
-
-        `;
-
-
-        /*
-        MOSTRA TODOS OS SITES
-        */
-
-        cadastros.forEach(
-            criarCard
-        );
-
-    }
-
-
-    else {
-
-        resultado.innerHTML = `
-
-            <section class="pagina-site erro">
-
-                <div class="etiqueta">
-                    NÃO ENCONTRADO
-                </div>
-
-                <h1>
-                    Site não encontrado
-                </h1>
-
-                <p>
-                    Não existe cadastro para:
-                </p>
-
-                <code>
-                    ${chave}
-                </code>
-
-                <br><br>
-
-                <a
-                    href="./index.html"
-                    class="botao"
-                >
-                    VOLTAR AO INÍCIO
-                </a>
-
-            </section>
-
-        `;
-
-
-        /*
-        Mesmo com erro,
-        mantém a lista geral.
-        */
-
-        cadastros.forEach(
-            criarCard
-        );
-
-    }
-
-}
-
-
-/*
-==================================================
- ?categoria= FILTRO
-==================================================
-*/
-
-else if (categoria) {
-
-    const resultados =
-        encontrarCategoria(categoria);
-
-
-    document.title =
-        categoria +
-        " — Cadastro de Sites";
-
-
-    resultado.innerHTML = `
-
-        <section class="pagina-site categoria-pagina">
-
-            <div class="etiqueta">
-                CATEGORIA
-            </div>
-
-            <h1>
-                ${categoria}
-            </h1>
-
-            <p class="descricao">
-
-                Sites cadastrados nesta categoria.
-
-            </p>
-
-            <div class="contador">
-
-                ${resultados.length}
-                site(s) encontrado(s)
-
-            </div>
-
-        </section>
-
-    `;
-
-
-    /*
-    Limpa a lista
-    */
-
-    listaSites.innerHTML = "";
-
-
-    /*
-    Mostra apenas a categoria
-    */
-
-    resultados.forEach(
-        criarCard
-    );
-
-}
-
-
-/*
-==================================================
- SEM PARÂMETRO
-==================================================
-*/
-
-else {
-
-    resultado.innerHTML = `
+    <main class="pagina">
 
         <section class="hero">
-
-            <div class="etiqueta">
-                DIRETÓRIO DE SITES
-            </div>
+            <div class="hero-label">● DIRETÓRIO ONLINE</div>
 
             <h1>
-                Encontre sites
-                <br>
-                na internet.
+                Sites cadastrados<br>
+                <em>na internet.</em>
             </h1>
 
             <p>
-                Um catálogo simples,
-                rápido e organizado para
-                descobrir novos sites.
+                Um catálogo simples, direto e organizado para encontrar
+                projetos, empresas e páginas independentes.
             </p>
 
-            <div class="exemplo-url">
-                cadastrodesites.pages.dev/?c=seusite.com
+            <div class="hero-meta">
+                <span>03 SITES</span>
+                <span>03 CATEGORIAS</span>
+                <span>ATUALIZADO EM 22/09/2026</span>
+            </div>
+        </section>
+
+
+        <section class="bloco">
+
+            <div class="titulo-bloco">
+                <div>
+                    <span class="numero">01</span>
+                    <h2>SITES CADASTRADOS</h2>
+                </div>
+
+                <span class="linha"></span>
+            </div>
+
+
+            <div id="listaSites" class="grade-sites">
+
+                <!-- MULTIPAGE -->
+                <article class="site-card">
+
+                    <div class="card-topo">
+                        <span class="card-numero">001</span>
+
+                        <a
+                            class="card-categoria"
+                            href="?categoria=Criação%20de%20Sites"
+                        >
+                            CRIAÇÃO DE SITES
+                        </a>
+                    </div>
+
+                    <div class="card-conteudo">
+
+                        <h3>Multipage</h3>
+
+                        <div class="url">
+                            multipage.pages.dev
+                        </div>
+
+                        <p>
+                            Plataforma e projeto voltado para criação
+                            e desenvolvimento de sites.
+                        </p>
+
+                    </div>
+
+                    <div class="card-rodape">
+
+                        <span>22/09/2026</span>
+
+                        <a href="?c=multipage.pages.dev">
+                            VER CADASTRO →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRS AUTO -->
+                <article class="site-card">
+
+                    <div class="card-topo">
+                        <span class="card-numero">002</span>
+
+                        <a
+                            class="card-categoria"
+                            href="?categoria=Empresas"
+                        >
+                            EMPRESAS
+                        </a>
+                    </div>
+
+                    <div class="card-conteudo">
+
+                        <h3>PRS AUTO - CARROS</h3>
+
+                        <div class="url">
+                            prsauto.pages.dev
+                        </div>
+
+                        <p>
+                            Site institucional da PRS AUTO.
+                        </p>
+
+                    </div>
+
+                    <div class="card-rodape">
+
+                        <span>22/09/2026</span>
+
+                        <a href="?c=prsauto.pages.dev">
+                            VER CADASTRO →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- CADASTRO DE SITES -->
+                <article class="site-card destaque">
+
+                    <div class="card-topo">
+                        <span class="card-numero">003</span>
+
+                        <a
+                            class="card-categoria"
+                            href="?categoria=Tecnologia"
+                        >
+                            TECNOLOGIA
+                        </a>
+                    </div>
+
+                    <div class="card-conteudo">
+
+                        <h3>Cadastro de Sites</h3>
+
+                        <div class="url">
+                            cadastrodesites.pages.dev
+                        </div>
+
+                        <p>
+                            Diretório para encontrar e divulgar sites
+                            na internet.
+                        </p>
+
+                    </div>
+
+                    <div class="card-rodape">
+
+                        <span>22/09/2026</span>
+
+                        <a href="?c=cadastrodesites.pages.dev">
+                            VER CADASTRO →
+                        </a>
+
+                    </div>
+
+                </article>
+
             </div>
 
         </section>
 
-    `;
+
+        <section class="bloco categorias">
+
+            <div class="titulo-bloco">
+                <div>
+                    <span class="numero">02</span>
+                    <h2>CATEGORIAS</h2>
+                </div>
+
+                <span class="linha"></span>
+            </div>
 
 
-    /*
-    Todos os sites
-    */
+            <div id="listaCategorias" class="lista-categorias">
 
-    cadastros.forEach(
-        criarCard
-    );
+                <a href="?categoria=Criação%20de%20Sites">
+                    <span>Criação de Sites</span>
+                    <b>01</b>
+                </a>
 
-}
+                <a href="?categoria=Empresas">
+                    <span>Empresas</span>
+                    <b>01</b>
+                </a>
 
+                <a href="?categoria=Tecnologia">
+                    <span>Tecnologia</span>
+                    <b>01</b>
+                </a>
 
-/*
-==================================================
- CATEGORIAS
- SEMPRE APARECEM
-==================================================
-*/
+            </div>
 
-listarCategorias().forEach(
-    function(nomeCategoria) {
-
-        const link =
-            document.createElement("a");
+        </section>
 
 
-        link.href =
-            "?categoria=" +
-            encodeURIComponent(
-                nomeCategoria
-            );
+        <section class="sobre">
+
+            <span class="numero">03</span>
+
+            <div>
+                <h2>SOBRE O CADASTRO</h2>
+
+                <p>
+                    O Cadastro de Sites é um diretório independente
+                    criado para organizar e apresentar projetos
+                    publicados na web.
+                </p>
+
+                <p>
+                    Cada cadastro possui sua própria página,
+                    categoria, endereço e descrição.
+                </p>
+            </div>
+
+        </section>
+
+    </main>
 
 
-        link.innerHTML = `
+    <footer class="rodape">
 
-            <span>
-                ${nomeCategoria}
-            </span>
+        <div>
+            <strong>CADASTRO DE SITES</strong>
+            <span>© 2026</span>
+        </div>
 
-            <small>
-                ${quantidadeCategoria(nomeCategoria)}
-            </small>
+        <span>UM DIRETÓRIO DA INTERNET</span>
 
-        `;
+    </footer>
 
 
-        listaCategorias.appendChild(link);
-
-    }
-);
-
-</script>
+    <script src="./cadastro.js"></script>
 
 </body>
-
 </html>
