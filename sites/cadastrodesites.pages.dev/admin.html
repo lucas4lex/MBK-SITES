@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin — Cadastro de Sites</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root{
+    --bg:#171717;
+    --paper:#202020;
+    --paper2:#faf9f5;
+    --text:#f1efe8;
+    --dark:#171717;
+    --muted:#99958b;
+    --line:#44423d;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"DM Mono",monospace;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+.topo{
+    border-bottom:1px solid var(--line);
+}
+
+.topo-inner{
+    width:min(1200px,calc(100% - 40px));
+    min-height:85px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.marca{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.simbolo{
+    width:36px;
+    height:36px;
+
+    display:grid;
+    place-items:center;
+
+    border:1px solid var(--text);
+}
+
+.marca strong{
+    display:block;
+    font-size:14px;
+}
+
+.marca small{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.sair{
+    color:var(--muted);
+    font-size:10px;
+    text-decoration:none;
+}
+
+.sair:hover{
+    color:var(--text);
+}
+
+main{
+    width:min(1200px,calc(100% - 40px));
+    margin:auto;
+}
+
+.hero{
+    padding:75px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.hero span{
+    color:var(--muted);
+    font-size:10px;
+    letter-spacing:.15em;
+}
+
+.hero h1{
+    margin:20px 0 10px;
+
+    font-family:"Libre Baskerville",serif;
+
+    font-size:clamp(40px,6vw,72px);
+    line-height:1.05;
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.painel{
+    padding:65px 0;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:380px 1fr;
+    gap:40px;
+}
+
+.box{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:30px;
+}
+
+.box h2{
+    margin:0 0 25px;
+    font-size:12px;
+    letter-spacing:.1em;
+}
+
+.campo{
+    margin-bottom:18px;
+}
+
+.campo label{
+    display:block;
+    margin-bottom:7px;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.campo input,
+.campo textarea,
+.campo select{
+    width:100%;
+    padding:13px;
+
+    background:#171717;
+    color:var(--text);
+
+    border:1px solid var(--line);
+    outline:none;
+}
+
+.campo textarea{
+    min-height:100px;
+    resize:vertical;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus{
+    border-color:var(--text);
+}
+
+.btn{
+    width:100%;
+    padding:14px;
+
+    border:1px solid var(--text);
+
+    background:var(--text);
+    color:var(--dark);
+
+    cursor:pointer;
+
+    font-size:10px;
+    letter-spacing:.08em;
+}
+
+.btn:hover{
+    opacity:.8;
+}
+
+.lista{
+    border-top:1px solid var(--line);
+}
+
+.item{
+    padding:20px;
+
+    border-bottom:1px solid var(--line);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:20px;
+}
+
+.item-info strong{
+    display:block;
+    font-family:"Libre Baskerville",serif;
+    font-size:16px;
+}
+
+.item-info small{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.item-cat{
+    color:var(--muted);
+    font-size:9px;
+}
+
+.item-acoes{
+    display:flex;
+    gap:8px;
+}
+
+.item-acoes button{
+    padding:8px 10px;
+
+    background:transparent;
+    color:var(--text);
+
+    border:1px solid var(--line);
+
+    cursor:pointer;
+
+    font-size:9px;
+}
+
+.item-acoes button:hover{
+    border-color:var(--text);
+}
+
+.vazio{
+    padding:40px 20px;
+    color:var(--muted);
+    text-align:center;
+    font-size:11px;
+}
+
+.rodape{
+    width:min(1200px,calc(100% - 40px));
+    margin:auto;
+
+    padding:30px 0;
+
+    border-top:1px solid var(--line);
+
+    color:var(--muted);
+    font-size:9px;
+}
+
+@media(max-width:850px){
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .item{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topo">
+
+    <div class="topo-inner">
+
+        <div class="marca">
+
+            <span class="simbolo">◆</span>
+
+            <div>
+                <strong>CADASTRO DE SITES</strong>
+                <small>PAINEL ADMINISTRATIVO</small>
+            </div>
+
+        </div>
+
+        <a href="./" class="sair">
+            ← ACESSO PÚBLICO
+        </a>
+
+    </div>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+    <span>● ÁREA RESTRITA</span>
+
+    <h1>
+        Painel<br>
+        administrativo.
+    </h1>
+
+    <p>
+        Gerencie os sites cadastrados no diretório.
+    </p>
+
+</section>
+
+
+<section class="painel">
+
+<div class="grid">
+
+
+<div class="box">
+
+    <h2 id="tituloFormulario">
+        NOVO CADASTRO
+    </h2>
+
+
+    <form id="formulario">
+
+        <div class="campo">
+
+            <label>
+                NOME DO SITE
+            </label>
+
+            <input
+                id="nome"
+                required
+                placeholder="Ex.: Meu Site"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                DOMÍNIO
+            </label>
+
+            <input
+                id="url"
+                required
+                placeholder="meusite.pages.dev"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                URL COMPLETA
+            </label>
+
+            <input
+                id="link"
+                required
+                placeholder="https://meusite.pages.dev/"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                CATEGORIA
+            </label>
+
+            <input
+                id="categoria"
+                required
+                placeholder="Tecnologia"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                DATA
+            </label>
+
+            <input
+                id="data"
+                required
+                placeholder="22/09/2026"
+            >
+
+        </div>
+
+
+        <div class="campo">
+
+            <label>
+                DESCRIÇÃO
+            </label>
+
+            <textarea
+                id="descricao"
+                required
+                placeholder="Descrição do site..."
+            ></textarea>
+
+        </div>
+
+
+        <button class="btn" type="submit">
+            SALVAR CADASTRO
+        </button>
+
+    </form>
+
+</div>
+
+
+
+<div class="box">
+
+    <h2>
+        SITES CADASTRADOS
+    </h2>
+
+    <div
+        id="lista"
+        class="lista"
+    ></div>
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer class="rodape">
+
+    CADASTRO DE SITES — ADMIN © 2026
+
+</footer>
+
+
+<script>
+
+const CHAVE =
+    "cadastro_sites_admin";
+
+
+let sites =
+    JSON.parse(
+        localStorage.getItem(CHAVE)
+    ) || [
+
+        {
+            chave:"multipage.pages.dev",
+            nome:"Multipage",
+            url:"multipage.pages.dev",
+            link:"https://multipage.pages.dev/",
+            categoria:"Criação de Sites",
+            data:"22/09/2026",
+            descricao:"Plataforma e projeto voltado para criação e desenvolvimento de sites."
+        },
+
+        {
+            chave:"prsauto.pages.dev",
+            nome:"PRS AUTO - CARROS",
+            url:"prsauto.pages.dev",
+            link:"https://prsauto.pages.dev/",
+            categoria:"Empresas",
+            data:"22/09/2026",
+            descricao:"Site institucional da PRS AUTO."
+        },
+
+        {
+            chave:"cadastrodesites.pages.dev",
+            nome:"Cadastro de Sites",
+            url:"cadastrodesites.pages.dev",
+            link:"https://cadastrodesites.pages.dev/",
+            categoria:"Tecnologia",
+            data:"22/09/2026",
+            descricao:"Diretório para encontrar e divulgar sites na internet."
+        }
+
+    ];
+
+
+let editando = null;
+
+
+const formulario =
+    document.getElementById("formulario");
+
+const lista =
+    document.getElementById("lista");
+
+const titulo =
+    document.getElementById("tituloFormulario");
+
+
+function salvar(){
+
+    localStorage.setItem(
+        CHAVE,
+        JSON.stringify(sites)
+    );
+
+}
+
+
+function renderizar(){
+
+    if(!sites.length){
+
+        lista.innerHTML = `
+            <div class="vazio">
+                Nenhum site cadastrado.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    lista.innerHTML =
+        sites.map((site,index) => `
+
+            <div class="item">
+
+                <div class="item-info">
+
+                    <strong>
+                        ${site.nome}
+                    </strong>
+
+                    <small>
+                        ${site.url}
+                    </small>
+
+                </div>
+
+                <div class="item-cat">
+                    ${site.categoria}
+                </div>
+
+                <div class="item-acoes">
+
+                    <button
+                        onclick="editar(${index})"
+                    >
+                        EDITAR
+                    </button>
+
+                    <button
+                        onclick="excluir(${index})"
+                    >
+                        EXCLUIR
+                    </button>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+}
+
+
+formulario.addEventListener(
+    "submit",
+    function(event){
+
+        event.preventDefault();
+
+
+        const dados = {
+
+            chave:
+                document.getElementById("url").value
+                    .trim(),
+
+            nome:
+                document.getElementById("nome").value
+                    .trim(),
+
+            url:
+                document.getElementById("url").value
+                    .trim(),
+
+            link:
+                document.getElementById("link").value
+                    .trim(),
+
+            categoria:
+                document.getElementById("categoria").value
+                    .trim(),
+
+            data:
+                document.getElementById("data").value
+                    .trim(),
+
+            descricao:
+                document.getElementById("descricao").value
+                    .trim()
+
+        };
+
+
+        if(editando === null){
+
+            sites.push(dados);
+
+        }else{
+
+            sites[editando] = dados;
+
+            editando = null;
+
+            titulo.textContent =
+                "NOVO CADASTRO";
+
+        }
+
+
+        salvar();
+
+        formulario.reset();
+
+        renderizar();
+
+    }
+);
+
+
+function editar(index){
+
+    const site = sites[index];
+
+
+    document.getElementById("nome").value =
+        site.nome;
+
+    document.getElementById("url").value =
+        site.url;
+
+    document.getElementById("link").value =
+        site.link;
+
+    document.getElementById("categoria").value =
+        site.categoria;
+
+    document.getElementById("data").value =
+        site.data;
+
+    document.getElementById("descricao").value =
+        site.descricao;
+
+
+    editando = index;
+
+    titulo.textContent =
+        "EDITAR CADASTRO";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+function excluir(index){
+
+    if(
+        !confirm(
+            "Excluir este cadastro?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    sites.splice(index,1);
+
+    salvar();
+
+    renderizar();
+
+}
+
+
+renderizar();
+
+</script>
+
+</body>
+</html>
