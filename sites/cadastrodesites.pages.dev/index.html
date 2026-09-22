@@ -1,65 +1,845 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro de Sites</title>
-    <meta name="description" content="Diretório de sites cadastrados na internet.">
+<title>Cadastro de Sites</title>
 
-    <link rel="stylesheet" href="./estilo.css">
+<meta
+    name="description"
+    content="Diretório independente de sites cadastrados na internet."
+>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Libre+Baskerville:wght@400;700&display=swap');
+
+:root {
+    --fundo: #f1efe8;
+    --papel: #faf9f5;
+    --texto: #171717;
+    --cinza: #77746c;
+    --linha: #c9c6bc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "DM Mono", monospace;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.topo {
+    border-bottom: 1px solid var(--linha);
+    background: rgba(241,239,232,.97);
+}
+
+.topo-inner {
+    width: min(1180px, calc(100% - 40px));
+    min-height: 86px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.marca {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.marca-simbolo {
+    width: 36px;
+    height: 36px;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--texto);
+
+    font-size: 13px;
+}
+
+.marca strong {
+    display: block;
+    font-size: 14px;
+    letter-spacing: .08em;
+}
+
+.marca small {
+    display: block;
+
+    color: var(--cinza);
+
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+}
+
+.menu a {
+    position: relative;
+
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+.menu a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--texto);
+
+    transition: width .2s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+.pagina {
+    width: min(1180px, calc(100% - 40px));
+    margin: auto;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 470px;
+
+    padding: 100px 0 80px;
+
+    border-bottom: 1px solid var(--linha);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-label {
+    margin-bottom: 25px;
+
+    font-size: 10px;
+    letter-spacing: .18em;
+}
+
+.hero h1 {
+    max-width: 900px;
+
+    margin: 0;
+
+    font-family: "Libre Baskerville", serif;
+
+    font-size: clamp(45px, 7vw, 86px);
+    line-height: 1.02;
+    letter-spacing: -.055em;
+}
+
+.hero h1 em {
+    font-weight: 400;
+}
+
+.hero p {
+    max-width: 610px;
+
+    margin: 35px 0 40px;
+
+    color: var(--cinza);
+
+    font-size: 13px;
+}
+
+.hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-meta span {
+    padding: 7px 11px;
+
+    border: 1px solid var(--linha);
+
+    font-size: 9px;
+    letter-spacing: .08em;
+}
+
+
+/* =========================
+   BLOCOS
+========================= */
+
+.bloco {
+    padding: 80px 0;
+}
+
+.titulo-bloco {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    margin-bottom: 35px;
+}
+
+.titulo-bloco > div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.numero {
+    color: var(--cinza);
+
+    font-size: 10px;
+    letter-spacing: .15em;
+}
+
+.titulo-bloco h2 {
+    margin: 0;
+
+    font-size: 13px;
+    letter-spacing: .12em;
+}
+
+.linha {
+    height: 1px;
+    flex: 1;
+
+    background: var(--linha);
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.grade-sites {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+.site-card {
+    min-height: 360px;
+
+    background: var(--papel);
+
+    border: 1px solid var(--linha);
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.site-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        8px 8px 0 rgba(0,0,0,.08);
+}
+
+.card-topo {
+    padding: 17px 18px;
+
+    border-bottom: 1px solid var(--linha);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.card-numero {
+    color: var(--cinza);
+    font-size: 10px;
+}
+
+.card-categoria {
+    font-size: 9px;
+    letter-spacing: .06em;
+}
+
+.card-categoria:hover {
+    text-decoration: underline;
+}
+
+.card-conteudo {
+    padding: 35px 24px;
+
+    flex: 1;
+}
+
+.card-conteudo h3 {
+    margin: 0 0 13px;
+
+    font-family: "Libre Baskerville", serif;
+
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.url {
+    margin-bottom: 25px;
+
+    color: var(--cinza);
+
+    font-size: 10px;
+
+    word-break: break-all;
+}
+
+.card-conteudo p {
+    margin: 0;
+
+    color: #55534e;
+
+    font-size: 12px;
+}
+
+.card-rodape {
+    padding: 16px 18px;
+
+    border-top: 1px solid var(--linha);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    font-size: 9px;
+}
+
+.card-rodape span {
+    color: var(--cinza);
+}
+
+.card-rodape a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.categorias {
+    border-top: 1px solid var(--linha);
+}
+
+.lista-categorias {
+    border-top: 1px solid var(--texto);
+}
+
+.lista-categorias a {
+    min-height: 70px;
+
+    padding: 0 5px;
+
+    border-bottom: 1px solid var(--linha);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition:
+        padding .2s ease,
+        background .2s ease;
+}
+
+.lista-categorias a:hover {
+    padding-left: 18px;
+    padding-right: 18px;
+
+    background: var(--papel);
+}
+
+.lista-categorias span {
+    font-family: "Libre Baskerville", serif;
+    font-size: 20px;
+}
+
+.lista-categorias b {
+    color: var(--cinza);
+
+    font-size: 10px;
+    font-weight: 400;
+}
+
+
+/* =========================
+   CADASTRO INDIVIDUAL
+========================= */
+
+.cadastro-individual {
+    background: var(--papel);
+
+    border: 1px solid var(--texto);
+}
+
+.individual-cabecalho {
+    padding: 16px 20px;
+
+    border-bottom: 1px solid var(--linha);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    color: var(--cinza);
+
+    font-size: 9px;
+    letter-spacing: .08em;
+}
+
+.individual-corpo {
+    padding: 60px 40px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.individual-selo {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    border: 1px solid var(--texto);
+
+    font-size: 18px;
+}
+
+.individual-corpo h3 {
+    margin: 0 0 10px;
+
+    font-family: "Libre Baskerville", serif;
+
+    font-size: clamp(28px, 5vw, 52px);
+    line-height: 1.1;
+}
+
+.individual-url {
+    color: var(--cinza);
+    font-size: 11px;
+}
+
+.individual-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top: 1px solid var(--linha);
+    border-bottom: 1px solid var(--linha);
+}
+
+.individual-info div {
+    padding: 25px;
+
+    border-right: 1px solid var(--linha);
+}
+
+.individual-info div:last-child {
+    border-right: 0;
+}
+
+.individual-info small,
+.individual-descricao small {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--cinza);
+
+    font-size: 8px;
+    letter-spacing: .12em;
+}
+
+.individual-info strong {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.individual-descricao {
+    padding: 35px 25px;
+}
+
+.individual-descricao p {
+    max-width: 700px;
+
+    margin: 0;
+
+    color: #55534e;
+
+    font-size: 13px;
+}
+
+.individual-acoes {
+    padding: 20px 25px;
+
+    border-top: 1px solid var(--linha);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.individual-acoes a {
+    font-size: 10px;
+    letter-spacing: .06em;
+}
+
+.individual-acoes a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   VAZIO / 404
+========================= */
+
+.mensagem-vazia {
+    padding: 70px 30px;
+
+    background: var(--papel);
+
+    border: 1px solid var(--linha);
+
+    text-align: center;
+}
+
+.mensagem-vazia .erro {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: var(--cinza);
+
+    font-size: 11px;
+    letter-spacing: .15em;
+}
+
+.mensagem-vazia h3 {
+    margin: 0 0 12px;
+
+    font-family: "Libre Baskerville", serif;
+
+    font-size: 24px;
+}
+
+.mensagem-vazia p {
+    color: var(--cinza);
+}
+
+.mensagem-vazia a {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    font-size: 10px;
+    letter-spacing: .08em;
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.sobre {
+    padding: 80px 0;
+
+    border-top: 1px solid var(--linha);
+
+    display: grid;
+
+    grid-template-columns: 100px 1fr;
+
+    gap: 40px;
+}
+
+.sobre h2 {
+    margin: 0 0 20px;
+
+    font-size: 13px;
+    letter-spacing: .12em;
+}
+
+.sobre p {
+    max-width: 650px;
+
+    color: var(--cinza);
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+.rodape {
+    width: min(1180px, calc(100% - 40px));
+
+    margin: auto;
+
+    padding: 35px 0;
+
+    border-top: 1px solid var(--texto);
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--cinza);
+
+    font-size: 9px;
+
+    letter-spacing: .08em;
+}
+
+.rodape strong {
+    margin-right: 15px;
+    color: var(--texto);
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 850px) {
+
+    .grade-sites {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .topo-inner {
+        min-height: 105px;
+
+        padding: 18px 0;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .menu {
+        gap: 18px;
+    }
+
+    .hero {
+        min-height: 430px;
+
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .grade-sites {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-bloco {
+        align-items: flex-start;
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .individual-corpo {
+        padding: 40px 25px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .individual-info {
+        grid-template-columns: 1fr;
+    }
+
+    .individual-info div {
+        border-right: 0;
+        border-bottom: 1px solid var(--linha);
+    }
+
+    .individual-info div:last-child {
+        border-bottom: 0;
+    }
+
+    .individual-acoes {
+        flex-direction: column;
+    }
+
+    .rodape {
+        flex-direction: column;
+    }
+
+}
+
+</style>
 </head>
+
 
 <body>
 
-    <header class="topo">
-        <div class="topo-inner">
-            <div class="marca">
-                <span class="marca-simbolo">◆</span>
-                <div>
-                    <strong>CADASTRO DE SITES</strong>
-                    <small>diretório independente da internet</small>
-                </div>
+
+<header class="topo">
+
+    <div class="topo-inner">
+
+        <a class="marca" href="./">
+
+            <span class="marca-simbolo">◆</span>
+
+            <div>
+                <strong>CADASTRO DE SITES</strong>
+                <small>diretório independente da internet</small>
             </div>
 
-            <nav class="menu">
-                <a href="./">INÍCIO</a>
-                <a href="./cadastros.html">CADASTROS</a>
-            </nav>
-        </div>
-    </header>
+        </a>
 
 
-    <main class="pagina">
+        <nav class="menu">
 
-        <section class="hero">
-            <div class="hero-label">● DIRETÓRIO ONLINE</div>
+            <a href="./">
+                INÍCIO
+            </a>
 
-            <h1>
-                Sites cadastrados<br>
-                <em>na internet.</em>
-            </h1>
+            <a href="./?todos=1">
+                CADASTROS
+            </a>
 
-            <p>
-                Um catálogo simples, direto e organizado para encontrar
-                projetos, empresas e páginas independentes.
-            </p>
+        </nav>
 
-            <div class="hero-meta">
-                <span>03 SITES</span>
-                <span>03 CATEGORIAS</span>
-                <span>ATUALIZADO EM 22/09/2026</span>
-            </div>
-        </section>
+    </div>
+
+</header>
+
+
+
+<main class="pagina">
+
+
+<section class="hero">
+
+    <div class="hero-label">
+        ● DIRETÓRIO ONLINE
+    </div>
+
+    <h1 id="tituloPrincipal">
+        Sites cadastrados<br>
+        <em>na internet.</em>
+    </h1>
+
+    <p id="descricaoPrincipal">
+        Um catálogo simples, direto e organizado para encontrar
+        projetos, empresas e páginas independentes.
+    </p>
+
+    <div class="hero-meta">
+
+        <span id="contadorSites">
+            03 SITES
+        </span>
+
+        <span id="contadorCategorias">
+            03 CATEGORIAS
+        </span>
+
+        <span>
+            ATUALIZADO EM 22/09/2026
+        </span>
+
+    </div>
+
+</section>
+
 
 
 <section class="bloco">
 
+
     <div class="titulo-bloco">
 
         <div>
-            <span class="numero">01</span>
-            <h2>SITES CADASTRADOS</h2>
+
+            <span class="numero">
+                01
+            </span>
+
+            <h2 id="tituloLista">
+                SITES CADASTRADOS
+            </h2>
+
         </div>
 
         <span class="linha"></span>
@@ -67,19 +847,30 @@
     </div>
 
 
-    <div id="listaSites" class="grade-sites"></div>
+    <div id="listaSites" class="grade-sites">
+        <!-- preenchido pelo próprio index.html -->
+    </div>
+
 
 </section>
 
 
-                <!-- CADASTRO DE SITES -->
+
 <section class="bloco categorias">
+
 
     <div class="titulo-bloco">
 
         <div>
-            <span class="numero">02</span>
-            <h2>CATEGORIAS</h2>
+
+            <span class="numero">
+                02
+            </span>
+
+            <h2>
+                CATEGORIAS
+            </h2>
+
         </div>
 
         <span class="linha"></span>
@@ -92,81 +883,666 @@
         class="lista-categorias"
     ></div>
 
+
 </section>
 
 
 
-        <section class="bloco categorias">
+<section class="sobre">
 
-            <div class="titulo-bloco">
-                <div>
-                    <span class="numero">02</span>
-                    <h2>CATEGORIAS</h2>
+    <span class="numero">
+        03
+    </span>
+
+    <div>
+
+        <h2>
+            SOBRE O CADASTRO
+        </h2>
+
+        <p>
+            O Cadastro de Sites é um diretório independente
+            criado para organizar e apresentar projetos
+            publicados na web.
+        </p>
+
+        <p>
+            Cada cadastro possui sua própria página,
+            categoria, endereço e descrição.
+        </p>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<footer class="rodape">
+
+    <div>
+
+        <strong>
+            CADASTRO DE SITES
+        </strong>
+
+        <span>
+            © 2026
+        </span>
+
+    </div>
+
+    <span>
+        UM DIRETÓRIO DA INTERNET
+    </span>
+
+</footer>
+
+
+
+<script>
+
+/* ==========================================
+   BANCO DE DADOS
+========================================== */
+
+const cadastros = [
+
+    {
+        chave: "multipage.pages.dev",
+        nome: "Multipage",
+        url: "multipage.pages.dev",
+        urlCompleta: "https://multipage.pages.dev/",
+        categoria: "Criação de Sites",
+        data: "22/09/2026",
+        descricao:
+            "Plataforma e projeto voltado para criação e desenvolvimento de sites."
+    },
+
+    {
+        chave: "prsauto.pages.dev",
+        nome: "PRS AUTO - CARROS",
+        url: "prsauto.pages.dev",
+        urlCompleta: "https://prsauto.pages.dev/",
+        categoria: "Empresas",
+        data: "22/09/2026",
+        descricao:
+            "Site institucional da PRS AUTO."
+    },
+
+    {
+        chave: "cadastrodesites.pages.dev",
+        nome: "Cadastro de Sites",
+        url: "cadastrodesites.pages.dev",
+        urlCompleta: "https://cadastrodesites.pages.dev/",
+        categoria: "Tecnologia",
+        data: "22/09/2026",
+        descricao:
+            "Diretório para encontrar e divulgar sites na internet."
+    }
+
+];
+
+
+/* ==========================================
+   ELEMENTOS
+========================================== */
+
+const listaSites =
+    document.getElementById("listaSites");
+
+const listaCategorias =
+    document.getElementById("listaCategorias");
+
+const tituloPrincipal =
+    document.getElementById("tituloPrincipal");
+
+const descricaoPrincipal =
+    document.getElementById("descricaoPrincipal");
+
+const tituloLista =
+    document.getElementById("tituloLista");
+
+const contadorSites =
+    document.getElementById("contadorSites");
+
+const contadorCategorias =
+    document.getElementById("contadorCategorias");
+
+
+/* ==========================================
+   FUNÇÕES
+========================================== */
+
+function normalizar(valor) {
+
+    return String(valor || "")
+        .trim()
+        .toLowerCase()
+        .replace(/^https?:\/\//, "")
+        .replace(/^www\./, "")
+        .replace(/\/+$/, "");
+
+}
+
+
+function encontrarSite(chave) {
+
+    const valor =
+        normalizar(chave);
+
+    return cadastros.find(site =>
+        normalizar(site.chave) === valor
+    );
+
+}
+
+
+function encontrarCategoria(nome) {
+
+    const valor =
+        String(nome || "")
+            .trim()
+            .toLowerCase();
+
+    return cadastros.filter(site =>
+        site.categoria.toLowerCase() === valor
+    );
+
+}
+
+
+function categoriasUnicas() {
+
+    return [
+        ...new Set(
+            cadastros.map(site =>
+                site.categoria
+            )
+        )
+    ];
+
+}
+
+
+function numero(valor) {
+
+    return String(valor)
+        .padStart(2, "0");
+
+}
+
+
+/* ==========================================
+   LINKS
+========================================== */
+
+function linkCadastro(chave) {
+
+    return "./?c=" +
+        encodeURIComponent(chave);
+
+}
+
+
+function linkCategoria(categoria) {
+
+    return "./?categoria=" +
+        encodeURIComponent(categoria);
+
+}
+
+
+/* ==========================================
+   CARD
+========================================== */
+
+function cardSite(site, indice) {
+
+    return `
+
+        <article class="site-card">
+
+            <div class="card-topo">
+
+                <span class="card-numero">
+                    ${String(indice).padStart(3, "0")}
+                </span>
+
+                <a
+                    class="card-categoria"
+                    href="${linkCategoria(site.categoria)}"
+                >
+                    ${site.categoria.toUpperCase()}
+                </a>
+
+            </div>
+
+
+            <div class="card-conteudo">
+
+                <h3>
+                    ${site.nome}
+                </h3>
+
+                <div class="url">
+                    ${site.url}
                 </div>
 
-                <span class="linha"></span>
-            </div>
-
-
-            <div id="listaCategorias" class="lista-categorias">
-
-                <a href="?categoria=Criação%20de%20Sites">
-                    <span>Criação de Sites</span>
-                    <b>01</b>
-                </a>
-
-                <a href="?categoria=Empresas">
-                    <span>Empresas</span>
-                    <b>01</b>
-                </a>
-
-                <a href="?categoria=Tecnologia">
-                    <span>Tecnologia</span>
-                    <b>01</b>
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <section class="sobre">
-
-            <span class="numero">03</span>
-
-            <div>
-                <h2>SOBRE O CADASTRO</h2>
-
                 <p>
-                    O Cadastro de Sites é um diretório independente
-                    criado para organizar e apresentar projetos
-                    publicados na web.
+                    ${site.descricao}
                 </p>
 
-                <p>
-                    Cada cadastro possui sua própria página,
-                    categoria, endereço e descrição.
-                </p>
             </div>
 
-        </section>
 
-    </main>
+            <div class="card-rodape">
+
+                <span>
+                    ${site.data}
+                </span>
+
+                <a href="${linkCadastro(site.chave)}">
+                    VER CADASTRO →
+                </a>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
 
 
-    <footer class="rodape">
+/* ==========================================
+   MOSTRAR SITES
+========================================== */
 
-        <div>
-            <strong>CADASTRO DE SITES</strong>
-            <span>© 2026</span>
-        </div>
+function mostrarSites(lista) {
 
-        <span>UM DIRETÓRIO DA INTERNET</span>
+    listaSites.innerHTML = "";
 
-    </footer>
+    lista.forEach((site, indice) => {
+
+        listaSites.innerHTML +=
+            cardSite(site, indice + 1);
+
+    });
+
+}
 
 
-    <script src="./cadastro.js"></script>
+/* ==========================================
+   CADASTRO INDIVIDUAL
+========================================== */
+
+function mostrarCadastro(site) {
+
+    tituloPrincipal.innerHTML =
+        `Cadastro<br><em>individual.</em>`;
+
+    descricaoPrincipal.textContent =
+        "Informações completas sobre o site registrado no diretório.";
+
+    tituloLista.textContent =
+        "CADASTRO INDIVIDUAL";
+
+
+    listaSites.className = "";
+
+    listaSites.innerHTML = `
+
+        <article class="cadastro-individual">
+
+            <div class="individual-cabecalho">
+
+                <span>
+                    CADASTRO Nº
+                    ${String(
+                        cadastros.indexOf(site) + 1
+                    ).padStart(3, "0")}
+                </span>
+
+                <span>
+                    ${site.categoria.toUpperCase()}
+                </span>
+
+            </div>
+
+
+            <div class="individual-corpo">
+
+                <div class="individual-selo">
+                    ◆
+                </div>
+
+                <div>
+
+                    <h3>
+                        ${site.nome}
+                    </h3>
+
+                    <div class="individual-url">
+                        ${site.url}
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="individual-info">
+
+                <div>
+
+                    <small>
+                        CATEGORIA
+                    </small>
+
+                    <strong>
+                        ${site.categoria}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        CADASTRADO EM
+                    </small>
+
+                    <strong>
+                        ${site.data}
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <small>
+                        ENDEREÇO
+                    </small>
+
+                    <strong>
+                        ${site.url}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="individual-descricao">
+
+                <small>
+                    DESCRIÇÃO
+                </small>
+
+                <p>
+                    ${site.descricao}
+                </p>
+
+            </div>
+
+
+            <div class="individual-acoes">
+
+                <a
+                    href="${site.urlCompleta}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    VISITAR SITE ↗
+                </a>
+
+                <a href="./">
+                    ← TODOS OS SITES
+                </a>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ==========================================
+   CATEGORIA
+========================================== */
+
+function mostrarCategoria(nome) {
+
+    const sites =
+        encontrarCategoria(nome);
+
+
+    tituloPrincipal.innerHTML =
+        `${nome}<br><em>sites cadastrados.</em>`;
+
+
+    descricaoPrincipal.textContent =
+        "Sites registrados dentro desta categoria.";
+
+
+    tituloLista.textContent =
+        "SITES DA CATEGORIA";
+
+
+    if (!sites.length) {
+
+        listaSites.className = "";
+
+        listaSites.innerHTML = `
+
+            <div class="mensagem-vazia">
+
+                <span class="erro">
+                    ERRO 404
+                </span>
+
+                <h3>
+                    CATEGORIA NÃO ENCONTRADA
+                </h3>
+
+                <p>
+                    Nenhum site foi encontrado
+                    nesta categoria.
+                </p>
+
+                <a href="./">
+                    ← VOLTAR PARA TODOS OS SITES
+                </a>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    listaSites.className =
+        "grade-sites";
+
+
+    mostrarSites(sites);
+
+}
+
+
+/* ==========================================
+   CATEGORIAS
+========================================== */
+
+function mostrarCategorias() {
+
+    listaCategorias.innerHTML = "";
+
+
+    categoriasUnicas().forEach(categoria => {
+
+        const quantidade =
+            encontrarCategoria(categoria).length;
+
+
+        listaCategorias.innerHTML += `
+
+            <a href="${linkCategoria(categoria)}">
+
+                <span>
+                    ${categoria}
+                </span>
+
+                <b>
+                    ${numero(quantidade)}
+                </b>
+
+            </a>
+
+        `;
+
+    });
+
+}
+
+
+/* ==========================================
+   INICIALIZAÇÃO
+========================================== */
+
+function iniciar() {
+
+    const parametros =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const cadastro =
+        parametros.get("c");
+
+    const categoria =
+        parametros.get("categoria");
+
+
+    /*
+        ?c= tem prioridade
+    */
+
+    if (cadastro) {
+
+        const site =
+            encontrarSite(cadastro);
+
+
+        if (site) {
+
+            mostrarCadastro(site);
+
+        } else {
+
+            tituloPrincipal.innerHTML =
+                `Cadastro<br><em>não encontrado.</em>`;
+
+            descricaoPrincipal.textContent =
+                "O site solicitado não está registrado neste diretório.";
+
+            tituloLista.textContent =
+                "CADASTRO NÃO ENCONTRADO";
+
+
+            listaSites.className = "";
+
+            listaSites.innerHTML = `
+
+                <div class="mensagem-vazia">
+
+                    <span class="erro">
+                        ERRO 404
+                    </span>
+
+                    <h3>
+                        SITE NÃO ENCONTRADO
+                    </h3>
+
+                    <p>
+                        O cadastro solicitado não existe
+                        neste diretório.
+                    </p>
+
+                    <a href="./">
+                        ← VOLTAR PARA TODOS OS SITES
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+    /*
+        ?categoria=
+    */
+
+    else if (categoria) {
+
+        mostrarCategoria(categoria);
+
+    }
+
+    /*
+        Página normal
+    */
+
+    else {
+
+        listaSites.className =
+            "grade-sites";
+
+        mostrarSites(cadastros);
+
+    }
+
+
+    /*
+        Contadores
+    */
+
+    contadorSites.textContent =
+        numero(cadastros.length) +
+        " SITES";
+
+
+    contadorCategorias.textContent =
+        numero(categoriasUnicas().length) +
+        " CATEGORIAS";
+
+
+    /*
+        Categorias ficam sempre disponíveis
+    */
+
+    mostrarCategorias();
+
+}
+
+
+/* ==========================================
+   EXECUTAR
+========================================== */
+
+iniciar();
+
+</script>
 
 </body>
 </html>
