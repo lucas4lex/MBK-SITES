@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
     <meta charset="UTF-8">
@@ -10,29 +9,32 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Cadastros — Cadastro de Sites</title>
+    <title>Todos os Cadastros — Cadastro de Sites</title>
 
-    <link
-        rel="stylesheet"
-        href="estilo.css"
-    >
+    <link rel="stylesheet" href="./estilo.css">
 
 </head>
-
 
 <body>
 
 <header class="topo">
 
-    <div class="topo-interno">
+    <div class="topo-inner">
 
-        <a href="index.html" class="logo">
-            CADASTRO<span>DE</span>SITES
-        </a>
+        <div class="marca">
 
-        <nav>
-            <a href="index.html">Início</a>
-            <a href="cadastros.html">Cadastros</a>
+            <span class="marca-simbolo">◆</span>
+
+            <div>
+                <strong>CADASTRO DE SITES</strong>
+                <small>diretório independente da internet</small>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+            <a href="./">INÍCIO</a>
+            <a href="./cadastros.html">CADASTROS</a>
         </nav>
 
     </div>
@@ -40,21 +42,95 @@
 </header>
 
 
-<main class="container">
+<main class="pagina">
+
+    <section class="hero interno">
+
+        <div class="hero-label">
+            ● ARQUIVO
+        </div>
+
+        <h1>
+            Todos os<br>
+            <em>cadastros.</em>
+        </h1>
+
+        <p>
+            Consulte todos os sites registrados
+            no diretório.
+        </p>
+
+    </section>
+
 
     <section class="bloco">
 
-        <div class="titulo-secao">
-            <span>CADASTROS</span>
+        <div class="titulo-bloco">
+
+            <div>
+                <span class="numero">01</span>
+                <h2>ARQUIVO COMPLETO</h2>
+            </div>
+
+            <span class="linha"></span>
+
         </div>
 
-        <div class="conteudo">
 
-            <p>
-                Sites atualmente cadastrados no diretório:
-            </p>
+        <div class="arquivo-lista">
 
-            <div id="listaCadastros"></div>
+            <a href="./?c=multipage.pages.dev">
+
+                <span class="arquivo-numero">001</span>
+
+                <div>
+                    <strong>Multipage</strong>
+                    <small>multipage.pages.dev</small>
+                </div>
+
+                <span class="arquivo-cat">
+                    CRIAÇÃO DE SITES
+                </span>
+
+                <span class="seta">→</span>
+
+            </a>
+
+
+            <a href="./?c=prsauto.pages.dev">
+
+                <span class="arquivo-numero">002</span>
+
+                <div>
+                    <strong>PRS AUTO - CARROS</strong>
+                    <small>prsauto.pages.dev</small>
+                </div>
+
+                <span class="arquivo-cat">
+                    EMPRESAS
+                </span>
+
+                <span class="seta">→</span>
+
+            </a>
+
+
+            <a href="./?c=cadastrodesites.pages.dev">
+
+                <span class="arquivo-numero">003</span>
+
+                <div>
+                    <strong>Cadastro de Sites</strong>
+                    <small>cadastrodesites.pages.dev</small>
+                </div>
+
+                <span class="arquivo-cat">
+                    TECNOLOGIA
+                </span>
+
+                <span class="seta">→</span>
+
+            </a>
 
         </div>
 
@@ -63,71 +139,18 @@
 </main>
 
 
-<footer>
+<footer class="rodape">
 
-    <div class="footer-interno">
-
-        <strong>
-            CADASTRO DE SITES
-        </strong>
-
-        <p>
-            Diretório independente de sites.
-        </p>
-
-        <div class="copyright">
-            © 2026 Cadastro de Sites
-        </div>
-
+    <div>
+        <strong>CADASTRO DE SITES</strong>
+        <span>© 2026</span>
     </div>
+
+    <span>UM DIRETÓRIO DA INTERNET</span>
 
 </footer>
 
-
-<script src="cadastros.js"></script>
-
-<script>
-
-const lista =
-    document.getElementById("listaCadastros");
-
-
-cadastros.forEach(function(cadastro) {
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "cadastro-linha";
-
-    item.innerHTML = `
-
-        <div>
-
-            <strong>
-                ${cadastro.nome}
-            </strong>
-
-            <small>
-                ${cadastro.url}
-            </small>
-
-        </div>
-
-        <a
-            href="index.html?c=${encodeURIComponent(cadastro.chave)}"
-            class="botao pequeno"
-        >
-            ABRIR
-        </a>
-
-    `;
-
-    lista.appendChild(item);
-
-});
-
-</script>
+<script src="./cadastro.js"></script>
 
 </body>
 </html>
