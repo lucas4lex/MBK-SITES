@@ -73,12 +73,6 @@ function normalizarChave(valor) {
 }
 
 
-/*
-========================================
- PROCURAR SITE
-========================================
-*/
-
 function encontrarCadastro(chave) {
 
     const chaveNormalizada =
@@ -93,12 +87,6 @@ function encontrarCadastro(chave) {
 
 }
 
-
-/*
-========================================
- PROCURAR CATEGORIA
-========================================
-*/
 
 function encontrarCategoria(categoria) {
 
@@ -119,12 +107,6 @@ function encontrarCategoria(categoria) {
 }
 
 
-/*
-========================================
- PEGAR CATEGORIAS
-========================================
-*/
-
 function listarCategorias() {
 
     return [
@@ -137,12 +119,6 @@ function listarCategorias() {
 
 }
 
-
-/*
-========================================
- CONTAR SITES DA CATEGORIA
-========================================
-*/
 
 function quantidadeCategoria(categoria) {
 
