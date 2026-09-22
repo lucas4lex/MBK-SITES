@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cadastros — Cadastro de Sites</title>
+
+    <link
+        rel="stylesheet"
+        href="estilo.css"
+    >
+
+</head>
+
+
+<body>
+
+<header class="topo">
+
+    <div class="topo-interno">
+
+        <a href="index.html" class="logo">
+            CADASTRO<span>DE</span>SITES
+        </a>
+
+        <nav>
+            <a href="index.html">Início</a>
+            <a href="cadastros.html">Cadastros</a>
+        </nav>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <section class="bloco">
+
+        <div class="titulo-secao">
+            <span>CADASTROS</span>
+        </div>
+
+        <div class="conteudo">
+
+            <p>
+                Sites atualmente cadastrados no diretório:
+            </p>
+
+            <div id="listaCadastros"></div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-interno">
+
+        <strong>
+            CADASTRO DE SITES
+        </strong>
+
+        <p>
+            Diretório independente de sites.
+        </p>
+
+        <div class="copyright">
+            © 2026 Cadastro de Sites
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="cadastros.js"></script>
+
+<script>
+
+const lista =
+    document.getElementById("listaCadastros");
+
+
+cadastros.forEach(function(cadastro) {
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "cadastro-linha";
+
+    item.innerHTML = `
+
+        <div>
+
+            <strong>
+                ${cadastro.nome}
+            </strong>
+
+            <small>
+                ${cadastro.url}
+            </small>
+
+        </div>
+
+        <a
+            href="index.html?c=${encodeURIComponent(cadastro.chave)}"
+            class="botao pequeno"
+        >
+            ABRIR
+        </a>
+
+    `;
+
+    lista.appendChild(item);
+
+});
+
+</script>
+
+</body>
+</html>
