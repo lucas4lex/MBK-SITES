@@ -1,4 +1,10 @@
+/*
+    CADASTRO DE SITES
+    Dados oficiais do diretório
+*/
+
 const cadastros = [
+
     {
         chave: "multipage.pages.dev",
         nome: "Multipage",
@@ -31,14 +37,15 @@ const cadastros = [
         descricao:
             "Diretório para encontrar e divulgar sites na internet."
     }
+
 ];
 
 
-/* ========================================
+/* =========================
    FUNÇÕES
-======================================== */
+========================= */
 
-function normalizarChave(valor) {
+function normalizar(valor) {
 
     return String(valor || "")
         .toLowerCase()
@@ -51,13 +58,11 @@ function normalizarChave(valor) {
 
 function encontrarCadastro(chave) {
 
-    const chaveNormalizada =
-        normalizarChave(chave);
+    const valor = normalizar(chave);
 
-    return cadastros.find(function(cadastro) {
+    return cadastros.find(function(site) {
 
-        return normalizarChave(cadastro.chave)
-            === chaveNormalizada;
+        return normalizar(site.chave) === valor;
 
     });
 
@@ -66,17 +71,13 @@ function encontrarCadastro(chave) {
 
 function encontrarCategoria(categoria) {
 
-    const nome =
-        String(categoria || "")
-            .trim()
-            .toLowerCase();
+    const valor = String(categoria || "")
+        .trim()
+        .toLowerCase();
 
-    return cadastros.filter(function(cadastro) {
+    return cadastros.filter(function(site) {
 
-        return cadastro.categoria
-            .trim()
-            .toLowerCase()
-            === nome;
+        return site.categoria.toLowerCase() === valor;
 
     });
 
@@ -87,8 +88,8 @@ function listarCategorias() {
 
     return [
         ...new Set(
-            cadastros.map(function(cadastro) {
-                return cadastro.categoria;
+            cadastros.map(function(site) {
+                return site.categoria;
             })
         )
     ];
@@ -103,275 +104,39 @@ function quantidadeCategoria(categoria) {
 }
 
 
-/* ========================================
-   INICIALIZAÇÃO DA PÁGINA
-======================================== */
+/* =========================
+   LINKS EXTERNOS
+========================= */
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    const listaSites =
-        document.getElementById("listaSites");
+    const links = document.querySelectorAll(
+        'a[href^="?c="]'
+    );
 
-    const listaCategorias =
-        document.getElementById("listaCategorias");
+    links.forEach(function(link) {
 
-    const resultado =
-        document.getElementById("resultado");
+        link.addEventListener("click", function(event) {
 
+            const url = link.getAttribute("href");
 
-    if (!listaSites || !listaCategorias) {
-        return;
-    }
+            const parametros = new URLSearchParams(
+                url.replace("?", "")
+            );
 
+            const chave = parametros.get("c");
 
-    const parametros =
-        new URLSearchParams(
-            window.location.search
-        );
+            const cadastro = encontrarCadastro(chave);
 
+            if (!cadastro) {
 
-    const chave =
-        parametros.get("c");
+                event.preventDefault();
 
-    const categoria =
-        parametros.get("categoria");
+                alert("Cadastro não encontrado.");
 
+            }
 
-    /* ====================================
-       CARDS
-    ==================================== */
-
-    function criarCard(cadastro) {
-
-        const card =
-            document.createElement("article");
-
-        card.className = "site-card";
-
-        card.innerHTML = `
-            <div class="card-categoria">
-                <a href="?categoria=${encodeURIComponent(cadastro.categoria)}">
-                    ${cadastro.categoria}
-                </a>
-            </div>
-
-            <h2>
-                ${cadastro.nome}
-            </h2>
-
-            <div class="card-url">
-                ${cadastro.url}
-            </div>
-
-            <p>
-                ${cadastro.descricao}
-            </p>
-
-            <a href="?c=${encodeURIComponent(cadastro.chave)}">
-                VER CADASTRO →
-            </a>
-        `;
-
-        listaSites.appendChild(card);
-    }
-
-
-    /* ====================================
-       SITE INDIVIDUAL
-    ==================================== */
-
-    if (chave) {
-
-        const cadastro =
-            encontrarCadastro(chave);
-
-
-        if (cadastro) {
-
-            resultado.innerHTML = `
-                <section class="pagina-site">
-
-                    <div class="etiqueta">
-                        SITE CADASTRADO
-                    </div>
-
-                    <h1>
-                        ${cadastro.nome}
-                    </h1>
-
-                    <div class="endereco">
-                        ${cadastro.url}
-                    </div>
-
-                    <p class="descricao">
-                        ${cadastro.descricao}
-                    </p>
-
-                    <div class="informacoes">
-
-                        <div>
-                            <small>CATEGORIA</small>
-
-                            <strong>
-                                <a href="?categoria=${encodeURIComponent(cadastro.categoria)}">
-                                    ${cadastro.categoria}
-                                </a>
-                            </strong>
-                        </div>
-
-                        <div>
-                            <small>CADASTRADO EM</small>
-                            <strong>${cadastro.data}</strong>
-                        </div>
-
-                    </div>
-
-                    <a
-                        href="${cadastro.urlCompleta}"
-                        target="_blank"
-                        rel="noopener"
-                        class="botao"
-                    >
-                        VISITAR SITE →
-                    </a>
-
-                </section>
-            `;
-
-        }
-
-
-        else {
-
-            resultado.innerHTML = `
-                <section class="pagina-site erro">
-
-                    <div class="etiqueta">
-                        NÃO ENCONTRADO
-                    </div>
-
-                    <h1>
-                        Site não encontrado
-                    </h1>
-
-                    <p>
-                        Não existe cadastro para:
-                    </p>
-
-                    <code>${chave}</code>
-
-                </section>
-            `;
-
-        }
-
-
-        cadastros.forEach(criarCard);
-
-    }
-
-
-    /* ====================================
-       CATEGORIA
-    ==================================== */
-
-    else if (categoria) {
-
-        const resultados =
-            encontrarCategoria(categoria);
-
-
-        resultado.innerHTML = `
-            <section class="pagina-site">
-
-                <div class="etiqueta">
-                    CATEGORIA
-                </div>
-
-                <h1>
-                    ${categoria}
-                </h1>
-
-                <p class="descricao">
-                    Sites cadastrados nesta categoria.
-                </p>
-
-                <div class="contador">
-                    ${resultados.length} site(s) encontrado(s)
-                </div>
-
-            </section>
-        `;
-
-
-        resultados.forEach(criarCard);
-
-    }
-
-
-    /* ====================================
-       INICIAL
-    ==================================== */
-
-    else {
-
-        resultado.innerHTML = `
-            <section class="hero">
-
-                <div class="etiqueta">
-                    DIRETÓRIO DE SITES
-                </div>
-
-                <h1>
-                    Encontre sites
-                    <br>
-                    na internet.
-                </h1>
-
-                <p>
-                    Um catálogo simples,
-                    rápido e organizado para
-                    descobrir novos sites.
-                </p>
-
-                <div class="exemplo-url">
-                    cadastrodesites.pages.dev/?c=seusite.com
-                </div>
-
-            </section>
-        `;
-
-
-        cadastros.forEach(criarCard);
-
-    }
-
-
-    /* ====================================
-       CATEGORIAS
-       SEMPRE MOSTRA
-    ==================================== */
-
-    listarCategorias().forEach(function(nomeCategoria) {
-
-        const link =
-            document.createElement("a");
-
-        link.href =
-            "?categoria=" +
-            encodeURIComponent(nomeCategoria);
-
-        link.innerHTML = `
-            <span>
-                ${nomeCategoria}
-            </span>
-
-            <small>
-                ${quantidadeCategoria(nomeCategoria)}
-            </small>
-        `;
-
-        listaCategorias.appendChild(link);
+        });
 
     });
 
