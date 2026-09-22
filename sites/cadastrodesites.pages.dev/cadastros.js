@@ -57,26 +57,95 @@ const cadastros = [
 
 
 /*
- * PROCURA UM SITE
- */
+========================================
+ NORMALIZAR CHAVE
+========================================
+*/
+
+function normalizarChave(valor) {
+
+    return valor
+        .toLowerCase()
+        .trim()
+        .replace(/^https?:\/\//, "")
+        .replace(/\/$/, "");
+
+}
+
+
+/*
+========================================
+ PROCURAR SITE
+========================================
+*/
 
 function encontrarCadastro(chave) {
 
-    chave =
-        chave
-            .toLowerCase()
-            .trim()
-            .replace(/^https?:\/\//, "")
-            .replace(/\/$/, "");
+    const chaveNormalizada =
+        normalizarChave(chave);
 
     return cadastros.find(function(cadastro) {
 
-        return cadastro.chave
-            .toLowerCase()
-            .replace(/^https?:\/\//, "")
-            .replace(/\/$/, "")
-            === chave;
+        return normalizarChave(cadastro.chave)
+            === chaveNormalizada;
 
     });
+
+}
+
+
+/*
+========================================
+ PROCURAR CATEGORIA
+========================================
+*/
+
+function encontrarCategoria(categoria) {
+
+    const categoriaNormalizada =
+        categoria
+            .toLowerCase()
+            .trim();
+
+    return cadastros.filter(function(cadastro) {
+
+        return cadastro.categoria
+            .toLowerCase()
+            .trim()
+            === categoriaNormalizada;
+
+    });
+
+}
+
+
+/*
+========================================
+ PEGAR CATEGORIAS
+========================================
+*/
+
+function listarCategorias() {
+
+    return [
+        ...new Set(
+            cadastros.map(function(cadastro) {
+                return cadastro.categoria;
+            })
+        )
+    ];
+
+}
+
+
+/*
+========================================
+ CONTAR SITES DA CATEGORIA
+========================================
+*/
+
+function quantidadeCategoria(categoria) {
+
+    return encontrarCategoria(categoria).length;
 
 }
